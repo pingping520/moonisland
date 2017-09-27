@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-4.3.xsd 
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-4.3.xsd 
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-4.3.xsd 
+		http://www.springframework.org/schema/mvc 
+		http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd 
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-4.3.xsd ">
+	
+	<!-- 配置数据源dataSource -->
+	<bean id="dataScource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/moonisland"></property>
+		<property name="user" value="root"></property>
+		<property name="password" value="123"></property>
+	</bean>	
+	
+	<!--spring配置支持文件上传处理 MultipartResolver --> 
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 上传限制 -->
+		<property name="maxUploadSize" value="10000000"></property>
+		<property name="defaultEncoding" value="utf-8"></property>
+	</bean>
+	
+	<!-- SqlSessionFactory管理 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataScource"></property>
+		<!-- 找到mybatis-config.xml配置文件 -->
+		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
+	</bean>
+	
+	<!-- 声明式事务 -->
+	<!-- 1 、事务管理器、mybatis中使用jdbc通用的事务管理器 -->
+	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<!-- 注入会话工厂 -->
+		<property name="dataSource" ref="dataScource"></property>
+	</bean>
+	
+	<!-- 2、配置通知、也就是要对哪些方法添加事务 -->
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="find*" propagation="REQUIRED" read-only="true"/>
+			<!-- 针对增删改、如果抛出异常、让事务回滚、添加rollback-for="java.lang.Exception" -->
+			<tx:method name="*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+		</tx:attributes>
+	</tx:advice>
+	
+	<!-- 配置切面AspetJ -->
+	<aop:config>
+		<aop:advisor advice-ref="txAdvice" pointcut="execution(public * cn.com.moonislands.service.impl.*.*(..))"/>
+	</aop:config>	
+	
+	<!-- dao层、使用继承SqlSessionFactory注入sqlSessionFactory -->
+	<!-- songyanping -->
+	<bean id="userDao" class="cn.com.moonisland.dao.impl.UserDaoImpl">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	
+	<bean id="aboutDao" class="cn.com.moonisland.dao.impl.AboutDaoImpl">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	
+	<bean id="adminDao" class="cn.com.moonisland.dao.impl.AdminDaoImpl">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	
+	<bean id="brandDao" class="cn.com.moonisland.dao.impl.BrandDaoImpl">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	
+	<bean id="photoWallDao" class="cn.com.moonisland.dao.impl.PhotoWallDaoImpl">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	<!-- end -->
+	
+	<!-- yanziyang -->
+	
+	<!-- end -->
+	
+	<!-- wangyuanhang -->
+	
+	<!-- end -->
+	
+	<!-- zhangbolun -->
+	
+	<!-- end -->
+	
+	<!-- service层 -->
+	
+	<!-- songyanping -->
+	<bean id="userService" class="cn.com.moonisland.service.impl.UserServiceImpl">
+		<property name="userDao" ref="userDao"></property>
+	</bean>
+	
+	<bean id="aboutService" class="cn.com.moonisland.service.impl.AboutServiceImpl">
+		<property name="aboutDao" ref="aboutDao"></property>
+	</bean>
+	
+	<bean id="adminService" class="cn.com.moonisland.service.impl.AdminServiceImpl">
+		<property name="adminDao" ref="adminDao"></property>
+	</bean>	
+	
+	<bean id="brandService" class="cn.com.moonisland.service.impl.BrandServiceImpl">
+		<property name="brandDao" ref="brandDao"></property>
+	</bean>	
+	
+	<bean id="paotoWallService" class="cn.com.moonisland.service.impl.PhotoWallServiceImpl">
+		<property name="photoWallDao" ref="photoWallDao"></property>
+	</bean>
+	<!-- end -->
+	
+	<!-- yanziyang -->
+	
+	<!-- end -->
+	
+	<!-- wangyuanhang -->
+	
+	<!-- end -->
+	
+	<!-- zhangbolun -->
+	
+	<!-- end -->
+		
+	<!-- 处理静态资源、虽然使用了spring框架的核心控制器、但针对静态资源不做任何处理 -->
+	<mvc:default-servlet-handler/>
+	<!-- 使用注解扫描指定的包 -->
+	<context:component-scan base-package="cn.com.moonisland.controller" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>	
+	<!-- 使用注解注入 -->
+	<context:annotation-config/>
+	<!-- spring4.0后、使用以下方式驱动注解 -->
+	<mvc:annotation-driven/>
+	
+</beans>

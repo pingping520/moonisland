@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+						"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.com.moonisland.mapper.BrandMapper">
+	<resultMap type="Brand" id="brandResultMap">
+		<id property="brandId" column="brand_id"/>
+		<result property="brandName" column="brand_name"/>
+		<result property="brandLogo" column="brand_logo"/>
+		<result property="brandContent" column="brand_content"/>
+		<result property="brandAddtime" column="brand_addtime"/>
+		<result property="brandStatus" column="brand_status"/>
+	</resultMap>
+	
+	<insert id="addBrand" parameterType="Brand">
+		<![CDATA[
+			insert into moon_brand(brand_name,brand_logo,brand_content,brand_addtime) values(#{brandName},#{brandLogo},#{brandContent},current_timestamp)
+		]]>
+	</insert>
+	
+	<update id="checkBrand" parameterType="Brand">
+		<![CDATA[
+			update moon_brand set brand_status=#{brandStatus} where brand_id=#{brandId}
+		]]>
+	</update>
+	
+	<update id="updateBrand" parameterType="Brand">
+		<![CDATA[
+			update moon_brand set brand_name=#{brandName},brand_logo=#{brandLogo},brand_content=#{brandContent} where brand_id=#{brandId}
+		]]>
+	</update>
+	
+	<select id="brands" resultMap="brandResultMap">
+		<![CDATA[
+			select * from moon_brand
+		]]>
+	</select>
+	
+	<select id="findBrand" parameterType="int" resultMap="brandResultMap">
+		select * from moon_brand where brand_id=#{brandId}
+	</select>
+	
+	<select id="findAllUserable" parameterType="string">
+		select * from moon_brand where brand_status=#{brandStatus}
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

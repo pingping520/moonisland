@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+						"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.com.moonisland.mapper.AboutMapper">
+	<resultMap type="About" id="aboutResultMap">
+		<id property="aboutId" column="about_id"/>
+		<result property="aboutStyle" column="about_style"/>
+		<result property="aboutContent" column="about_content"/>
+		<result property="aboutTime" column="about_time"/>
+	</resultMap>
+	
+	<insert id="addAbout" parameterType="About">
+		<![CDATA[
+			insert into moon_about(about_style,about_content,about_time) values(#{aboutStyle},#{aboutContent},current_timestamp)
+		]]>
+	</insert>
+	
+	<select id="abouts" resultMap="aboutResultMap">
+		<![CDATA[
+			select * from moon_about
+		]]>
+	</select>
+	
+	<select id="findAbout" parameterType="About" resultMap="aboutResultMap">
+		<![CDATA[
+			select * from moon_about where about_id=#{aboutId}
+		]]>
+	</select>
+	
+	<update id="updateAbout" parameterType="About">
+		<![CDATA[
+			update moon_about set about_id=#{aboutId},about_style=#{aboutStyle},about_content=#{aboutContent},about_time=current_timestamp where about_id=#{aboutId}
+		]]>
+	</update>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

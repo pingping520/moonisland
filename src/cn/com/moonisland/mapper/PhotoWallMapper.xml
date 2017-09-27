@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+						"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.com.moonisland.mapper.PhotoWallMapper">
+	<resultMap type="PhotoWall" id="photoWallResultMap">
+		<id property="photoId" column="photo_id"/>
+		<result property="photoUrl" column="photo_url"/>
+		<result property="photoWord" column="photo_word"/>
+		<result property="photoTime" column="photo_time"/>
+		<result property="photoStatus" column="photo_status"/>
+	</resultMap>
+	
+	<insert id="addPhotoWall" parameterType="PhotoWall">
+		<![CDATA[
+			insert into moon_photo_wall(photo_url,photo_word,photo_time) values(#{photoUrl},#{photoWord},current_timestamp)
+		]]>
+	</insert>
+	
+	<select id="findPhoto" parameterType="PhotoWall" resultMap="photoWallResultMap">
+		<![CDATA[
+			select * from moon_photo_wall where photo_id=#{photoId}
+		]]>
+	</select >
+	
+	<select id="photoWalls" resultMap="photoWallResultMap">
+		<![CDATA[
+			select * from moon_photo_wall
+		]]>
+	</select >
+		
+	<select id="findUsePhotos" resultMap="photoWallResultMap">
+		<![CDATA[
+			select * from moon_photo_wall where photo_status=#{photoStatus}
+		]]>
+	</select>
+	
+	<update id="checkPhotoWall" parameterType="PhotoWall">
+		<![CDATA[
+			update moon_photo_wall set photo_status=#{photoStatus} where photo_id=#{photoId}
+		]]>
+	</update>
+	
+	<update id="updatePhotoWall" parameterType="PhotoWall">
+		<![CDATA[
+			update moon_photo_wall set photo_url=#{photoUrl},photo_word=#{photoWord},photo_time=current_timestamp where photo_id=#{photoId}
+		]]>
+	</update>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
