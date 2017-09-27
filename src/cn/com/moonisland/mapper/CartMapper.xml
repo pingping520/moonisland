@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+						"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.com.moonisland.mapper.CartMapper">
+	<resultMap type="Cart" id="cartResultMap">
+		<id property="cartId" column="cart_id"/>
+		<result property="points" column="points"/>
+		<result property="userLevel" column="user_level"/>
+		<result property="isPrivilege" column="is_privilege"/>
+		<result property="privilegeNum" column="privilege_num"/>
+		<result property="phone" column="phone"/>
+		<result property="nickName" column="nick_name"/>
+		<result property="headerPic" column="header_pic"/>
+		<result property="password" column="password"/>
+		<result property="sex" column="sex"/>
+		<result property="birthday" column="birthday"/>
+		<result property="zipcode" column="zipcode"/>
+		<result property="mobile" column="mobile"/>
+		<result property="email" column="email"/>
+		<result property="userTime" column="user_time"/>
+		<result property="userStatus" column="user_status"/>
+		<!-- <association property=""></association> -->
+	</resultMap>
+	
+	<insert id="addUser" parameterType="User">
+		insert into moon_user(
+		<trim prefixOverrides=",">
+			<if test="points!=null" >points</if>
+			<if test="userLevel!=null">,user_level</if>
+			<if test="isPrivilege!=null">,is_privilege</if>
+			<if test="privilegeNum!=null">,privilege_num</if>
+			<if test="phone!=null">,phone</if>
+			<if test="nickName!=null">,nick_name</if>			
+			<if test="headerPic!=null">,header_pic</if>
+			<if test="password!=null">,password</if>
+			<if test="sex!=null">,sex</if>
+			<if test="birthday!=null">,birthday</if>
+			<if test="zipcode!=null">,zipcode</if>
+			<if test="mobile!=null">,mobile</if>
+			<if test="email!=null">,email</if>
+			<if test="userTime!=null">,user_time</if>
+			<if test="userStatus!=null">,user_status</if>
+		</trim>
+		) values(
+		<trim prefixOverrides=",">
+			<if test="points!=null" >#{points}</if>
+			<if test="userLevel!=null">,#{userLevel}</if>
+			<if test="isPrivilege!=null">,#{isPrivilege}</if>
+			<if test="privilegeNum!=null">,#{privilegeNum}</if>
+			<if test="phone!=null">#{phone}</if>
+			<if test="nickName!=null">,#{nickName}</if>			
+			<if test="headerPic!=null">,#{headerPic}</if>
+			<if test="password!=null">,#{password}</if>
+			<if test="sex!=null">,#{sex}</if>
+			<if test="birthday!=null">,#{birthday}</if>
+			<if test="zipcode!=null">,#{zipcode}</if>
+			<if test="mobile!=null">,#{mobile}</if>
+			<if test="email!=null">,#{email}</if>
+			<if test="userTime!=null">,current_timestamp</if>
+			<if test="userStatus!=null">,#{userStatus}</if>
+		</trim>
+		)
+	</insert>
+	
+	<update id="updateUser" parameterType="User">
+		update moon_user 
+			<set>
+				<if test="points!=null" >points=#{points},</if>
+				<if test="userLevel!=null">user_level=#{userLevel},</if>
+				<if test="isPrivilege!=null">is_privilege=#{isPrivilege},</if>
+				<if test="privilegeNum!=null">privilege_num=#{privilegeNum},</if>
+				<if test="phone!=null">phone=#{phone},</if>
+				<if test="nickName!=null">nick_name=#{nickName},</if>			
+				<if test="headerPic!=null">header_pic=#{headerPic},</if>
+				<if test="password!=null">password=#{password},</if>
+				<if test="sex!=null">sex=#{sex},</if>
+				<if test="birthday!=null">birthday=#{birthday},</if>
+				<if test="zipcode!=null">zipcode=#{zipcode},</if>
+				<if test="mobile!=null">mobile=#{mobile},</if>
+				<if test="email!=null">email=#{email},</if>
+				<if test="userTime!=null">user_time=#{userTime},</if>
+				<if test="userStatus!=null">user_status=#{userStatus}</if>
+			</set>
+			where user_id=#{userId}
+	</update>
+	
+	<select id="pageCount" resultType="int">
+		<![CDATA[
+			select ceil(count(*)/10) from moon_user
+		]]>
+	</select>
+	
+	<select id="users" parameterType="int" resultMap="userResultMap">
+		<![CDATA[
+			select * from moon_user limit #{page},10
+		]]>
+	</select>
+	
+	<select id="login" parameterType="User" resultMap="userResultMap">
+		<![CDATA[
+			select * from moon_user where nick_name=#{nickName} and password=#{password}
+		]]>
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
