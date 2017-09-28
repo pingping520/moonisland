@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.moonisland.mapper.OptometryMapper">
+	<resultMap type="Optometry" id="optometryResultMap">
+		<id column="optometry_id" property="optometryId" />
+		<result column="user_id" property="userId"/>
+		<result column="R_SPH" property="rSph"/>
+		<result column="R_CYL" property="rCyl"/>
+		<result column="R_AXIS" property="rAxis"/>
+		<result column="L_SPH" property="lSph"/>
+		<result column="L_CYL" property="lCyl"/>
+		<result column="L_AXIS" property="lAxis"/>
+		<result column="PD" property="pd"/>
+		<result column="optometry_time" property="optometryTime"/>
+	</resultMap>
+	<select id="findall" resultMap="optometryResultMap">
+		<![CDATA[
+			select * from moon_optometry;
+		]]>
+	</select>
+	<insert id="add" parameterType="Optometry">
+		insert into moon_optometry(user_id,R_SPH,R_CYL,R_AXIS,L_SPH,L_CYL,L_AXIS,PD,optometry_time) values(#{userId},#{rSph},#{rCyl},#{rAxis},#{lSph},#{lCyl},#{lAxis},#{pd},current_timestamp);
+	</insert>
+</mapper>

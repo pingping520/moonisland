@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>加入购物车</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../icon/iconfont.css">
+    <link rel="stylesheet" href="../css/addCart.css">
+    <style></style>
+</head>
+<body>
+<form action="../optometry/add" method="post"  onsubmit="return check()">
+    <input type="hidden" name="userId"/>
+    <div id="wrap">
+        <div id="herder">
+            <div class="container">
+                <div class="ware-img col-xs-3">
+                    <img class="img-responsive img-rounded" src="../images/shop01.png" alt="">
+                </div>
+                <div class="col-xs-7" style="padding-right: 0;">
+                    <div class="ware-price">￥139.00</div>
+                    <div class="ware-id">商品编号：<span>1470409046</span></div>
+                </div>
+
+                <div class="col-xs-2 text-right" style="margin-top: 8%;"><button type="button" class="close"><span style="font-size: 11px">&times;</span></button></div>
+            </div>
+        </div>
+        <div id="main">
+            <div class="container-fluid">
+                <p>颜色</p>
+                <ul class="ware-color list-unstyled" id="ware-color">
+                    <li class="col-xs-4"><div>金框芭比粉紫</div></li>
+                    <li class="col-xs-4"><div>银框水银镜面</div></li>
+                    <li class="col-xs-4"><div>银框蓝色镜面</div></li>
+                    <li class="col-xs-4"><div>金框梦幻紫</div></li>
+                    <li class="col-xs-4"><div>金框玫瑰金</div></li>
+                </ul>
+            </div>
+            <div class="number">
+                <div class="container-fluid">
+                    <div class="col-xs-4" style="color: #787878;font-size: 12px;">数量</div>
+                    <div class="col-xs-8 text-right">
+                        <div class="btn-group">
+                            <button id="btn-minus" type="button" class="btn btn-default btn-xs" style="width: 25px;height:25px;font-size: 7px;">-</button>
+                            <input type="text" id="btn-input" value="1" class="btn btn-default btn-xs" style="width: 45px;height:25px;">
+                            <button id="btn-add" type="button" class="btn btn-default btn-xs" style="width: 25px;height:25px;font-size: 7px;">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="check-style" id="check-style" style="display: block;">
+            <div class="container">
+                <ul class="list-unstyled">
+                    <li class="col-xs-1"></li>
+                    <li class="col-xs-5"><div>只选择镜框</div></li>
+                    <li class="col-xs-5"><div id="lens-style">镜框和镜片</div></li>
+                    <li class="col-xs-1"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="check-Lens" id="check-Lens" style="display: none">
+            <div class="container">
+                <div class="check-Lens-title">
+                    <div class="col-xs-7" style="height: 30px;line-height: 30px;font: 11px 微软雅黑;color:#232323;">光度</div>
+                    <div class="col-xs-5" style="text-align: center"><span id="check-shuoming" class="check-shuoming"><i class="iconfont icon-guizeshuoming" style="font-size: 22px;"></i><span style="font: 11px 微软雅黑;color:#232323;">选择说明</span></span></div>
+                </div>
+            </div>
+            <div class="luminosity">
+                <div class="container">
+                    <ul class="check-Lens-style list-unstyled">
+                        <li class="btn-group col-xs-6 check-Lens-style-li">
+                        	<input type="hidden" name="lSph" id="lSph"/>
+                            <div class="dropdown-toggle luminosity-select" data-toggle="dropdown" aria-expanded="false">
+                                <span id="text01">左眼球镜</span>
+                                <i class="iconfont icon-jiantou-copy"></i>
+                            </div>
+                            <ul class="dropdown-menu optometry" id="select01">
+                                <!-- <li style="text-align:center;"><a onclick="fun01(this)">5</a></li>
+                                <li style="text-align:center;"><a onclick="fun01(this)">4</a></li>
+                                <li style="text-align:center;"><a onclick="fun01(this)">3</a></li>
+                                <li style="text-align:center;"><a onclick="fun01(this)">2</a></li>
+                                <li style="text-align:center;"><a onclick="fun01(this)">1</a></li> -->
+                            </ul>
+                        </li>
+                        <li class="btn-group col-xs-6 check-Lens-style-li">
+                        	<input type="hidden" name="rSph" id="rSph"/>
+                            <div class="dropdown-toggle luminosity-select" data-toggle="dropdown" aria-expanded="false">
+                                <span id="text02">右眼球镜</span>
+                                <i class="iconfont icon-jiantou-copy"></i>
+                            </div>
+                            <ul class="dropdown-menu optometry" id="select02">
+                                <!-- <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li> -->
+                            </ul>
+                        </li>
+                        <li class="btn-group col-xs-6 check-Lens-style-li">
+                            <input type="hidden" name="lCyl" id="lCyl"/>
+                            <div class="dropdown-toggle luminosity-select" data-toggle="dropdown" aria-expanded="false">
+                                <span id="text03">左眼柱镜(默认无)</span>
+                                <i class="iconfont icon-jiantou-copy"></i>
+                            </div>
+                            <ul class="dropdown-menu optometry" id="select03">
+                                <!-- <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li> -->
+                            </ul>
+                        </li>
+                        <li class="btn-group col-xs-6 check-Lens-style-li">
+                            <input type="hidden" name="rCyl" id="rCyl"/>
+                            <div class="dropdown-toggle luminosity-select" data-toggle="dropdown" aria-expanded="false">
+                                <span id="text04">右眼柱镜(默认无)</span>
+                                <i class="iconfont icon-jiantou-copy"></i>
+                            </div>
+                            <ul class="dropdown-menu optometry" id="select04">
+                                <!-- <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li> -->
+                            </ul>
+                        </li>
+                        <li class="btn-group col-xs-6 check-Lens-style-li">
+                            <input type="hidden" name="lAxis" id="lAxis"/>
+                            <div class="dropdown-toggle luminosity-select" data-toggle="dropdown" aria-expanded="false">
+                                <span id="text05">左眼轴线(默认无)</span>
+                                <i class="iconfont icon-jiantou-copy"></i>
+                            </div>
+                            <ul class="dropdown-menu optometry" id="select05">
+                                <!-- <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li> -->
+                            </ul>
+                        </li>
+                        <li class="btn-group col-xs-6 check-Lens-style-li">
+                            <input type="hidden" name="rAxis" id="rAxis"/>
+                            <div class="dropdown-toggle luminosity-select" data-toggle="dropdown" aria-expanded="false">
+                                <span id="text06">右眼轴线(默认无)</span>
+                                <i class="iconfont icon-jiantou-copy"></i>
+                            </div>
+                            <ul class="dropdown-menu optometry" id="select06">
+                                <!-- <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li> -->
+                            </ul>
+                        </li>
+                        <li class="btn-group col-xs-12 check-Lens-style-li">
+                            <input type="hidden" name="pd" id="pd"/>
+                            <div class="text-center">
+                                <div class="dropdown-toggle luminosity-select" data-toggle="dropdown" aria-expanded="false">
+                                    <span id="text07">瞳距</span>
+                                    <i class="iconfont icon-jiantou-copy"></i>
+                                </div>
+                                <ul class="dropdown-menu col-xs-12 pd" id="select07">
+                                    <!-- <li class="text-center"><a href="#">1</a></li>
+                                    <li class="text-center"><a href="#">2</a></li>
+                                    <li class="text-center"><a href="#">3</a></li>
+                                    <li class="text-center"><a href="#">4</a></li> -->
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="container-fluid borderbold"></div>
+            <div class="lens-series">
+                <div class="container">
+                    <div class="check-Lens-title">
+                        <div class="col-xs-7" style="height: 30px;line-height: 30px;font: 11px 微软雅黑;color:#232323;">镜片系列</div>
+                        <div class="col-xs-5" style="text-align: center"><span id="check-shuoming2" class="check-shuoming"><i class="iconfont icon-guizeshuoming" style="font-size: 22px;"></i><span style="font: 11px 微软雅黑;color:#232323;">选择说明</span></span></div>
+                    </div>
+                    <div class="series">
+                        <ul class="check-Lens-style list-unstyled">
+                            <li class="btn-group col-xs-12 check-Lens-style-li">
+                                <div class="text-center">
+                                    <div class="dropdown-toggle luminosity-select" data-toggle="dropdown" aria-expanded="false">
+                                        1.61系列
+                                        <i class="iconfont icon-jiantou-copy"></i>
+                                    </div>
+                                    <ul class="dropdown-menu col-xs-12">
+                                        <li class="text-center"><a href="#">1</a></li>
+                                        <li class="text-center"><a href="#">2</a></li>
+                                        <li class="text-center"><a href="#">3</a></li>
+                                        <li class="text-center"><a href="#">4</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="btn-group col-xs-12 check-Lens-style-li">
+                                <div class="text-center">
+                                    <div class="dropdown-toggle luminosity-select" data-toggle="dropdown" aria-expanded="false">
+                                        1.67系列
+                                        <i class="iconfont icon-jiantou-copy"></i>
+                                    </div>
+                                    <ul class="dropdown-menu col-xs-12">
+                                        <li class="text-center"><a href="#">1</a></li>
+                                        <li class="text-center"><a href="#">2</a></li>
+                                        <li class="text-center"><a href="#">3</a></li>
+                                        <li class="text-center"><a href="#">4</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="btn-group col-xs-12 check-Lens-style-li">
+                                <div class="text-center">
+                                    <div class="dropdown-toggle luminosity-select" data-toggle="dropdown" aria-expanded="false">
+                                        1.70系列
+                                        <i class="iconfont icon-jiantou-copy"></i>
+                                    </div>
+                                    <ul class="dropdown-menu col-xs-12">
+                                        <li class="text-center"><a href="#">1</a></li>
+                                        <li class="text-center"><a href="#">2</a></li>
+                                        <li class="text-center"><a href="#">3</a></li>
+                                        <li class="text-center"><a href="#">4</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="btn-group col-xs-12 check-Lens-style-li">
+                                <div class="text-center">
+                                    <div class="dropdown-toggle luminosity-select" data-toggle="dropdown" aria-expanded="false">
+                                        1.74系列
+                                        <i class="iconfont icon-jiantou-copy"></i>
+                                    </div>
+                                    <ul class="dropdown-menu col-xs-12">
+                                        <li class="text-center"><a href="#">1</a></li>
+                                        <li class="text-center"><a href="#">2</a></li>
+                                        <li class="text-center"><a href="#">3</a></li>
+                                        <li class="text-center"><a href="#">4</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="btn-group col-xs-12 check-Lens-style-li">
+                                <div class="text-center">
+                                    <div class="dropdown-toggle luminosity-select" data-toggle="dropdown" aria-expanded="false">
+                                        1.80系列
+                                        <i class="iconfont icon-jiantou-copy"></i>
+                                    </div>
+                                    <ul class="dropdown-menu col-xs-12">
+                                        <li class="text-center"><a href="#">1</a></li>
+                                        <li class="text-center"><a href="#">2</a></li>
+                                        <li class="text-center"><a href="#">3</a></li>
+                                        <li class="text-center"><a href="#">4</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div style="height: 100px" class="col-xs-12"></div>
+                </div>
+            </div>
+        </div>
+        <div id="footer" class="navbar-fixed-bottom" style="display: block">
+            <div class="container-fluid">
+                <div class="col-xs-6 text-center" id="btn-kefu" style="height:50px;font-family:微软雅黑;background-color: #89cfc4;color:white;cursor:pointer;display: block;"><i class="iconfont icon-kefu" style="font-size: 21px;"></i><br/><span style="font-size: 12px;">客服</span></div>
+                <div class="col-xs-6 text-center" id="btn-close" style="height:50px;font-family:微软雅黑;background-color: #89cfc4;color:white;cursor:pointer;display: none;"><i class="iconfont icon-chuyidong" style="font-size: 21px;"></i><br/><span style="font-size: 12px;">关闭镜片</span></div>
+                <input type="submit" value="确定" class="col-xs-6 text-center" id="btn-confirm" style="font:17px/50px 微软雅黑;border:0px; padding:0;background-color: #de443a;color:white;cursor:pointer;"/>
+            </div>
+        </div>
+        <div id="mengban"></div>
+        <div id="footer3"  class="navbar-fixed-bottom" style="display: none">
+            <div style="border-bottom: 1px solid #efefef">
+                <div class="container-fluid">
+                    <div class="check-shuoming">选择说明</div>
+                </div>
+            </div>
+            <div class="table-1">
+                <div class="container">
+                    <p>验光度数、眼镜度数换算</p>
+                    <table>
+                        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/addCart.js"></script>
+    <script type="text/javascript">
+    
+    	var a = $('.optometry');
+    	var b = "";
+    	for(var i=5.0;i>=-5.0;i--){
+    		b+="<li style='text-align:center;'>"+i+"</li>";
+    		i=i+0.5;
+    	}
+    	a.append(b);
+    	
+    	var c = $('.pd');
+    	var d = "";
+    	for(var i=48;i<=80;i++){
+    		d+="<li style='text-align:center;'>"+i+"</li>";
+    	}
+    	c.append(d);
+    	
+    	$('#select01').on('click', function(e) {
+    		var $target = $(e.target);
+    		var text01 = $('#text01');
+    		$target.is('li') && text01.text($target.text());
+        	$('#lSph').val(text01.text());
+    	})
+    	$('#select02').on('click', function(e) {
+    		var $target = $(e.target);
+    		var text02 = $('#text02');
+    		$target.is('li') && text02.text($target.text())
+    		$('#rSph').val(text02.text());
+    	})
+    	$('#select03').on('click', function(e) {
+    		var $target = $(e.target);
+    		var text03 = $('#text03');
+    		$target.is('li') && text03.text($target.text())
+    		$('#lCyl').val(text03.text());
+    	})
+    	$('#select04').on('click', function(e) {
+    		var $target = $(e.target);
+    		var text04 = $('#text04');
+    		$target.is('li') && text04.text($target.text())
+    		$('#rCyl').val(text04.text());
+    	})
+    	$('#select05').on('click', function(e) {
+    		var $target = $(e.target);
+    		var text05 = $('#text05');
+    		$target.is('li') && text05.text($target.text())
+    		$('#lAxis').val(text05.text());
+    	})
+    	$('#select06').on('click', function(e) {
+    		var $target = $(e.target);
+    		var text06 = $('#text06');
+    		$target.is('li') && text06.text($target.text())
+    		$('#rAxis').val(text06.text());
+    	})
+    	$('#select07').on('click', function(e) {
+    		var $target = $(e.target);
+    		var text07 = $('#text07');
+    		$target.is('li') && text07.text($target.text())
+    		$('#pd').val(text07.text());
+    	})
+    	
+    	
+    </script>
+</body>
+</html>

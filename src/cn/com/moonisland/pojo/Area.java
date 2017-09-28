@@ -45,5 +45,10 @@ public class Area implements Serializable{
 	public String getPid(){
 		return pid;
 	}
+
+	@Override
+	public String toString() {
+		return "Area [areaId=" + areaId + ", title=" + title + ", pid=" + pid + "]";
+	}
 }
 

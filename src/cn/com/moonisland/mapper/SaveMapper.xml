@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.moonisland.mapper.SaveMapper">
+	<resultMap type="SaveMapper" id="saveResultMap">
+		<id column="save_id" property="saveId"/>
+		<result column="goods_id" property="goodsId"/>
+		<result column="user_id" property="userId"/>
+		<result column="save_time" property="saveTime"/>
+	</resultMap>
+	<select id=""></select>
+</mapper>
