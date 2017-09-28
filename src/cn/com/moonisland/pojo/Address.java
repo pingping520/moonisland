@@ -15,16 +15,16 @@ public class Address implements Serializable{
 	private String address;	//详细地址
 	private String zipcode; //邮编
 	private String phone; //电话
-	private String userId;	//用户id
+	private User user;	//用户id
 	private String receiverName; //收货人姓名
 	private String addressStatus; //收货地址状态（0 不可用， 1 可用，默认为1）
 		
 	public Address() {
 		super();
 	}
-	
+
 	public Address(int addressId, String province, String city, String district, String address, String zipcode,
-			String phone, String userId, String receiverName, String addressStatus) {
+			String phone, User user, String receiverName, String addressStatus) {
 		super();
 		this.addressId = addressId;
 		this.province = province;
@@ -33,89 +33,90 @@ public class Address implements Serializable{
 		this.address = address;
 		this.zipcode = zipcode;
 		this.phone = phone;
-		this.userId = userId;
+		this.user = user;
 		this.receiverName = receiverName;
 		this.addressStatus = addressStatus;
 	}
 
-	public void setAddressId(int addressId){
-		this.addressId=addressId;
-	}
-
-	public int getAddressId(){
+	public int getAddressId() {
 		return addressId;
 	}
 
-	public void setProvince(String province){
-		this.province=province;
+	public void setAddressId(int addressId) {
+		this.addressId = addressId;
 	}
 
-	public String getProvince(){
+	public String getProvince() {
 		return province;
 	}
 
-	public void setCity(String city){
-		this.city=city;
+	public void setProvince(String province) {
+		this.province = province;
 	}
 
-	public String getCity(){
+	public String getCity() {
 		return city;
 	}
 
-	public void setDistrict(String district){
-		this.district=district;
+	public void setCity(String city) {
+		this.city = city;
 	}
 
-	public String getDistrict(){
+	public String getDistrict() {
 		return district;
 	}
 
-	public void setAddress(String address){
-		this.address=address;
+	public void setDistrict(String district) {
+		this.district = district;
 	}
 
-	public String getAddress(){
+	public String getAddress() {
 		return address;
 	}
 
-	public void setZipcode(String zipcode){
-		this.zipcode=zipcode;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
-	public String getZipcode(){
+	public String getZipcode() {
 		return zipcode;
 	}
 
-	public void setPhone(String phone){
-		this.phone=phone;
+	public void setZipcode(String zipcode) {
+		this.zipcode = zipcode;
 	}
 
-	public String getPhone(){
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setUserId(String userId){
-		this.userId=userId;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
-	public String getUserId(){
-		return userId;
+	public User getUser() {
+		return user;
 	}
 
-	public void setReceiverName(String receiverName){
-		this.receiverName=receiverName;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
-	public String getReceiverName(){
+	public String getReceiverName() {
 		return receiverName;
 	}
 
-	public void setAddressStatus(String addressStatus){
-		this.addressStatus=addressStatus;
+	public void setReceiverName(String receiverName) {
+		this.receiverName = receiverName;
 	}
 
-	public String getAddressStatus(){
+	public String getAddressStatus() {
 		return addressStatus;
 	}
+
+	public void setAddressStatus(String addressStatus) {
+		this.addressStatus = addressStatus;
+	}
+	
 }
 

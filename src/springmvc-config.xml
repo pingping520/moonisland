@@ -92,12 +92,6 @@
 	<!-- end -->
 	
 	<!-- yanziyang -->
-	<bean id="optometryDao" class="cn.com.moonisland.dao.impl.OptometryDaoImpl">
-		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-	</bean>
-	<bean id="areaDao" class="cn.com.moonisland.dao.impl.AreaDaoImpl">
-		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-	</bean>
 	
 	<!-- end -->
 	
@@ -143,12 +137,6 @@
 	<!-- end -->
 	
 	<!-- yanziyang -->
-	<bean id="optometryService" class="cn.com.moonisland.service.impl.OptometryServiceImpl">
-		<property name="dao" ref="optometryDao"></property>
-	</bean>
-	<bean id="areaService" class="cn.com.moonisland.service.impl.AreaServiceImpl">
-		<property name="dao" ref="areaDao"></property>
-	</bean>
 	
 	<!-- end -->
 	

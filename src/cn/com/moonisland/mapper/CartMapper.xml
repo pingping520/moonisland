@@ -5,101 +5,173 @@
 <mapper namespace="cn.com.moonisland.mapper.CartMapper">
 	<resultMap type="Cart" id="cartResultMap">
 		<id property="cartId" column="cart_id"/>
-		<result property="points" column="points"/>
-		<result property="userLevel" column="user_level"/>
-		<result property="isPrivilege" column="is_privilege"/>
-		<result property="privilegeNum" column="privilege_num"/>
-		<result property="phone" column="phone"/>
-		<result property="nickName" column="nick_name"/>
-		<result property="headerPic" column="header_pic"/>
-		<result property="password" column="password"/>
-		<result property="sex" column="sex"/>
-		<result property="birthday" column="birthday"/>
-		<result property="zipcode" column="zipcode"/>
-		<result property="mobile" column="mobile"/>
-		<result property="email" column="email"/>
-		<result property="userTime" column="user_time"/>
-		<result property="userStatus" column="user_status"/>
-		<!-- <association property=""></association> -->
+		<result property="bothNum" column="both_num"/>
+		<result property="cartTime" column="cart_time"/>
+		<result property="cartStatus" column="cart_status"/>
+		<association property="user" javaType="User">
+			<id property="userId" column="user_id"/>
+			<result property="points" column="points"/>
+			<result property="userLevel" column="user_level"/>
+			<result property="isPrivilege" column="is_privilege"/>
+			<result property="privilegeNum" column="privilege_num"/>
+			<result property="phone" column="phone"/>
+			<result property="nickName" column="nick_name"/>
+			<result property="headerPic" column="header_pic"/>
+			<result property="password" column="password"/>
+			<result property="sex" column="sex"/>
+			<result property="birthday" column="birthday"/>
+			<result property="zipcode" column="zipcode"/>
+			<result property="mobile" column="mobile"/>
+			<result property="email" column="email"/>
+			<result property="userTime" column="user_time"/>
+			<result property="userStatus" column="user_status"/>
+		</association>
+		<association property="optometry" javaType="Optometry">
+			<id property="optometryId" column="optometry_id"></id>
+			<result property="userId" column="user_id"/>
+			<result property="rSph" column="R_Sph"/>
+			<result property="rCyl" column="R_Cyl"/>
+			<result property="rAxis" column="R_Axis"/>
+			<result property="lSph" column="L_Sph"/>
+			<result property="lCyl" column="L_Cyl"/>
+			<result property="pd" column="PD"/>
+			<result property="optometryTime" column="optometry_time"/>
+		</association>
+		<association property="goods" javaType="Goods">
+			<id column="goods_id" property="goodsId"/>
+			<result column="brand_id" property="brandId"/>
+			<result column="goods_name" property="goodsName"/>
+			<result column="category" property="category"/>
+			<result column="original_price" property="originalPrice"/>
+			<result column="sales_price" property="salesPrice"/>
+			<result column="goods_color" property="goodsColor"/>
+			<result column="goods_content" property="goodsContent"/>
+			<result column="browse_num" property="browseNum"/>
+			<result column="save_num" property="saveNum"/>
+			<result column="sales_num" property="salesNum"/>
+			<result column="goods_keywords" property="goodsKeywords"/>
+			<result column="is_on_sale" property="isOnsale"/>
+			<result column="stock_num" property="stockNum"/>
+			<result column="minus_price" property="minusPrice"/>
+			<result column="privilege" property="privilege"/>
+			<result column="points" property="points"/>
+			<result column="style" property="style"/>
+			<result column="style_A" property="styleA"/>
+			<result column="style_B" property="styleB"/>
+			<result column="style_C" property="styleC"/>
+			<result column="style_D" property="styleD"/>
+			<result column="style_E" property="styleE"/>
+			<result column="add_time" property="addTime"/>
+			<result column="is_sale" property="isSale"/>		
+		</association>
+		
+		<association property="glass" javaType="Glass">
+			<id property="glassId" column="glass_id"/>
+			<result property="glassStyle" column="glass_style"/>
+			<result property="glassName" column="glass_name"/>
+			<result property="glassPrice" column="glass_price"/>
+			<result property="sphPrice" column="sph_price"/>
+			<result property="cylPrice" column="cyl_price"/>
+			<result property="glassImg" column="glass_img"/>
+			<result property="glassImgthumb" column="glass_imgthumb"/>
+			<result property="glassTime" column="glass_time"/>
+			<result property="color1" column="color1"/>
+			<result property="color2" column="color2"/>
+			<result property="color3" column="color3"/>
+			<result property="color4" column="color4"/>
+			<result property="color5" column="color5"/>
+			<result property="color6" column="color6"/>
+			<result property="color7" column="color7"/>
+			<result property="color8" column="color8"/>
+			<result property="color9" column="color9"/>
+			<result property="isActive" column="is_active"/>		
+		</association>
+		<association property="pic" javaType="Pic">
+			<id property="picId" column="pic_id"/>
+			<result property="goodsId" column="goods_id"/>
+			<result property="pic1" column="pic1"/>
+			<result property="pic2" column="pic2"/>
+			<result property="pic3" column="pic3"/>
+			<result property="pic4" column="pic4"/>
+			<result property="pic1Thumb" column="pic1_thumb"/>
+			<result property="pic2Thumb" column="pic2_thumb"/>
+			<result property="pic3Thumb" column="pic3_thumb"/>
+			<result property="pic4Thumb" column="pic4_thumb"/>			
+		</association>
+		<association property="goodsAttr" javaType="GoodsAttr">
+			<id property="attrId" column="attr_id"/>
+			<result property="goodsId" column="goods_id"/>
+			<result property="material" column="material"/>
+			<result property="border" column="border"/>
+			<result property="size" column="size"/>
+			<result property="function" column="function"/>
+			<result property="color" column="color"/>
+		</association>
 	</resultMap>
 	
-	<insert id="addUser" parameterType="User">
-		insert into moon_user(
+	<insert id="addCart" parameterType="Cart">
+		insert into moon_cart(
 		<trim prefixOverrides=",">
-			<if test="points!=null" >points</if>
-			<if test="userLevel!=null">,user_level</if>
-			<if test="isPrivilege!=null">,is_privilege</if>
-			<if test="privilegeNum!=null">,privilege_num</if>
-			<if test="phone!=null">,phone</if>
-			<if test="nickName!=null">,nick_name</if>			
-			<if test="headerPic!=null">,header_pic</if>
-			<if test="password!=null">,password</if>
-			<if test="sex!=null">,sex</if>
-			<if test="birthday!=null">,birthday</if>
-			<if test="zipcode!=null">,zipcode</if>
-			<if test="mobile!=null">,mobile</if>
-			<if test="email!=null">,email</if>
-			<if test="userTime!=null">,user_time</if>
-			<if test="userStatus!=null">,user_status</if>
+			<if test="cartId!=null" >cart_id</if>
+			<if test="user.userId!=null">,user_id</if>
+			<if test="optometry.optometryId!=null and optometry.optometryId>0">,optometry_id</if>
+			<if test="isFrameonly!=null">,is_frame_only</if>
+			<if test="goods.goodsId!=null and goods.goodsId>0">,goods_id</if>
+			<if test="bothNum!=null">,both_num</if>			
+			<if test="glass.glassId!=null and glass.glassId>0">,glass_id</if>
+			<if test="pic.picId!=null and pic.picId>0">,pic_id</if>
+			<if test="goodsAttr.attrId!=null and goodsAttr.attrId>0">,attr_id</if>
+			<if test="cartTime!=null">,cart_time</if>
+			<if test="cartStatus!=null">,cart_status</if>
 		</trim>
 		) values(
 		<trim prefixOverrides=",">
-			<if test="points!=null" >#{points}</if>
-			<if test="userLevel!=null">,#{userLevel}</if>
-			<if test="isPrivilege!=null">,#{isPrivilege}</if>
-			<if test="privilegeNum!=null">,#{privilegeNum}</if>
-			<if test="phone!=null">#{phone}</if>
-			<if test="nickName!=null">,#{nickName}</if>			
-			<if test="headerPic!=null">,#{headerPic}</if>
-			<if test="password!=null">,#{password}</if>
-			<if test="sex!=null">,#{sex}</if>
-			<if test="birthday!=null">,#{birthday}</if>
-			<if test="zipcode!=null">,#{zipcode}</if>
-			<if test="mobile!=null">,#{mobile}</if>
-			<if test="email!=null">,#{email}</if>
-			<if test="userTime!=null">,current_timestamp</if>
-			<if test="userStatus!=null">,#{userStatus}</if>
+			<if test="cartId!=null" >#{cartId}</if>
+			<if test="user.userId!=null">,#{user.userId}</if>
+			<if test="optometry.optometryId!=null and optometry.optometryId>0">,#{optometry.optometryId}</if>
+			<if test="isFrameonly!=null">,#{isFrameonly}</if>
+			<if test="goods.goodsId!=null and goods.goodsId>0">,#{goods.goodsId}</if>
+			<if test="bothNum!=null">,#{bothNum}</if>			
+			<if test="glass.glassId!=null and glass.glassId>0">,#{glass.glassId}</if>
+			<if test="pic.picId!=null and pic.picId>0">,#{pic.picId}</if>
+			<if test="goodsAttr.attrId!=null and goodsAttr.attrId>0">,#{goodsAttr.attrId}</if>
+			<if test="cartTime!=null">,#{cartTime}</if>
+			<if test="cartStatus!=null">,#{cartStatus}</if>
 		</trim>
 		)
 	</insert>
 	
-	<update id="updateUser" parameterType="User">
-		update moon_user 
-			<set>
-				<if test="points!=null" >points=#{points},</if>
-				<if test="userLevel!=null">user_level=#{userLevel},</if>
-				<if test="isPrivilege!=null">is_privilege=#{isPrivilege},</if>
-				<if test="privilegeNum!=null">privilege_num=#{privilegeNum},</if>
-				<if test="phone!=null">phone=#{phone},</if>
-				<if test="nickName!=null">nick_name=#{nickName},</if>			
-				<if test="headerPic!=null">header_pic=#{headerPic},</if>
-				<if test="password!=null">password=#{password},</if>
-				<if test="sex!=null">sex=#{sex},</if>
-				<if test="birthday!=null">birthday=#{birthday},</if>
-				<if test="zipcode!=null">zipcode=#{zipcode},</if>
-				<if test="mobile!=null">mobile=#{mobile},</if>
-				<if test="email!=null">email=#{email},</if>
-				<if test="userTime!=null">user_time=#{userTime},</if>
-				<if test="userStatus!=null">user_status=#{userStatus}</if>
-			</set>
-			where user_id=#{userId}
+	<update id="updateCart" parameterType="Cart">
+		update moon_cart
+		<set>
+			<if test="cartId!=null" >cart_id=#{cartId},</if>
+			<if test="user.userId!=null">user_id=#{user.userId},</if>
+			<if test="optometry.optometryId!=null and optometry.optometryId>0">optometry_id=#{optometry.optometryId},</if>
+			<if test="isFrameonly!=null">is_frame_only=#{isFrameonly},</if>
+			<if test="goods.goodsId!=null and goods.goodsId>0">goods_id=#{goods.goodsId},</if>
+			<if test="bothNum!=null">both_num=#{bothNum},</if>			
+			<if test="glass.glassId!=null and glass.glassId>0">glass_id=#{glass.glassId},</if>
+			<if test="pic.picId!=null and pic.picId>0">pic_id=#{pic.picId},</if>
+			<if test="goodsAttr.attrId!=null and goodsAttr.attrId>0">attr_id=#{goodsAttr.attrId}</if>
+			<if test="cartTime!=null">cart_time=#{cartTime},</if>
+			<if test="cartStatus!=null">cart_status=#{cartStatus}</if>
+		</set>
+		where cart_id=#{cartId}
 	</update>
 	
-	<select id="pageCount" resultType="int">
+	<select id="findCart" parameterType="Cart" resultMap="cartResultMap">
 		<![CDATA[
-			select ceil(count(*)/10) from moon_user
+			select * from moon_cart where cart_id=#{cartId}
 		]]>
-	</select>
+	</select>	
 	
-	<select id="users" parameterType="int" resultMap="userResultMap">
+	<select id="findAllCart" parameterType="User" resultMap="cartResultMap">
 		<![CDATA[
-			select * from moon_user limit #{page},10
-		]]>
-	</select>
-	
-	<select id="login" parameterType="User" resultMap="userResultMap">
-		<![CDATA[
-			select * from moon_user where nick_name=#{nickName} and password=#{password}
+			select ct.both_num,ct.is_frame_only,us.nick_name,ot.R_SPH,ot.R_CYL,ot.R_AXIS,ot.L_SPH,ot.L_CYL,ot.L_AXIS,ot.PD,ot.optometry_time,gl.glass_name,gl.glass_price,
+			gl.glass_img
+			 from moon_cart ct,moon_user us,moon_optometry ot,moon_goods gd,moon_glass gl,moon_goods_pic gp,moon_goods_attr ga
+			where ct.optometry_id = ot.optometry_id and ct.goods_id = gd.goods_id and ct.glass_id=gl.glass_id and ct.pic_id=gl.glass_id
+			and ct.attr_id=ga.attr_id and us.user_id=#{userId}
 		]]>
 	</select>
 </mapper>

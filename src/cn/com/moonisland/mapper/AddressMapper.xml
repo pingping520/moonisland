@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+						"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.com.moonisland.mapper.AddressMapper">
+	<resultMap type="Address" id="addressResultMap">
+		<id property="addressId" column="address_id"/>
+		<result property="province" column="province"/>
+		<result property="city" column="city"/>
+		<result property="district" column="district"/>
+		<result property="address" column="address"/>
+		<result property="zipcode" column="zipcode"/>
+		<result property="phone" column="phone"/>
+		<result property="receiverName" column="receiver_name"/>
+		<result property="addressStatus" column="addressStatus"/>
+		<!-- 多对一关联映射 -->
+		<association property="user" javaType="User">
+			<id property="userId" column="user_id"/>
+			<result property="points" column="points"/>
+			<result property="userLevel" column="user_level"/>
+			<result property="isPrivilege" column="is_privilege"/>
+			<result property="privilegeNum" column="privilege_num"/>
+			<result property="phone" column="phone"/>
+			<result property="nickName" column="nick_name"/>
+			<result property="headerPic" column="header_pic"/>
+			<result property="password" column="password"/>
+			<result property="sex" column="sex"/>
+			<result property="birthday" column="birthday"/>
+			<result property="zipcode" column="zipcode"/>
+			<result property="mobile" column="mobile"/>
+			<result property="email" column="email"/>
+			<result property="userTime" column="user_time"/>
+			<result property="userStatus" column="user_status"/>
+		</association>
+	</resultMap>
+	
+	<insert id="addAddress" parameterType="Address">
+		insert into moon_address(
+		<trim prefixOverrides=",">
+			<if test="province!=null" >province</if>
+			<if test="city!=null">,city</if>
+			<if test="district!=null">,district</if>
+			<if test="address!=null">,address</if>
+			<if test="zipcode!=null">,zipcode</if>
+			<if test="phone!=null">,phone</if>			
+			<if test="user.userId!=null and user.userId>0">,user_id</if>
+			<if test="receiverName!=null">,receiver_name</if>
+		</trim>
+		) values(
+		<trim prefixOverrides=",">
+			<if test="province!=null" >#{province}</if>
+			<if test="city!=null">,#{city}</if>
+			<if test="district!=null">,#{district}</if>
+			<if test="address!=null">,#{address}</if>
+			<if test="zipcode!=null">,#{zipcode}</if>
+			<if test="phone!=null">,#{phone}</if>			
+			<if test="user.userId!=null and user.userId>0">,#{user.userId}</if>
+			<if test="receiverName!=null">,#{receiverName}</if>
+		</trim>
+		)
+	</insert>
+	
+	<update id="updateAddress" parameterType="Address">
+		update moon_address 
+			<set>
+				<if test="province!=null" >province=#{province},</if>
+				<if test="city!=null">city=#{city},</if>
+				<if test="district!=null">district=#{district},</if>
+				<if test="address!=null">address=#{address},</if>
+				<if test="zipcode!=null">zipcode#{zipcode},</if>
+				<if test="phone!=null">phone=#{phone},</if>			
+				<if test="user.userId!=null and user.userId>0">user_id=#{user.userId},</if>
+				<if test="receiverName!=null">,receiver_name=#{receiverName}</if>
+			</set>
+			where address_id=#{addressId}
+	</update>
+	
+	<select id="findAddress" parameterType="Address" resultMap="addressResultMap">
+		<![CDATA[
+			select * from moon_address where address_id=#{addressId}
+		]]>
+	</select>
+	
+	<select id="findAllAddress" resultMap="addressResultMap">
+		<![CDATA[
+			select a.province,a.city,a.district,a.address,a.zipcode,a.phone,u.nick_name 
+			from moon_address a,moon_user u 
+			where a.user_id = u.user_id
+		]]>
+	</select>
+	
+	<delete id="deleteAddress" parameterType="Address">
+		<![CDATA[
+			delete from moon_address where address_id=#{addressId}
+		]]>
+	</delete>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

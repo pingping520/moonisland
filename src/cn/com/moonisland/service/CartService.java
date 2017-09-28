@@ -1,11 +1,11 @@
-package cn.com.moonisland.mapper;
+package cn.com.moonisland.service;
 
 import java.util.List;
 
 import cn.com.moonisland.pojo.Cart;
 import cn.com.moonisland.pojo.User;
 
-public interface CartMapper {
+public interface CartService {
 	/**
 	 * 添加购物车
 	 */
@@ -22,5 +22,4 @@ public interface CartMapper {
 	 * 查询用户全部购物车
 	 */
 	public List<Cart> findAllCart(User user);
-	
 }
