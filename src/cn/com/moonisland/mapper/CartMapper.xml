@@ -152,7 +152,7 @@
 			<if test="bothNum!=null">both_num=#{bothNum},</if>			
 			<if test="glass.glassId!=null and glass.glassId>0">glass_id=#{glass.glassId},</if>
 			<if test="pic.picId!=null and pic.picId>0">pic_id=#{pic.picId},</if>
-			<if test="goodsAttr.attrId!=null and goodsAttr.attrId>0">attr_id=#{goodsAttr.attrId}</if>
+			<if test="goodsAttr.attrId!=null and goodsAttr.attrId>0">attr_id=#{goodsAttr.attrId},</if>
 			<if test="cartTime!=null">cart_time=#{cartTime},</if>
 			<if test="cartStatus!=null">cart_status=#{cartStatus}</if>
 		</set>
