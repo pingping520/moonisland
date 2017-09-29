@@ -2,8 +2,8 @@ package cn.com.moonisland.test;
 
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
+//import org.junit.Before;
+//import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -13,7 +13,7 @@ import cn.com.moonisland.service.GoodsAttrService;
 
 public class GoodsAttrTest {
 	
-	private ApplicationContext context;
+	/*private ApplicationContext context;
 	
 	@Before
 	public void setUp(){
@@ -36,7 +36,7 @@ public class GoodsAttrTest {
 		GoodsAttrService goodsAttrService = (GoodsAttrService) this.context.getBean("goodsAttrService");
 		List<GoodsAttr> list = goodsAttrService.findAll();
 		System.out.println(list.size());
-	}
+	}*/
 	
 	
 }
