@@ -100,7 +100,12 @@
 	<!-- end -->
 	
 	<!-- zhangbolun -->
-	
+	<bean id="goodsDao" class="cn.com.moonisland.dao.impl.GoodsDaoImpl">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	<bean id="orderDao" class="cn.com.moonisland.dao.impl.OrderDaoImpl">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
 	<!-- end -->
 	
 	<!-- service层 -->
@@ -145,7 +150,12 @@
 	<!-- end -->
 	
 	<!-- zhangbolun -->
-	
+	<bean id="goodsService" class="cn.com.moonisland.service.impl.GoodsServiceImpl">
+		<property name="goodsDao" ref="goodsDao"></property>
+	</bean>
+	<bean id="orderService" class="cn.com.moonisland.service.impl.OrderServiceImpl">
+		<property name="orderDao" ref="orderDao"></property>
+	</bean>
 	<!-- end -->
 		
 	<!-- 处理静态资源、虽然使用了spring框架的核心控制器、但针对静态资源不做任何处理 -->
