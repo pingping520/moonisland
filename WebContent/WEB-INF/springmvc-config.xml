@@ -118,6 +118,16 @@
 	</bean>
 	<!-- end -->
 	
+	<!-- pengqingtao -->
+	<bean id="picDao" class="cn.com.moonisland.dao.impl.PicDaoImpl">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	<bean id="glassDao" class="cn.com.moonisland.dao.impl.GlassDaoImpl">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	<!-- end -->
+	
+	
 	<!-- service层 -->
 	
 	<!-- songyanping -->
@@ -149,9 +159,12 @@
 		<property name="cartDao" ref="cartDao"></property>
 	</bean>
 	
+<<<<<<< HEAD
 	<bean id="goodsAttrService" class="cn.com.moonisland.service.impl.GoodsAttrServiceImpl">
 		<property name="goodsAttrDao" ref="goodsAttrDao"></property>
 	</bean>
+=======
+>>>>>>> 0b7d7102bba0c523dabe0a0003cef2914bcf0fdd
 	
 	<!-- end -->
 	
@@ -175,6 +188,15 @@
 	</bean>
 	<bean id="orderService" class="cn.com.moonisland.service.impl.OrderServiceImpl">
 		<property name="orderDao" ref="orderDao"></property>
+	</bean>
+	<!-- end -->
+	
+	<!-- pengqingtao -->
+	<bean id="picService" class="cn.com.moonisland.service.impl.PicServiceImpl">
+		<property name="dao" ref="picDao"></property>
+	</bean>
+	<bean id="glassService" class="cn.com.moonisland.service.impl.GlassServiceImpl">
+		<property name="dao" ref="glassDao"></property>
 	</bean>
 	<!-- end -->
 		
