@@ -106,7 +106,12 @@
 	<!-- end -->
 	
 	<!-- wangyuanhang -->
-	
+	<bean id="commentDao" class="cn.com.moonisland.dao.impl.CommentDaoImpl">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	<bean id="returnorderDao" class="cn.com.moonisland.dao.impl.ReturnorderDaoImpl">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
 	<!-- end -->
 	
 	<!-- zhangbolun -->
@@ -159,12 +164,10 @@
 		<property name="cartDao" ref="cartDao"></property>
 	</bean>
 	
-<<<<<<< HEAD
 	<bean id="goodsAttrService" class="cn.com.moonisland.service.impl.GoodsAttrServiceImpl">
 		<property name="goodsAttrDao" ref="goodsAttrDao"></property>
 	</bean>
-=======
->>>>>>> 0b7d7102bba0c523dabe0a0003cef2914bcf0fdd
+
 	
 	<!-- end -->
 	
@@ -179,7 +182,12 @@
 	<!-- end -->
 	
 	<!-- wangyuanhang -->
-	
+	<bean id="commentService" class="cn.com.moonisland.service.impl.CommentServiceImpl">
+		<property name="commentDao" ref="commentDao"></property>
+	</bean>
+	<bean id="returnorderService" class="cn.com.moonisland.service.impl.ReturnorderServiceImpl">
+		<property name="returnorderDao" ref="returnorderDao"></property>
+	</bean>
 	<!-- end -->
 	
 	<!-- zhangbolun -->
