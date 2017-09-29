@@ -31,7 +31,6 @@ public class AdminController {
 	 */
 	@RequestMapping(value="/login")
 	public ModelAndView login(Admin admin,HttpSession session){
-		System.out.println("===================");
 		ModelAndView mv = new ModelAndView();
 		admin.setPwd(MD5Utils.str2MD5(admin.getPwd()));
 		System.out.println(admin.getName());

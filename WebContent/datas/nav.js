@@ -17,7 +17,7 @@ var navs = [{
 	}, {
 		"title": "商品分类",
 		
-		"href": ""
+		"href": "#"
 	}, {
 		"title": "商品品牌",
 		
@@ -29,7 +29,7 @@ var navs = [{
 	}, {
 		"title": "商品评论",
 		
-		"href": "comment/findpageComment?page=0"
+		"href": "comment/findpageComment?userid=&page=1"
 	}]
 }, {
 	"title": "订单管理",
@@ -42,7 +42,7 @@ var navs = [{
 	},{
 		"title": "退货订单",
 		
-		"href": ""
+		"href": "#"
 	}
 	]
 }, {
