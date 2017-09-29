@@ -89,18 +89,39 @@
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 	</bean>
 	
+	<bean id="goodsAttrDao" class="cn.com.moonisland.dao.impl.GoodsAttrDaoImpl">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	
 	<!-- end -->
 	
 	<!-- yanziyang -->
+	<bean id="optometryDao" class="cn.com.moonisland.dao.impl.OptometryDaoImpl">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	<bean id="areaDao" class="cn.com.moonisland.dao.impl.AreaDaoImpl">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
 	
 	<!-- end -->
 	
 	<!-- wangyuanhang -->
+	<bean id="commentDao" class="cn.com.moonisland.dao.impl.CommentDaoImpl">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	<bean id="returnorderDao" class="cn.com.moonisland.dao.impl.ReturnorderDaoImpl">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
 	
 	<!-- end -->
 	
 	<!-- zhangbolun -->
-	
+	<bean id="goodsDao" class="cn.com.moonisland.dao.impl.GoodsDaoImpl">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	<bean id="orderDao" class="cn.com.moonisland.dao.impl.OrderDaoImpl">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
 	<!-- end -->
 	
 	<!-- service层 -->
@@ -134,18 +155,39 @@
 		<property name="cartDao" ref="cartDao"></property>
 	</bean>
 	
+	<bean id="goodsAttrService" class="cn.com.moonisland.service.impl.GoodsAttrServiceImpl">
+		<property name="goodsAttrDao" ref="goodsAttrDao"></property>
+	</bean>
+	
 	<!-- end -->
 	
 	<!-- yanziyang -->
+	<bean id="optometryService" class="cn.com.moonisland.service.impl.OptometryServiceImpl">
+		<property name="dao" ref="optometryDao"></property>
+	</bean>
+	<bean id="areaService" class="cn.com.moonisland.service.impl.AreaServiceImpl">
+		<property name="dao" ref="areaDao"></property>
+	</bean>
 	
 	<!-- end -->
 	
 	<!-- wangyuanhang -->
+	<bean id="commentService" class="cn.com.moonisland.service.impl.CommentServiceImpl">
+		<property name="commentDao" ref="commentDao"></property>
+	</bean>
+	<bean id="returnorderService" class="cn.com.moonisland.service.impl.ReturnorderServiceImpl">
+		<property name="returnorderDao" ref="returnorderDao"></property>
+	</bean>
 	
 	<!-- end -->
 	
 	<!-- zhangbolun -->
-	
+	<bean id="goodsService" class="cn.com.moonisland.service.impl.GoodsServiceImpl">
+		<property name="goodsDao" ref="goodsDao"></property>
+	</bean>
+	<bean id="orderService" class="cn.com.moonisland.service.impl.OrderServiceImpl">
+		<property name="orderDao" ref="orderDao"></property>
+	</bean>
 	<!-- end -->
 		
 	<!-- 处理静态资源、虽然使用了spring框架的核心控制器、但针对静态资源不做任何处理 -->

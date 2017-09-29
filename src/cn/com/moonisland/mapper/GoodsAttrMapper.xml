@@ -71,7 +71,7 @@
 			<if test="function!=null">function=#{function},</if>
 			<if test="color!=null">color=#{color}</if>		
 		</set>
-		where attr_id={attrId}
+		where attr_id=#{attrId}
 	</update>
 	
 	<select id="findAll" resultMap="goodsAttrResultMap">

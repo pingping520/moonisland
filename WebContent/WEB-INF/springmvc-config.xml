@@ -89,6 +89,10 @@
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 	</bean>
 	
+	<bean id="goodsAttrDao" class="cn.com.moonisland.dao.impl.GoodsAttrDaoImpl">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	
 	<!-- end -->
 	
 	<!-- yanziyang -->
@@ -143,6 +147,10 @@
 	
 	<bean id="cartService" class="cn.com.moonisland.service.impl.CartServiceImpl">
 		<property name="cartDao" ref="cartDao"></property>
+	</bean>
+	
+	<bean id="goodsAttrService" class="cn.com.moonisland.service.impl.GoodsAttrServiceImpl">
+		<property name="goodsAttrDao" ref="goodsAttrDao"></property>
 	</bean>
 	
 	<!-- end -->
