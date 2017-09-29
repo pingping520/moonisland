@@ -11,7 +11,7 @@ public interface PicDao {
 	//查询id
 	public List<Pic> findbyid(int id);
 	//添加
-	public void insert(Pic p);
+	public int insert(Pic p);
 	//更新状态
 	public int checkPic(Pic p);
 	//更新
