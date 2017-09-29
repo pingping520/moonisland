@@ -32,6 +32,23 @@ public class CommentController {
 	
 	@Autowired
 	private CommentService commentService;
+	//根据userID查找
+	@RequestMapping(value="selectbyuseridComment")
+	public ModelAndView selectbyuseridComment(String userid,int page){
+		ModelAndView mView=new ModelAndView();
+		Map<String, Object> map=new HashMap<>();
+		if (userid==null) {
+			userid=null;
+		}
+		page=(page-1)*5;
+		map.put("userid", userid);
+		map.put("page",page);
+		List<Comment> ls= commentService.findbyuserid(map);
+		mView.setViewName("/WEB-INF/admin/comment.jsp");
+		mView.addObject("commentList", ls);
+		mView.addObject("userid", userid);
+		return mView;
+	}
 	//添加评论
 	@RequestMapping(value="addComment")
 	public ModelAndView addComment(Comment comment){
@@ -89,23 +106,7 @@ public class CommentController {
 		mView.addObject("result", r);
 		return r;
 	}
-	//根据userID查找
-	@RequestMapping(value="selectbyuseridComment")
-	public ModelAndView selectbyuseridComment(String userid,int page){
-		ModelAndView mView=new ModelAndView();
-		Map<String, Object> map=new HashMap<>();
-		if (userid==null) {
-			userid=null;
-		}
-		page=(page-1)*5;
-		map.put("userid", userid);
-		map.put("page",page);
-		List<Comment> ls= commentService.findbyuserid(map);
-		mView.setViewName("/WEB-INF/admin/comment.jsp");
-		mView.addObject("commentList", ls);
-		mView.addObject("userid", userid);
-		return mView;
-	}
+	
 	//通过id查询
 	@RequestMapping(value="selectbyidComment")
 	public ModelAndView selectbyidComment(Comment comment,HttpSession session){

@@ -9,14 +9,14 @@ import cn.com.moonisland.service.PicService;
 
 public class PicServiceImpl implements PicService{
 
-		PicDao dao;
+	private	PicDao dao;
 	public PicDao getDao() {
-			return dao;
-		}
+		return dao;
+	}
 
-		public void setDao(PicDao dao) {
-			this.dao = dao;
-		}
+	public void setDao(PicDao dao) {
+		this.dao = dao;
+	}
 
 	@Override
 	public List<Pic> findall() {
@@ -29,11 +29,10 @@ public class PicServiceImpl implements PicService{
 	}
 
 	@Override
-	public void insert(Pic p) {
-		this.dao.insert(p);
+	public int insert(Pic p) {
+		return this.dao.insert(p);
 		
 	}
-
 	
 	@Override
 	public int update(Pic p) {

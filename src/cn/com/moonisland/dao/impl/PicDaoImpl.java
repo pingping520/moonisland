@@ -19,9 +19,9 @@ public class PicDaoImpl extends SqlSessionDaoSupport implements PicDao{
 	}
 
 	@Override
-	public void insert(Pic p) {
+	public int insert(Pic p) {
 		PicMapper mapper=(PicMapper) this.getSqlSession().getMapper(PicMapper.class);
-		mapper.insert(p);
+		return mapper.insert(p);
 		
 	}
 
