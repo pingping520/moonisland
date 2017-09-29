@@ -9,7 +9,7 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class GoodsAttr implements Serializable{
 	private int attrId; //属性编号
-	private String goodsId; //商品编号
+	private Goods goods; //商品编号
 	private String material; //材质
 	private String border; //边框
 	private String size; //大小
@@ -19,12 +19,12 @@ public class GoodsAttr implements Serializable{
 	public GoodsAttr() {
 		super();
 	}
-	
-	public GoodsAttr(int attrId, String goodsId, String material, String border, String size, String function,
+
+	public GoodsAttr(int attrId, Goods goods, String material, String border, String size, String function,
 			String color) {
 		super();
 		this.attrId = attrId;
-		this.goodsId = goodsId;
+		this.goods = goods;
 		this.material = material;
 		this.border = border;
 		this.size = size;
@@ -32,60 +32,61 @@ public class GoodsAttr implements Serializable{
 		this.color = color;
 	}
 
-	public void setAttrId(int attrId){
-		this.attrId=attrId;
-	}
-
-	public int getAttrId(){
+	public int getAttrId() {
 		return attrId;
 	}
 
-	public void setGoodsId(String goodsId){
-		this.goodsId=goodsId;
+	public void setAttrId(int attrId) {
+		this.attrId = attrId;
 	}
 
-	public String getGoodsId(){
-		return goodsId;
+	public Goods getGoods() {
+		return goods;
 	}
 
-	public void setMaterial(String material){
-		this.material=material;
+	public void setGoods(Goods goods) {
+		this.goods = goods;
 	}
 
-	public String getMaterial(){
+	public String getMaterial() {
 		return material;
 	}
 
-	public void setBorder(String border){
-		this.border=border;
+	public void setMaterial(String material) {
+		this.material = material;
 	}
 
-	public String getBorder(){
+	public String getBorder() {
 		return border;
 	}
 
-	public void setSize(String size){
-		this.size=size;
+	public void setBorder(String border) {
+		this.border = border;
 	}
 
-	public String getSize(){
+	public String getSize() {
 		return size;
 	}
 
-	public void setFunction(String function){
-		this.function=function;
+	public void setSize(String size) {
+		this.size = size;
 	}
 
-	public String getFunction(){
+	public String getFunction() {
 		return function;
 	}
 
-	public void setColor(String color){
-		this.color=color;
+	public void setFunction(String function) {
+		this.function = function;
 	}
 
-	public String getColor(){
+	public String getColor() {
 		return color;
 	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+	
 }
 
