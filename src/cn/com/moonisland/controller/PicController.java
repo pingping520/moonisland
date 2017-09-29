@@ -25,7 +25,7 @@ import net.coobird.thumbnailator.Thumbnails;
 
 
 @Controller
-@RequestMapping("/addpic")
+@RequestMapping("/pic")
 public class PicController {
 	@Autowired
 	PicService picService;

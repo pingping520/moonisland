@@ -52,8 +52,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <td>${pic.pic2Thumb}</td>
                     <td>${pic.pic3Thumb}</td>
                     <td>${pic.pic4Thumb}</td>
-                    <td><a href="addpic/topic?picId=${pic.picId}">添加</a></td>
-					<td><a href="addpic/toupdatepic?id=${pic.picId}">更新</a></td>
+                    <td><a href="pic/topic?picId=${pic.picId}">添加</a></td>
+					<td><a href="pic/toupdatepic?id=${pic.picId}">更新</a></td>
                 </tr>
 				</c:forEach>
 			</table>
@@ -67,7 +67,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
 <script type="text/javascript">
 	$(function(){
-		$.get('addpic/pagecount', function(data) {
+		$.get('pic/pagecount', function(data) {
 			var tblhtml="";
 			 for(var i=1;i<=data;i++){
 				 tblhtml+="<td><a href='javascript:tonext("+i+")'>"+i+"</a></td>"
@@ -76,7 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		});
 	})
 	function tonext(id){
-		location.href="addpic/findlimit?num1="+id+"&num2=5";
+		location.href="pic/findlimit?num1="+id+"&num2=5";
 	}
 
 </script>
