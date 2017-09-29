@@ -39,7 +39,7 @@ public class AdminController {
 		Admin adm = this.adminService.login(admin);
 		if(adm!=null){
 			session.setAttribute("Admin", adm);
-			mv.setViewName("/WEB-INF/admin/main.jsp");
+			mv.setViewName("/WEB-INF/admin/admin.jsp");
 			mv.addObject("adminInfo",adm);
 			return mv;
 		}

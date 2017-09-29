@@ -19,7 +19,8 @@
 		<result column="zipcode" property="zipcode"/>
 		<result column="phone" property="phone"/>
 		<result column="pay_num" property="payNum"/>
-		<result column="postscript" property="orderMoney"/>
+		<result column="order_money" property="orderMoney"/>
+		<result column="postscript" property="postscript"/>
 		<result column="shipping_name" property="shippingName"/>
 		<result column="shipping_num" property="shippingNum"/>
 		<result column="pay_name" property="payName"/>
