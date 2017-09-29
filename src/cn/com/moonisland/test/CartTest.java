@@ -1,16 +1,16 @@
 package cn.com.moonisland.test;
 
-import org.junit.Before;
-import org.junit.Test;
+//import org.junit.Before;
+//import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import cn.com.moonisland.pojo.Cart;
 import cn.com.moonisland.service.CartService;
 
 public class CartTest {
-	private ApplicationContext context;
+	//private ApplicationContext context;
 	
-	@Before
+	/*@Before
 	public void setUp(){
 		this.context = new ClassPathXmlApplicationContext("springmvc-config.xml");
 	}
@@ -24,5 +24,5 @@ public class CartTest {
 		c.setBothNum("66");
 		int r = cartService.updateCart(c);
 		System.out.println(r);
-	}
+	}*/
 }
