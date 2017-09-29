@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+						"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.moonisland.mapper.CommentMapper">
+  <resultMap type="Comment" id="commentResultMap">
+		<id property="commentId" column="comment_id"/>
+		<result property="goodsId" column="goods_id"/>
+		<result property="orderId" column="order_id"/>
+		<result property="commentContentword" column="comment_content_word"/>
+		<result property="commentContentimg" column="comment_content_img"/>
+		<result property="guarantee" column="guarantee"/>
+		<result property="server" column="server"/>
+		<result property="logistics" column="logistics"/>
+		<result property="commentStatus" column="comment_status"/>
+		<result property="commentTime" column="comment_time"/>
+		<!-- 表达多对一关联 -->
+		<association property="user" javaType="User">
+			<result column="user_id" property="userId"/>
+			<result column="nick_name" property="nickName"/>
+		</association>
+	</resultMap>
+	
+	<insert id="addComment" parameterType="Comment">
+		<![CDATA[
+			insert into moon_goods_comment(goods_id,user_id,order_id,comment_content_word,
+			comment_content_img,guarantee,server,logistics,comment_status,comment_time) 
+			values(#{goodsId},#{user.userId},#{orderId},#{commentContentword},#{commentContentimg},
+			#{guarantee},#{server},
+			#{logistics},#{commentStatus},current_timestamp)
+		]]>
+	</insert>
+	<select id="selectComment" resultMap="commentResultMap">
+		<![CDATA[
+			select * from moon_goods_comment;
+		]]>
+	</select>
+	<select id="selectCommentbyid" resultMap="commentResultMap" parameterType="Comment">
+		<![CDATA[
+			select * from moon_goods_comment where comment_id=#{commentId};
+		]]>
+	</select>
+	<update id="deleteComment" parameterType="Comment">
+		<![CDATA[
+			update moon_goods_comment set comment_status=#{commentStatus} where comment_id=#{commentId}
+		]]>
+	</update>
+	<update id="updateComment" parameterType="Comment">
+		<![CDATA[
+			update moon_goods_comment set comment_content_word=#{commentContentword},comment_content_img=#{commentContentimg},
+			guarantee=#{guarantee},server=#{server},logistics=#{logistics},comment_time=current_timestamp where comment_id=#{commentId}
+		]]>
+	</update>
+	<select id="findCondition" resultMap="commentResultMap">
+		<![CDATA[
+			select c.*,u.nick_name from moon_goods_comment c,moon_user u where c.user_id=u.user_id;
+		]]>
+	</select>
+	<!-- 查询一共有几页 -->
+	<select id="pageCount" resultType="int">
+		<![CDATA[
+			select ceil(count(*)/5) from moon_goods_comment 
+		]]>
+	</select>
+	<!-- 通过userID查询一共有几页 -->
+	<select id="pageCount2" resultType="int" parameterType="string">
+		<![CDATA[
+			select ceil(count(*)/5) from moon_goods_comment where user_id=#{id} 
+		]]>
+	</select>
+	<!-- 分页查询 -->
+	<select id="findbypage" resultMap="commentResultMap" parameterType="int">
+		<![CDATA[
+			select c.*,u.nick_name from moon_goods_comment c,moon_user u where c.user_id=u.user_id limit #{page},5
+		]]>
+	</select>
+	<!-- 根据userid查找 -->
+	<select id="findbyuserid" resultMap="commentResultMap" parameterType="Map">
+			select c.*,u.nick_name from moon_goods_comment c,moon_user u 
+			where c.user_id=u.user_id 
+			<if test="userid != null and userid != ''">
+				and c.user_id=#{userid}
+			</if>
+			 	limit #{page},5
+	</select>
+	<!-- 根据userid查找 -->
+	<select id="findbyuserid2" resultMap="commentResultMap" parameterType="Map">
+			select a.*,mu.nick_name from (select c.*,u.nick_name from moon_goods_comment c,moon_user u 
+			where c.user_id=u.user_id
+			<if test="userid != null and userid != ''">
+				and c.user_id=#{userid}
+			</if>
+			) a,moon_user mu
+			 	limit #{page},5
+	</select>
+	<!-- 通过userid查询到一共有几页 -->
+	<select id="pagebyuseridCount" resultType="int">
+		<![CDATA[
+			select ceil(count(*)/5) from (select c.*,u.nick_name from moon_goods_comment c,moon_user u 
+			where c.user_id=u.user_id and c.user_id=#{userid}) r;
+		]]>
+	</select>
+</mapper>
