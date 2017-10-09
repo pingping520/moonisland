@@ -14,19 +14,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>MOON ISLAND用户管理页面</title>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <style type="text/css">
-	#user{margin:0px auto;width:100%;text-align:center;}
+	#user{margin:0px auto;width:100%;text-align:center;
+		position:relative;}
 	#user_header{width:100%;height:60px;line-height:60px;}
 	#user_body{width:100%;height:500px;}
-	#user_footer{width:100%;height:60px;line-height:60px;text-align:center;}
-	.info table,tr,td{vertical-align: middle!important;}
+	#user_footer{width:100%;height:60px;line-height:60px;text-align:center;
+		position: absolute;
+		bottom:-300px;
+	}
+	.info table,tr,td{vertical-align: middle!important;margin:0px;padding:0px;}
 </style>
 </head>
 <body>
 	<div id="user">
-		<div id="user_header">MOON ISLAND&nbsp;用户管理页</div>
+		<!-- <div id="user_header">MOON ISLAND&nbsp;用户管理页</div> -->
 		<div id="user_body">
 			<table class="table table-hover">
-				<tr class="info">
+				<tr>
 					<td>用户编号</td>
 					<td>用户名</td>
 					<td>积分</td>
@@ -44,7 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td>用户状态</td>
 				</tr>
 				<c:forEach items="${users}" var="user">
-					<tr class="success">
+					<tr>
 					<td>${user.userId}</td>
 					<td>${user.nickName}</td>
 					<td>${user.points}</td>
@@ -52,7 +56,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td>${user.isPrivilege}</td>
 					<td>${user.privilegeNum}</td>
 					<td>${user.phone}</td>
-					<td><img src="images/${user.headerPic}" style="width:100px;height:100px;"></td>
+					<td><img src="images/${user.headerPic}" style="width:50px;height:50px;"></td>
 					<td>${user.sex}</td>
 					<td>${user.birthday}</td>
 					<td>${user.zipcode}</td>
@@ -70,10 +74,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<li><a href="#">&laquo;</a></li>
 				<c:forEach var="x" begin="1" end="${count}" step="1" varStatus="st">
 					<c:if test="${param.page==x}">
-						<li class="active"><a href="user/list?page=${x}">${x}</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+						<li class="active"><a href="user/list?page=${(x-1)*10}">${x}</a></li>
 					</c:if>
 					<c:if test="${param.page!=x}">
-						<li><a href="user/list?page=${x}">${x}</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>	
+						<li><a href="user/list?page=${(x-1)*10}">${x}</a></li>	
 					</c:if>					
 				</c:forEach>
 				<li><a href="#">&raquo;</a></li>

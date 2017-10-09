@@ -64,7 +64,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						aria-hidden="true"></i> <cite>控制面板 </cite></li>
 				</ul>
 				<div class="layui-tab-content"
-					style="min-height: 150px; padding: 5px 0 0 0;">
+					style="min-height: 150px; padding:0px;">
 					<div class="layui-tab-item layui-show">
 						<iframe src="main.html"></iframe>
 					</div>
@@ -88,31 +88,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript" src="js/nav.js"></script>
 		<script src="js/index.js"></script>
 		<script>
-				layui.use('layer', function() {
-					var $ = layui.jquery,
-						layer = layui.layer;
-
-					$('#video1').on('click', function() {
-						layer.open({
-							title: 'YouTube',
-							maxmin: true,
-							type: 2,
-							content: 'video.html',
-							area: ['800px', '500px']
-						});
-                    });
-                    $('#pay').on('click', function () {
-                        layer.open({
-                            title: false,
-                            type: 1,
-                            content: '<img src="images/xx.png" />',
-                            area: ['500px', '250px'],
-                            shadeClose: true
-                        });
-                    });
-
-
-				});
 				
 				function TuiChu(){
 					if(confirm("确定退出？")){

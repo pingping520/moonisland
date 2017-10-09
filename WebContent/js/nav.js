@@ -5,7 +5,7 @@ var navs = [
 	"spread": true,
 	"children": [{
 		"title": "用户列表",
-		"href": "user/list?page=0"
+		"href": "user/list?page=1"
 	}]
 },
 

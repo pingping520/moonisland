@@ -93,7 +93,7 @@
 	
 	<select id="users" parameterType="int" resultMap="userResultMap">
 		<![CDATA[
-			select * from moon_user limit #{page},6
+			select * from moon_user limit #{page},10
 		]]>
 	</select>
 	
