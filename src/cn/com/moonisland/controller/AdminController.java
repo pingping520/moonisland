@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import cn.com.moonisland.pojo.Admin;
 import cn.com.moonisland.service.AdminService;
@@ -45,6 +46,16 @@ public class AdminController {
 		mv.setViewName("/WEB-INF/admin/error.jsp");
 		mv.addObject("error", "非法登录！");
 		return mv;		
+	}
+	
+	/**
+	 * 管理员登出
+	 */
+	@RequestMapping(value="/loginOut")
+	@ResponseBody
+	public String loginOut(HttpSession session){
+		session.setAttribute("admin", null);
+		return "success";		
 	}
 	
 }
