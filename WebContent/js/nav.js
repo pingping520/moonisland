@@ -16,16 +16,24 @@ var navs = [
 	"children": [{
 		"title": "商品管理",
 		"href": "goods/findbyselect?status=1&page=0"
-	}, {
-		"title": "商品分类",
+	},{
+		"title": "添加商品",
 		
-		"href": "#"
-	}, {
-		"title": "商品属性",
-		
-		"href": "goodsAttr/findAll"
+		"href": "goods/toaddGood"
 	}]
 }, 
+{
+	"title": "属性管理",
+	"icon": "&#xe72d;",
+	"spread": false,
+	"children": [{
+		"title": "商品属性",
+		"href": "goodsAttr/findAll"
+	},{
+		"title": "添加属性",
+		"href": "goodsAttr/add"
+	}]
+},
 {
 	"title": "品牌管理",
 	"icon": "&#xe72c;",
@@ -33,6 +41,9 @@ var navs = [
 	"children": [{
 		"title": "商品品牌",
 		"href": "brand/findAll"
+	},{
+		"title": "添加品牌",
+		"href": "brand/toAdd"
 	}]
 },
 {
@@ -54,10 +65,8 @@ var navs = [
 		"href": "order/findAll?page=0"
 	},{
 		"title": "退货订单",
-		
-		"href": "#"
-	}
-	]
+		"href": "returnOrder/findbygoodsidpageReturn?goodsid=&page=1"
+	}]
 }, {
 	"title": "照片管理",
 	"icon": "fa-address-book",
@@ -65,7 +74,9 @@ var navs = [
 	"spread": false,
 	"children": [{
 		"title": "照片墙",
-		
 		"href": "photoWall/findAll"
+	},{
+		"title": "添加照片",
+		"href": "photoWall/toAdd"
 	}]
 }];
