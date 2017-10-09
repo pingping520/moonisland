@@ -6,18 +6,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>  
 <!DOCTYPE html>  
 <html>  
-<head>  
+<head> 
 <base href="<%=basePath%>">
 <meta charset="UTF-8">
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
-<title>用户管理页面</title>
+<title>MOON ISLAND用户管理页面</title>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <style type="text/css">
 	#user{margin:0px auto;width:100%;text-align:center;}
 	#user_header{width:100%;height:60px;line-height:60px;}
 	#user_body{width:100%;height:500px;}
 	#user_footer{width:100%;height:60px;line-height:60px;text-align:center;}
+	.info table,tr,td{vertical-align: middle!important;}
 </style>
 </head>
 <body>
@@ -51,7 +52,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td>${user.isPrivilege}</td>
 					<td>${user.privilegeNum}</td>
 					<td>${user.phone}</td>
-					<td>${user.headerPic}</td>
+					<td><img src="images/${user.headerPic}" style="width:100px;height:100px;"></td>
 					<td>${user.sex}</td>
 					<td>${user.birthday}</td>
 					<td>${user.zipcode}</td>
@@ -64,11 +65,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</c:forEach>
 			</table>
 		</div>
-		<div id="user_footer">
-			<c:forEach var="x" begin="1" end="${count}" step="1" varStatus="st">
-				<a href="user/list?page=${(x-1)*10}">${x}</a>&nbsp;&nbsp;&nbsp;&nbsp;
-			</c:forEach>
-			共&nbsp;${count}&nbsp;页.	
+		<div id="user_footer" class="container">
+			<ul class="pagination" id="page">
+				<li><a href="#">&laquo;</a></li>
+				<c:forEach var="x" begin="1" end="${count}" step="1" varStatus="st">
+					<c:if test="${param.page==x}">
+						<li class="active"><a href="user/list?page=${x}">${x}</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+					</c:if>
+					<c:if test="${param.page!=x}">
+						<li><a href="user/list?page=${x}">${x}</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>	
+					</c:if>					
+				</c:forEach>
+				<li><a href="#">&raquo;</a></li>
+				<li><span>共&nbsp;${count}&nbsp;页.</span></li>
+			</ul>	
 		</div>
 	</div>
 </body>
