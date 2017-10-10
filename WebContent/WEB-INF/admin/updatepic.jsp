@@ -64,12 +64,12 @@ $('#updatepic').click(function() {
 	var blogo2 = $('#file1').attr('title');
 	var blogo3 = $('#file2').attr('title');
 	var blogo4 = $('#file3').attr('title');
-	$.post('addpic/updatepic',{"picId":pid,"goodsId":gid,"pic1":blogo1,"pic2":blogo2,"pic3":blogo3,"pic4":blogo4,"pic1Thumb":blogo1,"pic2Thumb":blogo2,"pic3Thumb":blogo3,"pic4Thumb":blogo4}, function(data) {
+	$.post('pic/updatepic',{"picId":pid,"goodsId":gid,"pic1":blogo1,"pic2":blogo2,"pic3":blogo3,"pic4":blogo4,"pic1Thumb":blogo1,"pic2Thumb":blogo2,"pic3Thumb":blogo3,"pic4Thumb":blogo4}, function(data) {
 		alert(data)
 		if(data==1){				
 			alert("更新成功！点击确定跳到品牌详情页！")
 			var timer = setTimeout(function(){
-				location.href = "addpic/findAll";
+				location.href = "pic/findAll";
 			}, 1000)
 		}
 	});
@@ -79,7 +79,7 @@ $('#updatepic').click(function() {
  //图片上传
     $('#file').change(function() {
 		$.ajaxFileUpload({
-			url:'addpic/update2',//用于文件上传的服务器端请`求地址
+			url:'pic/update2',//用于文件上传的服务器端请`求地址
 			//type:'post',
 			secureuri:false,//一般设置为false
 			fileElementId:'file',//文件上传空间的id属性  <input type="file" id="file" name="file" />
@@ -102,7 +102,7 @@ $('#updatepic').click(function() {
 
      $('#file1').change(function() {
 		$.ajaxFileUpload({
-			url:'addpic/update2',//用于文件上传的服务器端请`求地址
+			url:'pic/update2',//用于文件上传的服务器端请`求地址
 			//type:'post',
 			secureuri:false,//一般设置为false
 			fileElementId:'file1',//文件上传空间的id属性  <input type="file" id="file" name="file" />
@@ -125,7 +125,7 @@ $('#updatepic').click(function() {
      
      $('#file2').change(function() {
 		$.ajaxFileUpload({
-			url:'addpic/update2',//用于文件上传的服务器端请`求地址
+			url:'pic/update2',//用于文件上传的服务器端请`求地址
 			//type:'post',
 			secureuri:false,//一般设置为false
 			fileElementId:'file2',//文件上传空间的id属性  <input type="file" id="file" name="file" />
@@ -148,7 +148,7 @@ $('#updatepic').click(function() {
      
      $('#file3').change(function() {
  		$.ajaxFileUpload({
- 			url:'addpic/update2',//用于文件上传的服务器端请`求地址
+ 			url:'pic/update2',//用于文件上传的服务器端请`求地址
  			//type:'post',
  			secureuri:false,//一般设置为false
  			fileElementId:'file3',//文件上传空间的id属性  <input type="file" id="file" name="file" />

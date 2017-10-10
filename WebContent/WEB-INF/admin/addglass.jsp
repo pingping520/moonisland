@@ -45,11 +45,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<p>镜片价格</p>
 				<p><input type="text" id="gprice"/></p>
 			</div>
+			
 			<div>
 				<p>镜片图片</p>
 				<p id="add_pic"><input type="file" id="file" name="file" title=""/></p>
 			</div>
 			<div>
+			<div>
+				<p>缩略图</p>
+				<p><input type="text" id="gimgthumb"/></p>
+			</div>
+			<div>
+				<p>镜片时间</p>
+				<p><input type="text" id="gtime"/></p>
+			</div>
 				<p>颜色一</p>
 				<p><input type="text" id="gcolor1"/></p>
 			</div>
@@ -86,8 +95,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<p><input type="text" id="gcolor9"/></p>
 			</div>
 			<div>
-				<p>镜片时间</p>
-				<p><input type="text" id="gtime"/></p>
+				<p>是否选中</p>
+				<p><input type="text" id="isactive"/></p>
 			</div>
 			<div>
 				<button  class="btn btn-success" id="addGlass">添加品牌</button>
@@ -105,6 +114,8 @@ $('#addGlass').click(function() {
 	var gcyl = $('#gcyl').val();
 	var gprice = $('#gprice').val();
 	var blogo = $('#file').attr('title');
+	var gimgthumb=$('#file').attr('title')
+	var gtime = $('#gtime').val();
 	var gcolor1 = $('#gcolor1').val();
 	var gcolor2 = $('#gcolor2').val();
 	var gcolor3 = $('#gcolor3').val();
@@ -114,16 +125,16 @@ $('#addGlass').click(function() {
 	var gcolor7 = $('#gcolor7').val();
 	var gcolor8 = $('#gcolor8').val();
 	var gcolor9 = $('#gcolor9').val();
-	var gtime = $('#gtime').val();
+	var isactive=$('#isactive').val();
 	$.post('glass/addglass',{"glassStyle":gstyle,"glassName":gname,"sphPrice":gsph,
-	"cylPrice":gcyl,"glassPrice":gprice,"glassImg":blogo,"color1":gcolor1,
+	"cylPrice":gcyl,"glassPrice":gprice,"glassImg":blogo,"glassTime":gtime,"gimgthunm":gimgthunm,"color1":gcolor1,
 	"color2":gcolor2,"color3":gcolor3,"color4":gcolor4,"color5":gcolor5,"color6":gcolor6,
-	"color7":gcolor7,"color8":gcolor8,"color9":gcolor9,"glassTime":gtime}, function(data) {
+	"color7":gcolor7,"color8":gcolor8,"color9":gcolor9,"isactive":isactive}, function(data) {
 		alert(data)
 		if(data==1){				
 			alert("添加成功！点击确定跳到品牌详情页！")
 			var timer = setTimeout(function(){
-				location.href = "glass/findAllGlass";
+				location.href = "glass/findAll";
 			}, 1000)
 		}
 	});

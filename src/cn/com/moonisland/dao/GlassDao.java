@@ -21,6 +21,7 @@ public interface GlassDao {
 	public int pagecount();
 	//分页查询
 	public List<Glass> findlimit(Map<String, Integer> map);
-	
+	//更新状态值
+	public int updateisActive(Glass glass);
 }
 

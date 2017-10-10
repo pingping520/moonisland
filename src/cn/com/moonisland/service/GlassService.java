@@ -22,4 +22,7 @@ public interface GlassService {
 		public List<Glass> findlimit(Map<String, Integer> map);
 		//总页数
 		public int pagecount();
+		//更新状态值
+		public int updateisActive(Glass glass);
+
 }

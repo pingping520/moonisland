@@ -41,9 +41,6 @@ public class GlassServiceImpl implements GlassService{
 			this.dao.delete(g);
 			
 		}
-
-		
-
 		@Override
 		public List<Glass> findlimit(Map<String, Integer> map) {
 			return this.dao.findlimit(map);
@@ -59,6 +56,11 @@ public class GlassServiceImpl implements GlassService{
 		public int pagecount() {
 			
 			return this.dao.pagecount();
+		}
+
+		@Override
+		public int updateisActive(Glass glass) {
+			return this.dao.updateisActive(glass);
 		}
 
 

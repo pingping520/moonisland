@@ -36,13 +36,14 @@ public class PicController {
 		mView.setViewName("/WEB-INF/admin/addpic.jsp");
 		return mView;
 	}
-	@RequestMapping("/doadd")
-	public void doadd(Pic p){
-		this.picService.insert(p);
+	@RequestMapping(value="/doadd")
+	@ResponseBody
+	public int doadd(Pic p){
+		int resule = this.picService.insert(p);
+		return resule;
 	}
 	@RequestMapping("/toupdatepic")
 	public ModelAndView toupdate(int id){
-		System.out.println(id);
 		ModelAndView mView=new ModelAndView();
 		List<Pic> ls= this.picService.findbyid(id);
 		for (Pic pic : ls) {
@@ -158,7 +159,6 @@ public class PicController {
 	@ResponseBody
 	public int pagecount(){
 		int result = this.picService.pagecount();
-	
 		return result;
 	}
 }

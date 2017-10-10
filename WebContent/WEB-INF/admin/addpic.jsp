@@ -51,19 +51,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 var file2 = $('#file2').attr('title');
                 var file3 = $('#file3').attr('title');
                 //添加非空验证。提示用户要输入内容
-                $.post('addpic/doadd', {
-                	'goodsId':gid,
-                	'pic1':file,
-                	'pic2':file1,
-                	'pic3':file2, 
-                	'pic4':file3,
-                	'pic1Thumb':file,
-                	'pic2Thumb':file1,
-                	'pic3Thumb':file2,
-                	'pic4Thumb':file3,
-				}, function(data) {
-                    console.log(data);
-                    
+                $.post('pic/doadd',{'goodsId':gid,'pic1':file,'pic2':file1,'pic3':file2,'pic4':file3,'pic1Thumb':file,'pic2Thumb':file1,'pic3Thumb':file2,'pic4Thumb':file3},function(data){
+                    alert(data);
+                    if(data==1){				
+            			alert("添加成功！点击确定跳到品牌详情页！")
+            			var timer = setTimeout(function(){
+            				location.href = "pic/findAll";
+            			}, 1000)
+            		}
                 });
             });
         }
@@ -73,7 +68,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   //图片上传
     $('#file').change(function() {
 		$.ajaxFileUpload({
-			url:'addpic/update2',//用于文件上传的服务器端请`求地址
+			url:'pic/update2',//用于文件上传的服务器端请`求地址
 			//type:'post',
 			secureuri:false,//一般设置为false
 			fileElementId:'file',//文件上传空间的id属性  <input type="file" id="file" name="file" />
@@ -96,7 +91,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
      $('#file1').change(function() {
 		$.ajaxFileUpload({
-			url:'addpic/update2',//用于文件上传的服务器端请`求地址
+			url:'pic/update2',//用于文件上传的服务器端请`求地址
 			//type:'post',
 			secureuri:false,//一般设置为false
 			fileElementId:'file1',//文件上传空间的id属性  <input type="file" id="file" name="file" />
@@ -119,7 +114,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      
      $('#file2').change(function() {
 		$.ajaxFileUpload({
-			url:'addpic/update2',//用于文件上传的服务器端请`求地址
+			url:'pic/update2',//用于文件上传的服务器端请`求地址
 			//type:'post',
 			secureuri:false,//一般设置为false
 			fileElementId:'file2',//文件上传空间的id属性  <input type="file" id="file" name="file" />
@@ -142,7 +137,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      
      $('#file3').change(function() {
  		$.ajaxFileUpload({
- 			url:'addpic/update2',//用于文件上传的服务器端请`求地址
+ 			url:'pic/update2',//用于文件上传的服务器端请`求地址
  			//type:'post',
  			secureuri:false,//一般设置为false
  			fileElementId:'file3',//文件上传空间的id属性  <input type="file" id="file" name="file" />

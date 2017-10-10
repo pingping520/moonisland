@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import cn.com.moonisland.pojo.Comment;
 import cn.com.moonisland.pojo.Glass;
 import cn.com.moonisland.pojo.Message;
 
@@ -30,21 +31,36 @@ public class GlassController {
 	
 	@RequestMapping(value="/findAllGlass")
 	public ModelAndView findAllGlass(){
-		System.out.println("5555555555555555555555555555555555");
 		ModelAndView mv = new ModelAndView();
 		List<Glass> glassList=this.glassService.findall();
-		System.out.println("6666666");
 		mv.setViewName("/WEB-INF/admin/glass.jsp");
 		mv.addObject("glassList", glassList);
 		System.out.println(glassList);
 		return mv;
 	} 
+	@RequestMapping(value="/updateglass")
+	@ResponseBody
+	public int updateglass(Glass glass){
+		int r = this.glassService.update(glass);
+		return r;
+	}
+	
 	@RequestMapping(value="/toglass")
 	public ModelAndView toglass(){
 		ModelAndView mView=new ModelAndView();
 		mView.setViewName("/WEB-INF/admin/addglass.jsp");
 		return mView;
 	}
+	
+	@RequestMapping(value="/updateGlass")
+	public ModelAndView toupdateglass(int id){
+		ModelAndView mView=new ModelAndView();
+		List<Glass> glasss = this.glassService.findbyid(id);
+		mView.setViewName("/WEB-INF/admin/updateGlass.jsp");
+		mView.addObject("glass", glasss.get(0));
+		return mView;
+	}
+	
 	@RequestMapping(value="/addglass")
 	@ResponseBody
 	public int addGlass(Glass g){
@@ -105,5 +121,15 @@ public class GlassController {
 		int result = this.glassService.pagecount();
 	
 		return result;
+	}
+	
+	//更新状态
+	@RequestMapping(value="statusisActive")
+	public ModelAndView statusisActive(Glass glass){
+		ModelAndView mView=new ModelAndView();
+		int r=this.glassService.updateisActive(glass);
+		mView.setViewName("/WEB-INF/admin/glass.jsp");
+		mView.addObject("result", r);
+		return mView;
 	}
 }

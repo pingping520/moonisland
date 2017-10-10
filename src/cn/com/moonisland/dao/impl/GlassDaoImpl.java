@@ -60,6 +60,13 @@ public class GlassDaoImpl extends SqlSessionDaoSupport implements GlassDao{
 		return mapper.pagecount();
 	}
 
+	@Override
+	public int updateisActive(Glass glass) {
+		GlassMapper mapper = (GlassMapper) this.getSqlSession().getMapper(GlassMapper.class);
+		int r=mapper.updateisActive(glass);
+		return r;
+	}
+
 	
 
 	

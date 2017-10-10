@@ -69,9 +69,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <td>${glass.color7}</td>
                     <td>${glass.color8}</td>
                     <td>${glass.color9}</td>
-                    <td>${glass.isActive}</td>
+                    <td><input type="checkbox" id="${glass.glassId}" onchange="check(${glass.glassId})"  
+					${(glass.isActive==1)?'checked':''} >选择</td>
                     <td><a href="glass/toglass?glassId=${glass.glassId}">添加</a></td>
-					<td><a href="glass/toupdateglass?id=${glass.glassId}">更新</a></td>
+					<td><a href="glass/updateGlass?id=${glass.glassId}">更新</a></td>
                 </tr>
 				</c:forEach>
 			</table>
@@ -84,6 +85,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </body>
  <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
 <script type="text/javascript">
+	function check(bid){
+		var status;
+		var ck = document.getElementById(bid);
+		if(ck.checked==false){
+			status = "0";
+		}else{
+			status = "1";
+		}
+		$.post('glass/statusisActive',{'isActive':status,'glassId':bid}, function(data) {
+			alert("编辑成功！")
+		});
+	}
 	$(function(){
 		$.get('addglass/pagecount', function(data) {
 			var tblhtml="";

@@ -144,7 +144,7 @@
   <select id="findall" resultMap="glass">
   	select * from moon_glass
   </select>
-  <update id="update" parameterType="glass">
+  <update id="update" parameterType="Glass">
   update moon_glass set 
   	<trim prefixOverrides=",">
   	<if test="glassStyle">
@@ -201,6 +201,8 @@
   	</trim>
  where glass_id=#{glassId}
   </update>
+  
+  
   <select id="findbyid" resultMap="glass" parameterType="int">
   	select * from moon_glass where glass_id=#{glassId}
   </select>
@@ -216,6 +218,10 @@
  	<select id="pagecount" resultType="int">
  		select ceil(count(*)/5) from moon_glass
  	</select>
+ 	<update id="updateisActive" parameterType="glass">
+		update moon_glass set is_active=#{isActive} where glass_id=#{glassId}
+	</update>
+ 	
 </mapper>
 
 
