@@ -16,6 +16,10 @@ public interface GoodsAttrDao {
 	 */
 	public int updateGoodsAttr(GoodsAttr goodsAttr);
 	/**
+	 * 查询单个
+	 */
+	public GoodsAttr findGoodsAttr(GoodsAttr goodsAttr);
+	/**
 	 * 查询全部
 	 */
 	public List<GoodsAttr> findAll();

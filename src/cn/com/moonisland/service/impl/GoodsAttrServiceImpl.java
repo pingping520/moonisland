@@ -40,4 +40,9 @@ public class GoodsAttrServiceImpl implements GoodsAttrService {
 		return this.goodsAttrDao.findByGoods(Goods);
 	}
 
+	@Override
+	public GoodsAttr findGoodsAttr(GoodsAttr goodsAttr) {
+		return this.goodsAttrDao.findGoodsAttr(goodsAttr);
+	}
+
 }

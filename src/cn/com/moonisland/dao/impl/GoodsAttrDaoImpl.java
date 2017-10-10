@@ -37,4 +37,10 @@ public class GoodsAttrDaoImpl extends SqlSessionDaoSupport implements GoodsAttrD
 		return this.mapper.findByGoods(Goods);
 	}
 
+	@Override
+	public GoodsAttr findGoodsAttr(GoodsAttr goodsAttr) {
+		this.mapper = this.getSqlSession().getMapper(GoodsAttrMapper.class);
+		return this.mapper.findGoodsAttr(goodsAttr);
+	}
+
 }
