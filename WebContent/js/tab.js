@@ -132,7 +132,7 @@ layui.define(['element', 'common'], function (exports) {
             }
             title += '<cite>' + data.title + '</cite>';
             if (_config.closed) {
-                title += '<i class="layui-icon layui-unselect layui-tab-close" data-id="' + globalTabIdIndex + '">&#x1006;</i>';
+                title += '<i class="layui-icon layui-unselect layui-tab-close" data-id="' + globalTabIdIndex + '">&#xe6a6;</i>';
             }
             var tabId = new Date().getTime();
             //添加tab

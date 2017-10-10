@@ -45,7 +45,11 @@ public class OrderDaoImpl  extends SqlSessionDaoSupport implements OrderDao {
 		this.mapper=this.getSqlSession().getMapper(OrderMapper.class);
 		return this.mapper.selectShiStatus(map);
 	}
-
+	@Override
+	public List<Order> findoneorder(Order order) {
+		this.mapper=this.getSqlSession().getMapper(OrderMapper.class);
+		return this.mapper.findoneorder(order);
+	}
 	
 
 }
