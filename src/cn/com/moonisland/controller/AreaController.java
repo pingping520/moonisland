@@ -25,7 +25,6 @@ public class AreaController {
 	@RequestMapping(value="/findall/{pid}")
 	@ResponseBody
 	public List<Area> findall(@PathVariable String pid){
-		System.out.println("153156416541651465"+pid);
 		List<Area> areas = this.areaService.findbyid(pid);
 		return areas;
 	}

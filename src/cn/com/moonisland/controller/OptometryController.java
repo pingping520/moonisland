@@ -23,7 +23,7 @@ public class OptometryController {
 	@RequestMapping(value="/findall")
 	public ModelAndView findall(){
 		ModelAndView mv = new ModelAndView();
-		List<Optometry> ls = this.optometryService.findall();
+		List<Optometry> ls = this.optometryService.findAll();
 		mv.setViewName("/WEB-INF/admin/optometry.jsp");
 		mv.addObject("optometrys", ls);
 		return mv;
@@ -34,8 +34,6 @@ public class OptometryController {
 	 */
 	@RequestMapping(value="/add")
 	public ModelAndView add(Optometry optometry){
-		System.out.println(optometry);
-		System.out.println(optometry.getLAxis()+optometry.getLCyl()+optometry.getLSph()+optometry.getPd());
 		ModelAndView mv = new ModelAndView();
 		int op = this.optometryService.add(optometry);
 		mv.setViewName("optometry/findall");

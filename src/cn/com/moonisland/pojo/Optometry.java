@@ -5,7 +5,7 @@ package cn.com.moonisland.pojo;
     */ 
 public class Optometry{
 	private int optometryId; //验光单id
-	private String userId; //用户id
+	private User user; //用户id
 	private String rSph; //右眼球镜
 	private String rCyl; //右眼柱镜
 	private String rAxis; //右眼轴线
@@ -15,15 +15,92 @@ public class Optometry{
 	private String pd; //瞳距
 	private String optometryTime; //验光单添加时间
 	
-	public Optometry() {
-		super();
+
+	public int getOptometryId() {
+		return optometryId;
 	}
-	
-	public Optometry(int optometryId, String userId, String rSph, String rCyl, String rAxis, String lSph, String lCyl,
+
+	public void setOptometryId(int optometryId) {
+		this.optometryId = optometryId;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public String getrSph() {
+		return rSph;
+	}
+
+	public void setrSph(String rSph) {
+		this.rSph = rSph;
+	}
+
+	public String getrCyl() {
+		return rCyl;
+	}
+
+	public void setrCyl(String rCyl) {
+		this.rCyl = rCyl;
+	}
+
+	public String getrAxis() {
+		return rAxis;
+	}
+
+	public void setrAxis(String rAxis) {
+		this.rAxis = rAxis;
+	}
+
+	public String getlSph() {
+		return lSph;
+	}
+
+	public void setlSph(String lSph) {
+		this.lSph = lSph;
+	}
+
+	public String getlCyl() {
+		return lCyl;
+	}
+
+	public void setlCyl(String lCyl) {
+		this.lCyl = lCyl;
+	}
+
+	public String getlAxis() {
+		return lAxis;
+	}
+
+	public void setlAxis(String lAxis) {
+		this.lAxis = lAxis;
+	}
+
+	public String getPd() {
+		return pd;
+	}
+
+	public void setPd(String pd) {
+		this.pd = pd;
+	}
+
+	public String getOptometryTime() {
+		return optometryTime;
+	}
+
+	public void setOptometryTime(String optometryTime) {
+		this.optometryTime = optometryTime;
+	}
+
+	public Optometry(int optometryId, User user, String rSph, String rCyl, String rAxis, String lSph, String lCyl,
 			String lAxis, String pd, String optometryTime) {
 		super();
 		this.optometryId = optometryId;
-		this.userId = userId;
+		this.user = user;
 		this.rSph = rSph;
 		this.rCyl = rCyl;
 		this.rAxis = rAxis;
@@ -34,84 +111,8 @@ public class Optometry{
 		this.optometryTime = optometryTime;
 	}
 
-	public void setOptometryId(int optometryId){
-		this.optometryId=optometryId;
-	}
-
-	public int getOptometryId(){
-		return optometryId;
-	}
-
-	public void setUserId(String userId){
-		this.userId=userId;
-	}
-
-	public String getUserId(){
-		return userId;
-	}
-
-	public void setRSph(String rSph){
-		this.rSph=rSph;
-	}
-
-	public String getRSph(){
-		return rSph;
-	}
-
-	public void setRCyl(String rCyl){
-		this.rCyl=rCyl;
-	}
-
-	public String getRCyl(){
-		return rCyl;
-	}
-
-	public void setRAxis(String rAxis){
-		this.rAxis=rAxis;
-	}
-
-	public String getRAxis(){
-		return rAxis;
-	}
-
-	public void setLSph(String lSph){
-		this.lSph=lSph;
-	}
-
-	public String getLSph(){
-		return lSph;
-	}
-
-	public void setLCyl(String lCyl){
-		this.lCyl=lCyl;
-	}
-
-	public String getLCyl(){
-		return lCyl;
-	}
-
-	public void setLAxis(String lAxis){
-		this.lAxis=lAxis;
-	}
-
-	public String getLAxis(){
-		return lAxis;
-	}
-
-	public void setPd(String pd){
-		this.pd=pd;
-	}
-
-	public String getPd(){
-		return pd;
-	}
-
-	public void setOptometryTime(String optometryTime){
-		this.optometryTime=optometryTime;
-	}
-
-	public String getOptometryTime(){
-		return optometryTime;
+	public Optometry() {
+		super();
 	}
 }
 

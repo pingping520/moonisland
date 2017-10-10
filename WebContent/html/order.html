@@ -27,8 +27,10 @@
         	<option>请选择省份</option>
         </select>
         <select id="city" onchange="city()">
+        	<option>请选择城市</option>
         </select>
         <select id="district">
+        	<option>请选择地区</option>
         </select>
         <input type="text" value="请填写详细地址" />
     </div>
@@ -79,9 +81,16 @@
                 <div class="col-xs-5"><div class="sub"><a href="#">提交订单</a></div></div>
             </div>
         </div>
-
     </div>
     <!-- end-->
+    
+    <div class="navbar-fixed-bottom" id="area" style="height:200px;background:white;">
+		<div class="container-fluid">
+			<div class="col-xs-4 province" onclick="province()"></div>
+			<div class="col-xs-4 city"></div>
+			<div class="col-xs-4 district"></div>
+		</div>
+	</div>
 </div>
 <script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="../js/bootstrap.min.js"></script>
@@ -113,21 +122,6 @@
 			}
 			$('#city').find("option").remove(); 
 			$('#city').append(ls);
-		})
-		
-		var options2=$('#city option:selected').val();
-		$.get("../area/findall/"+options2,function(data){
-			console.log(data);
-			console.log(data.length)
-			var ls = "";
-			for(var i=0;i<data.length;i++){
-				var title = data[i].title;
-				console.log(title);
-				var areaId = data[i].areaId;
-				ls += "<option value="+areaId+">"+title+"</option>";
-			}
-			$('#district').find("option").remove();
-			$('#district').append(ls);
 		})
 		
 	}
