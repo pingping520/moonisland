@@ -14,19 +14,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>MOON ISLAND用户管理页面</title>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <style type="text/css">
-	#user{margin:0px auto;width:100%;text-align:center;}
-	#user_header{width:100%;height:60px;line-height:60px;}
-	#user_body{width:100%;height:500px;}
-	#user_footer{width:100%;height:60px;line-height:60px;text-align:center;
-		position: relative;
-	}
-	.info table,tr,td{vertical-align: middle!important;margin:0px;padding:0px;}
-	#page{position: absolute;bottom:-260px;left:40%;}
+#user{margin:0px auto;width:100%;text-align:center;}
+#user_body{width:100%;height:500px;}
+#user_footer{width:100%;height:60px;line-height:60px;text-align:center;position: relative;}
+.info table,tr,td{vertical-align: middle!important;margin:0px;padding:0px;}
+#page{position: absolute;bottom:-260px;left:40%;}
 </style>
 </head>
 <body>
 	<div id="user">
-		<!-- <div id="user_header">MOON ISLAND&nbsp;用户管理页</div> -->
 		<div id="user_body">
 			<table class="table table-hover">
 				<tr>

@@ -11,16 +11,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta charset="UTF-8">
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
-<title>照片墙管理页面</title>
+<title>MOON ISLAND照片墙管理页面</title>
 <link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="css/photoWall.css" />
+<style type="text/css">
+#photo_body{widtth:100%;height:500px;}
+#photo_body table,tr,td{vertical-align: middle!important;margin:0px;padding:0px;}
+</style>
 </head>
 <body>
 	<div id="photo">
-		<div id="photo_header">MOON ISLAND&nbsp;照片墙管理页</div>
 		<div id="photo_body">
 			<table class="table table-hover">
-				<tr class="info">
+				<tr>
 					<td>图片编号</td>
 					<td>图片地址</td>
 					<td>图片描述</td>
@@ -30,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td>更新图片</td>
 				</tr>
 				<c:forEach items="${photoList}" var="photo">
-					<tr class="success">
+					<tr>
 					<td>${photo.photoId}</td>
 					<td>${photo.photoUrl}</td>
 					<td>${photo.photoWord}</td>
@@ -38,17 +40,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td>${photo.photoStatus}</td>
 					<td><input type="checkbox" id="${photo.photoId}" onchange="check(${photo.photoId})"  
 					${(photo.photoStatus==1)?'checked':''} >选择</td>
-					<td><a href="photoWall/toUpdate?photoId=${photo.photoId}">更新图片</a></td>
+					<td><a href="photoWall/toUpdate?photoId=${photo.photoId}"><button class="btn btn-sm btn-primary">更新</button></a></td>
 				</tr>
 				</c:forEach>
 			</table>
 		</div>
-		<div id="brand_footer">
-		</div>
+		
 	</div>
 </body>
 <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="js/photoWall.js"></script>
 <script type="text/javascript">
 function check(pid){
 	var status;

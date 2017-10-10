@@ -75,11 +75,11 @@ var navs = [
 	"spread": false,
 	"children": [{
 		"title": "查看所有",
-		"href": "goods/findbyselect?status=1&page=0"
+		"href": "about/findAll"
 	},{
 		"title": "添加关于我们",
 		
-		"href": "goods/toaddGood"
+		"href": "about/toAdd"
 	}]
 }, 
 
