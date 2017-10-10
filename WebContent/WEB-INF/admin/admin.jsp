@@ -21,9 +21,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link rel="stylesheet" href="css/global.css" media="all">
 <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
 <style type="text/css">
-.layui-layout-admin .layui-side {width: 217px;}
-.layui-body {left: 218px;}
+.layui-layout-admin .layui-side {width: 216px;}
+.layui-body {left: 216px;bottom: 0; border-left: solid 2px #1AA094;border-right:solid 2px #1AA094;z-index:0;}
 .layui-nav-tree {padding-left: 8px;}
+#admin-footer{height:50px;line-height:50px;background: #393d49;}
 </style>
 </head>
 <body>
@@ -55,8 +56,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="layui-side-scroll" id="admin-navbar-side"
 				lay-filter="side"></div>
 		</div>
-		<div class="layui-body"
-			style="bottom: 0; border-left: solid 2px #1AA094;" id="admin-body">
+		<div class="layui-body" id="admin-body">
 			<div class="layui-tab admin-nav-card layui-tab-brief"
 				lay-filter="admin-tab">
 				<ul class="layui-tab-title">
@@ -64,15 +64,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						aria-hidden="true"></i> <cite>控制面板 </cite></li>
 				</ul>
 				<div class="layui-tab-content"
-					style="min-height: 150px; padding:0px;">
+					style="min-height: 150px; padding:0px 5px 0px 0px;">
 					<div class="layui-tab-item layui-show">
 						<iframe src="main.html"></iframe>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="layui-footer footer footer-demo" id="admin-footer"
-			style="background: #393d49">
+		<div class="layui-footer footer footer-demo" id="admin-footer">
 			<div class="layui-main">
 				<p>&copy;YLDSHOP ALL RIGHTS RESERVED. DESIGNED BY ELIER.
 					粤ICP备16037632号</p>

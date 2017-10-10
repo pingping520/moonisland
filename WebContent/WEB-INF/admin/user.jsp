@@ -14,15 +14,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>MOON ISLAND用户管理页面</title>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <style type="text/css">
-	#user{margin:0px auto;width:100%;text-align:center;
-		position:relative;}
+	#user{margin:0px auto;width:100%;text-align:center;}
 	#user_header{width:100%;height:60px;line-height:60px;}
 	#user_body{width:100%;height:500px;}
 	#user_footer{width:100%;height:60px;line-height:60px;text-align:center;
-		position: absolute;
-		bottom:-300px;
+		position: relative;
 	}
 	.info table,tr,td{vertical-align: middle!important;margin:0px;padding:0px;}
+	#page{position: absolute;bottom:-260px;left:40%;}
 </style>
 </head>
 <body>
@@ -73,10 +72,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<ul class="pagination" id="page">
 				<li><a href="#">&laquo;</a></li>
 				<c:forEach var="x" begin="1" end="${count}" step="1" varStatus="st">
-					<c:if test="${param.page==x}">
+					<c:if test="${param.page==(x-1)*10}">
 						<li class="active"><a href="user/list?page=${(x-1)*10}">${x}</a></li>
 					</c:if>
-					<c:if test="${param.page!=x}">
+					<c:if test="${param.page!=(x-1)*10}">
 						<li><a href="user/list?page=${(x-1)*10}">${x}</a></li>	
 					</c:if>					
 				</c:forEach>
