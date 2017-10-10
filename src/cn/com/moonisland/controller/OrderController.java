@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -104,9 +105,19 @@ public class OrderController {
 		mv.setViewName("/WEB-INF/admin/order.jsp");
 		mv.addObject("orderlist",list);	
 		mv.addObject("count",count);
+		mv.addObject("status",status);
 		return mv;
 		
 	}
 	
+	@RequestMapping(value="/oneorder")
+	@ResponseBody
+	public List<Order> oneOrder(@RequestParam("number") String number){
+		System.out.println(number);
+		Order order=new Order();
+		order.setOrderNumber(number);
+		List<Order> ls=this.orderService.findoneorder(order);
+		return ls;
+	}
 	
 }

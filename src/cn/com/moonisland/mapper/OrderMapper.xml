@@ -205,4 +205,9 @@
   		</trim> 
 		
 	</update>
+	<!-- 根据订单查订单 -->
+	  <select id="findoneorder" parameterType="Order" resultMap="orderResultMap">
+    	select ord.*, go.goods_name,go.goods_content, gla.glass_name,us.nick_name from moon_order ord,moon_goods go, moon_glass gla,moon_user us
+			where ord.glass_id=gla.glass_id and ord.goods_id=go.goods_id and ord.user_id=us.user_id and order_number=#{orderNumber}
+      </select>
 </mapper>
