@@ -17,7 +17,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 #brand{margin:0px auto;width:100%;text-align:center;position:relative;}
 #brand_body{widtth:100%;height:500px;}
 #brand_footer{width:100%;height:60px;line-height:60px;text-align:center;}
-table,tr,td{vertical-align: middle!important;margin:0px;padding:0px;}
+#brand_body table,tr,td{vertical-align: middle!important;margin:0px;padding:0px;}
 </style>
 </head>
 <body>

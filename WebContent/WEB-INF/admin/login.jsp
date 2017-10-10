@@ -15,7 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 <body>
 <div id="wrap">
-    <div id="header"><span>tupian</span>&nbsp;&nbsp;&nbsp;&nbsp;MOON ISLAND&nbsp;&nbsp;后台管理系统</div>
+    <div id="header"><span><img src="logo_two.jpg"/></span>&nbsp;&nbsp;&nbsp;&nbsp;MOON ISLAND&nbsp;&nbsp;后台管理系统</div>
     <div id="ceng"></div>
     <div id="main">
         <div id="login">
