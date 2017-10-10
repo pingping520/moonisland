@@ -13,29 +13,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>照片墙更新页</title>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 <style type="text/css">
-	#photo{width:100%;margin:0px auto;}
-	#photo_logo{width:100%;height:60px;line-height:60px;text-align:center;}
-	#photo_update div{width:100%;height:100px;margin:0px auto;text-align:center;}
+	#photo{margin:0px auto;}
+	#photo_update #photo_tbl{height:300px;margin:0px auto;line-height:auto;font-size:16px;font-weight:bold;}
 </style>
 </head>
 <body>
 	<div id="photo">
-		<div id="photo_logo">
-			MOON ISLAND&nbsp;&nbsp;照片墙更新页
-		</div>
 		<div id="photo_update">
-			<input type="hidden" value="${photo.photoId}" id="pid">
-			<div>
-				<p>图片地址</p>
-				<p id="add_pic"><input type="file" id="file" name="file" title=""/></p>
-			</div>
-			<div>
-				<p>图片描述</p>
-				<p><input type="text" id="pword" value="${photo.photoWord}"/></p>
-			</div>
-			<div>
-				<button  class="btn btn-success" id="updatePhotoWall">更新</button>
-			</div>
+			<table id="photo_tbl">
+				<input type="hidden" value="${photo.photoId}" id="pid">
+				<tr>
+					<td>照片墙图片(旧):</td>
+					<td><img alt="本图片之前只用的图片" src="images/${photo.photoUrl}" style="width:150px;height:80px;"></td>
+				</tr>
+				<tr>
+					<td>照片墙图片:</td>
+					<td><input type="file" id="file" name="file" title="${photo.photoUrl}"/></td>
+				</tr>
+				<tr>
+					<td>图片描述:</td>
+					<td><input type="text" id="pword" value="${photo.photoWord}"/></td>
+				</tr>
+				<tr>
+					<td colspan="2"><button class="btn btn-success" id="updatePhotoWall">更新照片墙</button></td>
+				</tr>
+			</table>
+			
 		</div>
 	</div>
 </body>

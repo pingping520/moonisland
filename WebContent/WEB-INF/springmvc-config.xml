@@ -102,6 +102,10 @@
 	<bean id="areaDao" class="cn.com.moonisland.dao.impl.AreaDaoImpl">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 	</bean>
+	<bean id="saveDao" class="cn.com.moonisland.dao.impl.SaveDaoImpl">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	
 	
 	<!-- end -->
 	
@@ -178,6 +182,10 @@
 	<bean id="areaService" class="cn.com.moonisland.service.impl.AreaServiceImpl">
 		<property name="dao" ref="areaDao"></property>
 	</bean>
+	<bean id="saveService" class="cn.com.moonisland.service.impl.SaveServiceImpl">
+		<property name="dao" ref="saveDao"></property>
+	</bean>
+	
 	
 	<!-- end -->
 	

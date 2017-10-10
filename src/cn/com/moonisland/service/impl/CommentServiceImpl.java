@@ -48,13 +48,6 @@ public class CommentServiceImpl implements CommentService {
 		Comment comment2=this.commentDao.selectCommentbyid(comment);
 		return comment2;
 	}
-
-	@Override
-	public List<Comment> findCondition() {
-		List<Comment> ls=this.commentDao.findCondition();
-		return ls;
-	}
-
 	@Override
 	public List<Comment> findbypage(int page) {
 		List<Comment> ls=this.commentDao.findbypageComment(page);
@@ -62,8 +55,8 @@ public class CommentServiceImpl implements CommentService {
 	}
 
 	@Override
-	public int pageCount() {
-		int count=this.commentDao.pageCount();
+	public int pageCount(String userid) {
+		int count=this.commentDao.pageCount(userid);
 		return count;
 	}
 
@@ -74,21 +67,22 @@ public class CommentServiceImpl implements CommentService {
 	}
 
 	@Override
-	public List<Comment> findbyuserid2(Map<String, Object> map) {
-		List<Comment> ls=this.commentDao.findbyuserid2(map);
+	public int pageCountbyGoodsid(String goodsid) {
+		int count=this.commentDao.pageCountbyGoodsid(goodsid);
+		return count;
+	}
+
+	@Override
+	public List<Comment> findbygoodsid(Map<String, Object> map) {
+		
+		List<Comment> ls=this.commentDao.findbygoodsid(map);
+		System.out.println("555555555555555555555"+map.get("goodsid"));
 		return ls;
 	}
 
 	@Override
-	public int pageuseridCount(int userid) {
-		int count=this.commentDao.pagebyuseridCount(userid);
+	public int findpagecount() {
+		int count=this.commentDao.findpagecount();
 		return count;
 	}
-
-	@Override
-	public int pageCount2(String userid) {
-		int count=this.commentDao.pageCount2(userid);
-		return count;
-	}
-	
 }

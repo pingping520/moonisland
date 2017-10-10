@@ -9,52 +9,59 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class Save implements Serializable{
 	private int saveId; //收藏id
-	private String goodsId; //商品id
-	private String userId; //用户id
+	private Goods goods; //商品id
+	private User user; //用户id
 	private String saveTime; //收藏时间
 	
 	public Save() {
 		super();
 	}
-	
-	public Save(int saveId, String goodsId, String userId, String saveTime) {
+
+	public Save(int saveId, Goods goods, User user, String saveTime) {
 		super();
 		this.saveId = saveId;
-		this.goodsId = goodsId;
-		this.userId = userId;
+		this.goods = goods;
+		this.user = user;
 		this.saveTime = saveTime;
 	}
 
-	public void setSaveId(int saveId){
-		this.saveId=saveId;
-	}
-
-	public int getSaveId(){
+	public int getSaveId() {
 		return saveId;
 	}
 
-	public void setGoodsId(String goodsId){
-		this.goodsId=goodsId;
+	public void setSaveId(int saveId) {
+		this.saveId = saveId;
 	}
 
-	public String getGoodsId(){
-		return goodsId;
+	public Goods getGoods() {
+		return goods;
 	}
 
-	public void setUserId(String userId){
-		this.userId=userId;
+	public void setGoods(Goods goods) {
+		this.goods = goods;
 	}
 
-	public String getUserId(){
-		return userId;
+	public User getUser() {
+		return user;
 	}
 
-	public void setSaveTime(String saveTime){
-		this.saveTime=saveTime;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
-	public String getSaveTime(){
+	public String getSaveTime() {
 		return saveTime;
 	}
+
+	public void setSaveTime(String saveTime) {
+		this.saveTime = saveTime;
+	}
+
+	@Override
+	public String toString() {
+		return "Save [saveId=" + saveId + ", goods=" + goods + ", user=" + user + ", saveTime=" + saveTime + "]";
+	}
+	
+	
 }
 

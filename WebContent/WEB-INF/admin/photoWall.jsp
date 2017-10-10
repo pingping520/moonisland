@@ -34,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<c:forEach items="${photoList}" var="photo">
 					<tr>
 					<td>${photo.photoId}</td>
-					<td>${photo.photoUrl}</td>
+					<td><img src="images/${photo.photoUrl}" style="width:50px;height:50px;"/></td>
 					<td>${photo.photoWord}</td>
 					<td>${photo.photoTime}</td>
 					<td>${photo.photoStatus}</td>

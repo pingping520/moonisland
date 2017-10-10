@@ -17,6 +17,7 @@
 		<association property="user" javaType="User">
 			<result column="user_id" property="userId"/>
 			<result column="nick_name" property="nickName"/>
+			<result column="header_pic" property="headerPic"/>
 		</association>
 	</resultMap>
 	
@@ -50,28 +51,14 @@
 			guarantee=#{guarantee},server=#{server},logistics=#{logistics},comment_time=current_timestamp where comment_id=#{commentId}
 		]]>
 	</update>
-	<select id="findCondition" resultMap="commentResultMap">
-		<![CDATA[
-			select c.*,u.nick_name from moon_goods_comment c,moon_user u where c.user_id=u.user_id;
-		]]>
-	</select>
-	<!-- 查询一共有几页 -->
-	<select id="pageCount" resultType="int">
-		<![CDATA[
-			select ceil(count(*)/5) from moon_goods_comment 
-		]]>
-	</select>
-	<!-- 通过userID查询一共有几页 -->
-	<select id="pageCount2" resultType="int" parameterType="string">
-		<![CDATA[
-			select ceil(count(*)/5) from moon_goods_comment where user_id=#{id} 
-		]]>
-	</select>
 	<!-- 分页查询 -->
-	<select id="findbypage" resultMap="commentResultMap" parameterType="int">
-		<![CDATA[
-			select c.*,u.nick_name from moon_goods_comment c,moon_user u where c.user_id=u.user_id limit #{page},5
-		]]>
+	<!-- 通过userId查询一共有几页 -->
+	<select id="pageCount" resultType="int" parameterType="string">
+		select ceil(count(*)/10) from moon_goods_comment 
+	　　　　　　<if test="_parameter!= null and _parameter!= ''">
+				where
+				user_id=#{_parameter}
+			</if>
 	</select>
 	<!-- 根据userid查找 -->
 	<select id="findbyuserid" resultMap="commentResultMap" parameterType="Map">
@@ -80,23 +67,33 @@
 			<if test="userid != null and userid != ''">
 				and c.user_id=#{userid}
 			</if>
-			 	limit #{page},5
+			 	limit #{page},10
 	</select>
-	<!-- 根据userid查找 -->
-	<select id="findbyuserid2" resultMap="commentResultMap" parameterType="Map">
-			select a.*,mu.nick_name from (select c.*,u.nick_name from moon_goods_comment c,moon_user u 
-			where c.user_id=u.user_id
-			<if test="userid != null and userid != ''">
-				and c.user_id=#{userid}
+	<!-- 通过goodsId查询一共有几页 -->
+	<select id="pageCountbyGoodsid" resultType="int" parameterType="string">
+		select ceil(count(*)/10) from moon_goods_comment 
+	　　　　　　<if test="_parameter!= null and _parameter!= ''">
+				where
+				goods_id=#{_parameter}
 			</if>
-			) a,moon_user mu
-			 	limit #{page},5
 	</select>
-	<!-- 通过userid查询到一共有几页 -->
-	<select id="pagebyuseridCount" resultType="int">
+	<!-- 根据goodsid查找 -->
+	<select id="findbygoodsid" resultMap="commentResultMap" parameterType="Map">
+			select c.*,u.nick_name,u.header_pic from moon_goods_comment c,moon_user u 
+			where c.user_id=u.user_id 
+			<if test="goodsid != null and goodsid != ''">
+				and c.goods_id=#{goodsid}
+			</if>
+			limit #{page},10
+	</select>
+	
+	<select id="findbypage" resultMap="commentResultMap" parameterType="int">
 		<![CDATA[
-			select ceil(count(*)/5) from (select c.*,u.nick_name from moon_goods_comment c,moon_user u 
-			where c.user_id=u.user_id and c.user_id=#{userid}) r;
+			select c.*,u.nick_name from moon_goods_comment c,moon_user u where c.user_id=u.user_id limit #{page},10
 		]]>
+	</select>
+	<!-- 通过查询全表一共有几页 -->
+	<select id="findpagecount" resultType="int">
+		select ceil(count(*)/10) from moon_goods_comment 
 	</select>
 </mapper>

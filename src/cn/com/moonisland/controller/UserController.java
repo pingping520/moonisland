@@ -85,4 +85,18 @@ public class UserController {
 		return mv;	
 	}
 	
+	/**
+	 * 查询全部白名单用户
+	 */
+	@RequestMapping(value="/whiteUsers")
+	public ModelAndView whiteListUser(int page){
+		ModelAndView mv = new ModelAndView();
+		int count = this.userService.whitePageCount();
+		List<User> users = this.userService.whiteListUser(page);
+		mv.setViewName("/WEB-INF/admin/whiteUsers.jsp");
+		mv.addObject("count", count);
+		mv.addObject("users", users);
+		return mv;
+	}
+	
 }

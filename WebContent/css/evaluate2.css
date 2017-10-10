@@ -1,0 +1,48 @@
+#header{
+    background: white;
+    padding-top: 15px;
+}
+#header .title{
+    font: 20px/50px 微软雅黑;
+    color: #232325;
+}
+#header .title span{
+    float: left;
+    line-height: 50px;
+    display: block;
+    cursor: pointer;
+}
+#evaluate{
+    font: 12px/18px 微软雅黑;
+    color: #232325;
+    padding: 5px 0;
+    border-bottom: 2px solid #efefef;
+    margin-bottom: 5px;
+}
+#haveEvaluated-content .evaluate-content .title{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient:vertical;
+}
+.star{padding-left: 20px;}
+.cfont{color:#ff2527;font-size: 12px;}
+.cfont2{color:#ff2527;font-size: 12px;line-height:40px; }
+.show{height: 100%;position:relative;}
+div .Ca{padding: 0px;}
+.allCa .pingjia{margin-top:10px; padding-left: 10px;}
+.pingjia .touxiang{padding: 0px;}
+.pingjia .pj{padding-left: 14%;}
+.Ca  div div .threeimgs{padding:2px;}
+.Ca  div div .da{padding-right: 0px;color:#ebebeb;line-height: 40px;}
+.allCa .allCabot div{float: left ;font-size: 12px;padding: 0px;padding-top: 1%;}
+.glyphicon-star{color:red;font-size: 12px;}
+.Ca .allCa .allCatop{border-bottom: 1px solid #ebebeb;height: 40px;}
+.advfix{position:fixed;}
+.left{float:left;}
+.advfix{position:fixed;top:50px;}
+
+
+
+

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>收藏中心</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../icon/iconfont.css">
+    <link rel="stylesheet" href="../css/save.css">
+</head>
+<body>
+<div id="wrap">
+    <div id="header" class="navbar-fixed-top">
+        <div class="container">
+            <div class="text-center title"><span class="glyphicon glyphicon-menu-left"></span>收藏夹</div>
+        </div>
+    </div>
+    <div style="height: 75px;width: 100%"></div>
+    
+    <div id="haveEvaluated-content"></div>
+</div>
+<script src="../js/jquery-1.11.0.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/save.js"></script>
+<script type="text/javascript">
+
+	var userid = 1;//测试默认为1
+	$.get("../save/findbyid/"+userid,function(data){
+		//判断如果用户收藏为空，则显示下面文字
+		if(data.length<1){
+			var nul = "<p style='text-align:center;line-height:200px;'>这里已经空空如也~</p>";
+			$('#haveEvaluated-content').append(nul);
+		}
+		var ls = "";
+		for(var i=0;i<data.length;i++){
+			var datas = data[i];
+			var goods = datas.goods;
+			ls += '<div class="evaluate-content"><div class="container-fluid"><div class="col-xs-4"><img class="img-responsive img-rounded" src="../'+goods.goodsContent+'" alt=""></div><div class="col-xs-8"><div class="title"><span>'+goods.goodsName+'</span></div></div><div class="text-center btn-see col-xs-12"><div class="container-fluid"><div class="col-xs-4"></div><div class="col-xs-4" style="text-align:left;"><span>￥'+goods.originalPrice+'</span></div><div class="col-xs-4"><button class="btn btn-default btn-xs" onclick="del(this)" value="'+datas.saveId+'">删除</button></div></div></div></div></div>';
+		}
+		$('#haveEvaluated-content').append(ls);
+	})
+	
+	/*删除*/
+	function del(obj){
+		if(confirm("您确定要删除吗？")){
+			var saveid = $(obj).val();
+			$.get("../save/delete/"+saveid,function(data){
+				$(obj).parents('div .evaluate-content').remove();
+			})
+		}
+	}
+	
+	/* function fun01(goodsid){
+		location.href="../save/findAll/"+goodsid;
+	} */
+</script>
+</body>
+</html>

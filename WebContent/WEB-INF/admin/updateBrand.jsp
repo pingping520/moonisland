@@ -10,37 +10,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta charset="UTF-8">
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
-<title>品牌添加页</title>
+<title>MOON ISLAND品牌添加页</title>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 <style type="text/css">
 	#brand{width:100%;margin:0px auto;}
-	#brand_logo{width:100%;height:60px;line-height:60px;text-align:center;}
-	#brand_update div{width:100%;height:100px;margin:0px auto;text-align:center;}
-	#add_pic{padding-left:44%;}
+	#brand_update #brand_tbl{margin:50px auto;height:300px;line-height:auto;font-size:16px;font-weight:bold;}	
 </style>
 </head>
 <body>
-	<div id="brand">
-		<div id="brand_logo">
-			MOON ISLAND&nbsp;&nbsp;品牌更新页
-		</div>
+	<div id="brand">		
 		<div id="brand_update">
-			<input type="hidden" value="${brand.brandId}" id="bid">
-			<div>
-				<p>品牌名称</p>
-				<p><input type="text" id="bname" value="${brand.brandName}"/></p>
-			</div>
-			<div>
-				<p>品牌图片</p>
-				<p id="update_pic"><input type="file" id="file" name="file" title="${brand.brandLogo}"/></p>
-			</div>
-			<div>
-				<p>品牌内容</p>
-				<p><input type="text" id="bcontent" value="${brand.brandContent}"/></p>
-			</div>
-			<div>
-				<button  class="btn btn-success" id="updateBrand">添加品牌</button>
-			</div>
+			<table id="brand_tbl">
+				<input type="hidden" value="${brand.brandId}" id="bid">
+				<tr>
+					<td>品牌名称:</td>
+					<td><input type="text" id="bname" value="${brand.brandName}"/></td>
+				</tr>
+				<tr>
+					<td>品牌图片(旧):</td>
+					<td><img alt="本图片之前只用的图片" src="images/${brand.brandLogo}" style="width:150px;height:80px;"></td>
+				</tr>
+				<tr>
+					<td>品牌图片:</td>
+					<td><input type="file" id="file" name="file" title="${brand.brandLogo}"/></td>
+				</tr>
+				<tr>
+					<td>品牌内容:</td>
+					<td><input type="text" id="bcontent" value="${brand.brandContent}"/></td>
+				</tr>
+				<tr>
+					<td><button id="addBrand" class="btn btn-success">更新品牌</button></td>
+	
+				</tr>
+			</table>
+				
 		</div>
 	</div>
 </body>

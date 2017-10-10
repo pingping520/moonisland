@@ -21,20 +21,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	#addpage{text-align:center;}
 	#tblpagenum{margin:0 auto;}
 	.num{width:60px;}
+	#user_footer{width:100%;height:60px;line-height:60px;text-align:center;position: relative;}
+	#page{position: absolute;bottom:-260px;left:40%;}
 </style>
 <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
 </head>
 <body>
 	<div id="brand">
-		<div id="brnd_header">MOON ISLAND&nbsp;商品评论页</div>
 		<div id="brand_body">
-			<table>
+			<%-- <table>
 				<tr>
 				<td>查询用户评价</td>
 				<td><input type="text" id="findbyuserid" value='${userid}'></td>
 				<td><input type="button" id="btnbyuserid" value="查询" onclick="findbyuserid()"></td>
 				</tr>
-			</table>
+			</table> --%>
 			<table class="table table-hover">
 				<tr class="info">
 					<td>评论编号</td>
@@ -70,7 +71,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</tr>
 				</c:forEach>
 			</table>
-			<table id="tblpagenum"><tr id="pageNum" class="info"></tr></table>
+			<div id="user_footer" class="container">
+				<ul class="pagination" id="page">
+					<li><a href="#">&laquo;</a></li>
+					<c:forEach var="x" begin="1" end="${count}" step="1" varStatus="st">
+						<c:if test="${param.page==x}">
+							<li class="active"><a href="comment/findpageComment?page=${x}">${x}</a></li>
+						</c:if>
+						<c:if test="${param.page!=x}">
+							<li><a href="comment/findpageComment?page=${x}">${x}</a></li>	
+						</c:if>					
+					</c:forEach>
+					<li><a href="#">&raquo;</a></li>
+					<li><span>共&nbsp;${count}&nbsp;页.</span></li>
+				</ul>	
+			</div>
 		</div>
 	</div>
 	
@@ -94,34 +109,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			});
 			$.get('comment/selectbyuseridComment?userid='+userid+'&&page=1', function(data) {
 			});
-		}
-		$(function(){
-			var userid=$('#findbyuserid').val();
-			if(userid!=null && userid!=""){
-				$.get('comment/pagecountComment2?userid='+userid, function(data, textStatus, xhr)   {
-					var pageNum="";
-					 for(var i=1;i<=data;i++){
-						 pageNum+="<td class='num'><a href='javascript:skip("+i+")'>"+i+"</a></td>";
-					 }
-					 $("#pageNum").append(pageNum);
-				});
-			}else{
-				$.get('comment/pagecountComment', function(data, textStatus, xhr){
-					var pageNum="";
-					 for(var i=1;i<=data;i++){
-						 pageNum+="<td class='num'><a href='javascript:skip("+i+")'>"+i+"</a></td>";
-					 }
-					 $("#pageNum").append(pageNum);
-				});
-			}
-		}) 
-		function findbyuserid(){		
-			var userid=$('#findbyuserid').val();
-			location.href='comment/selectbyuseridComment?userid='+userid+'&&page=1';
-		}
-		function skip(num){
-			var userid=$('#findbyuserid').val();
-			location.href='comment/selectbyuseridComment?userid='+userid+'&page='+num;
 		}
 	</script>
 </body>

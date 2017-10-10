@@ -6,6 +6,9 @@ var navs = [
 	"children": [{
 		"title": "用户列表",
 		"href": "user/list?page=1"
+	},{
+		"title": "白名单用户列表",
+		"href": "user/whiteUsers?page=1"
 	}]
 },
 
@@ -31,9 +34,23 @@ var navs = [
 		"href": "goodsAttr/findAll"
 	},{
 		"title": "添加属性",
-		"href": "goodsAttr/add"
+		"href": "goodsAttr/toAdd"
 	}]
 },
+
+{
+	"title": "镜片管理",
+	"icon": "&#xe6c6;",
+	"spread": false,
+	"children": [{
+		"title": "镜片清单",
+		"href": "goodsAttr/findAll"
+	},{
+		"title": "添加镜片",
+		"href": "goodsAttr/toAdd"
+	}]
+},
+
 {
 	"title": "品牌管理",
 	"icon": "&#xe72c;",
