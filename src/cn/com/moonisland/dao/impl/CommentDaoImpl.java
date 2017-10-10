@@ -80,4 +80,12 @@ public class CommentDaoImpl extends SqlSessionDaoSupport implements CommentDao {
 		List<Comment> ls=this.mapper.findbygoodsid(map);
 		return ls;
 	}
+
+	@Override
+	public int findpagecount() {
+		this.mapper = (CommentMapper) this.getSqlSession().getMapper(CommentMapper.class);
+		int count=this.mapper.findpagecount();
+		return count;
+	}
+	
 }

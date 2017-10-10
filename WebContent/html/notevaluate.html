@@ -146,7 +146,7 @@ $(function(){
 	var ordernum="";
 	var goodspic="";
 	var goodsdetails="";
-	$.get('../order/findbyorderid?orderId=1', function(data) {
+	$.get('../order/oneorder?number=1', function(data) {
         console.log(data)
         //用户头像
         if(data.user.headerPic==null){

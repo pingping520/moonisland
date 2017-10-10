@@ -26,6 +26,10 @@ public interface CommentService {
 	
 	//查询一共有几页
 	public int pageCount(String userid);
+	
+	//查询全表页数
+	public int findpagecount();
+	
 	//根据userID查询
 	public List<Comment> findbyuserid(Map<String, Object> map);
 	

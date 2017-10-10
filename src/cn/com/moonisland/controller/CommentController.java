@@ -76,10 +76,12 @@ public class CommentController {
 	@RequestMapping(value="/findpageComment")
 	public ModelAndView findpageComment(int page){
 		ModelAndView mView=new ModelAndView();
-		page=(page-1)*5;
+		page=(page-1)*10;
 		List<Comment> ls=this.commentService.findbypage(page);
+		int count=this.commentService.findpagecount();
 		mView.setViewName("/WEB-INF/admin/comment.jsp");
 		mView.addObject("commentList", ls);
+		mView.addObject("count", count);
 		return mView;
 	}
 	//通过userID查询一共有几页

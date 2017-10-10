@@ -12,8 +12,11 @@ public interface CommentMapper {
 	public int updateComment(Comment comment);
 	public Comment selectCommentbyid(Comment comment);
 	public List<Comment> findbypage(int page);
+	//查询通过userID页数
 	public int pageCount(String userid);
 	public List<Comment> findbyuserid(Map<String, Object> map);
 	public int pageCountbyGoodsid(String goodsid);
 	public List<Comment> findbygoodsid(Map<String, Object> map);
+	//查询全表页数
+	public int findpagecount();
 }

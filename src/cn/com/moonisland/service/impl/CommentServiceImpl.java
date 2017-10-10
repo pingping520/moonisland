@@ -79,4 +79,10 @@ public class CommentServiceImpl implements CommentService {
 		System.out.println("555555555555555555555"+map.get("goodsid"));
 		return ls;
 	}
+
+	@Override
+	public int findpagecount() {
+		int count=this.commentDao.findpagecount();
+		return count;
+	}
 }

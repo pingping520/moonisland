@@ -54,7 +54,7 @@
 	<!-- 分页查询 -->
 	<!-- 通过userId查询一共有几页 -->
 	<select id="pageCount" resultType="int" parameterType="string">
-		select ceil(count(*)/5) from moon_goods_comment 
+		select ceil(count(*)/10) from moon_goods_comment 
 	　　　　　　<if test="_parameter!= null and _parameter!= ''">
 				where
 				user_id=#{_parameter}
@@ -67,11 +67,11 @@
 			<if test="userid != null and userid != ''">
 				and c.user_id=#{userid}
 			</if>
-			 	limit #{page},5
+			 	limit #{page},10
 	</select>
 	<!-- 通过goodsId查询一共有几页 -->
 	<select id="pageCountbyGoodsid" resultType="int" parameterType="string">
-		select ceil(count(*)/5) from moon_goods_comment 
+		select ceil(count(*)/10) from moon_goods_comment 
 	　　　　　　<if test="_parameter!= null and _parameter!= ''">
 				where
 				goods_id=#{_parameter}
@@ -84,12 +84,16 @@
 			<if test="goodsid != null and goodsid != ''">
 				and c.goods_id=#{goodsid}
 			</if>
-			limit #{page},5
+			limit #{page},10
 	</select>
 	
 	<select id="findbypage" resultMap="commentResultMap" parameterType="int">
 		<![CDATA[
-			select c.*,u.nick_name from moon_goods_comment c,moon_user u where c.user_id=u.user_id limit #{page},5
+			select c.*,u.nick_name from moon_goods_comment c,moon_user u where c.user_id=u.user_id limit #{page},10
 		]]>
+	</select>
+	<!-- 通过查询全表一共有几页 -->
+	<select id="findpagecount" resultType="int">
+		select ceil(count(*)/10) from moon_goods_comment 
 	</select>
 </mapper>
