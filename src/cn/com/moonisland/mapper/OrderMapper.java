@@ -30,4 +30,8 @@ public interface OrderMapper {
 	 * 查询配送情况
 	 * */
 	public List<Order> selectShiStatus(Map<String, Object> map);
+	/**
+	 * 查询一个订单的所有数据内容
+	 * */
+	public List<Order> findoneorder(Order order);
 }

@@ -84,6 +84,7 @@ public class GoodsController {
 		mv.setViewName("/WEB-INF/admin/goods.jsp");
 		mv.addObject("goodslist",list);	
 		mv.addObject("count",count);
+		mv.addObject("status",status);
 		return mv;
 		
 	}

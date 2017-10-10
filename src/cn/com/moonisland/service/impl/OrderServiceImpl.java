@@ -52,6 +52,10 @@ public class OrderServiceImpl implements OrderService {
 		
 		return this.orderDao.selectShiStatus(map);
 	}
-	
+	@Override
+	public List<Order> findoneorder(Order order) {
+		
+		return this.orderDao.findoneorder(order);
+	}
 
 }
