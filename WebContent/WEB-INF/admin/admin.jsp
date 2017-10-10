@@ -46,7 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 				</div>
 				<ul class="layui-nav admin-header-item">
-					<li class="layui-nav-item"><a href="javascript:;">管理员名称:&nbsp;${admin.name}</a></li>
+					<li class="layui-nav-item"><a href="javascript:;"><span class="iconfont-root"></span>管理员名称:&nbsp;${admin.name}</a></li>
 					<li class="layui-nav-item"><a href="javascript:TuiChu()">注销</a>
 					</li>
 				</ul>

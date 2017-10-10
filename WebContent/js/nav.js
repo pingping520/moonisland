@@ -67,16 +67,46 @@ var navs = [
 		"title": "退货订单",
 		"href": "returnOrder/findbygoodsidpageReturn?goodsid=&page=1"
 	}]
-}, {
-	"title": "照片管理",
-	"icon": "fa-address-book",
+}, 
+
+{
+	"title": "关于我们",
+	"icon": "&#xe62b;",
+	"spread": false,
+	"children": [{
+		"title": "查看所有",
+		"href": "goods/findbyselect?status=1&page=0"
+	},{
+		"title": "添加关于我们",
+		
+		"href": "goods/toaddGood"
+	}]
+}, 
+
+{
+	"title": "商品图片",
+	"icon": "&#xe613",
+	"spread": false,
+	"children": [{
+		"title": "查看所有",
+		"href": "goods/findbyselect?status=1&page=0"
+	},{
+		"title": "添加商品图片",
+		
+		"href": "goods/toaddGood"
+	}]
+}, 
+
+{
+	"title": "轮播图片",
+	"icon": "&#xe646;",
 	"href": "",
 	"spread": false,
 	"children": [{
-		"title": "照片墙",
+		"title": "照片墙图片",
 		"href": "photoWall/findAll"
 	},{
-		"title": "添加照片",
+		"title": "添加照片墙",
 		"href": "photoWall/toAdd"
 	}]
 }];
