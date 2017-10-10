@@ -42,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td>${attr.size}</td>
 					<td>${attr.function}</td>
 					<td>${attr.color}</td>
-					<td><a href="brand/toUpdate?brandId=${brand.brandId}"><button class="btn btn-sm btn-primary">更新</button></a></td>
+					<td><a href="goodsAttr/toUpdate?attrId=${attr.attrId}"><button class="btn btn-sm btn-primary">更新</button></a></td>
 				</tr>
 				</c:forEach>
 			</table>
