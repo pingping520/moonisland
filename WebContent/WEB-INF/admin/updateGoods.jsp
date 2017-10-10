@@ -90,6 +90,7 @@ table tr td input{
 				<td>商品内容</td>
 				<td><input type="file" id="file" name="file" title="${good.goodsContent}"/></td>
 			</tr>
+			
 			<tr>
 				<td>浏览记录数量</td>
 				<td><input type="text" id="browsenum" name="browsenum"
@@ -208,7 +209,8 @@ table tr td input{
 				<td>是否促销</td>
 						<td>
 							<input type="hidden" id="issale" name="issale"
-								value="${good.isSale}" /> <select name="issale" id="issale1">
+								value="${good.isSale}" /> 
+							<select name="issale" id="issale1">
 								<option value="0">促销</option>
 								<option value="1">未促销</option>
 							</select>
@@ -221,7 +223,7 @@ table tr td input{
 		</table>
 
 
-
+</div>
 	
 </body>
 <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
