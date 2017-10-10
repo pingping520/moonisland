@@ -62,6 +62,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   #page{position: absolute;bottom:-260px;left:40%;}
 	   .upA{width:50px;height:32px;line-height:32px;text-align:center;background:#337ab7;border-radius:3px;}
 	   .upA a{color:#ffffff;}
+	   #wrap{overflow:hidden;}
 </style>
 </head>
 <body>
@@ -72,6 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 		
 <div id="main">
+ <div id="wrap">
     <div id="head">
    
         <div id="d00" class="pull-left f1">全部订单 </div>
@@ -230,7 +232,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    
     </c:forEach>   
     </div>
-
+</div>
 </div>
 		
 		

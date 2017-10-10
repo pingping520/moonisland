@@ -25,6 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 .layui-layout-admin .layui-side {width: 216px;}
 .layui-body {left: 216px;bottom: 0; border-left: solid 2px #1AA094;border-right:solid 2px #1AA094;z-index:0;}
 .layui-nav-tree {padding-left: 8px;}
+.layui-tab-content{padding:100px 50px 0px 50px;}
 #admin-footer{height:50px;line-height:50px;background: #393d49;}
 </style>
 </head>
@@ -65,7 +66,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						aria-hidden="true"></i> <cite>控制面板 </cite></li>
 				</ul>
 				<div class="layui-tab-content"
-					style="min-height: 150px; padding:0px 5px 0px 0px;">
+					style="min-height: 150px;">
 					<div class="layui-tab-item layui-show">
 						<iframe src="main.html"></iframe>
 					</div>

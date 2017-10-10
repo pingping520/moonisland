@@ -55,6 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    .upA{width:50px;height:32px;line-height:32px;text-align:center;background:#337ab7;border-radius:3px;}
 	   .upA a{color:#ffffff;}
 		.td{width:10%;}
+	 #wrap{}
 </style>
 </head>
 <body>
@@ -63,6 +64,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div id="goods_body">
 
  <div id="main">
+  <div id="wrap">
     <div id="head">
        <div id="d01" class="pull-left hefont0" >
           	  在售商品
@@ -73,7 +75,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
    </div>
    
-	    <div class="con clearfix show" id="con01" >
+	    <div class="con  show" id="con01" >
 	            <table class="table table-hover">
     	 <tr class="thead">
               <!--   <td>商品编号</td>
@@ -138,7 +140,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     </table>
 	    </div>
-	    <div class="con clearfix hidd" id="con02">
+	    <div class="con hidd" id="con02">
               <table class="table table-striped table-hover">
     	 <tr class="thead">
                 <td>商品编号</td>
@@ -203,7 +205,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     </table>
 	    </div>
-
+</div>
  </div>
          
         <div id="goods_footer">
