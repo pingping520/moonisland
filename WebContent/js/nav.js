@@ -10,11 +10,11 @@ var navs = [
 },
 
 {
-	"title": "商品信息",
+	"title": "商品管理",
 	"icon": "&#xe616",
 	"spread": false,
 	"children": [{
-		"title": "商品管理",
+		"title": "商品信息",
 		"href": "goods/findbyselect?status=1&page=0"
 	},{
 		"title": "添加商品",
@@ -88,10 +88,10 @@ var navs = [
 	"icon": "&#xe613",
 	"spread": false,
 	"children": [{
-		"title": "查看所有",
+		"title": "图片管理",
 		"href": "goods/findbyselect?status=1&page=0"
 	},{
-		"title": "添加商品图片",
+		"title": "添加图片",
 		
 		"href": "goods/toaddGood"
 	}]

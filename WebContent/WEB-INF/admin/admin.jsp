@@ -20,6 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link rel="stylesheet" href="plugins/layui/css/layui.css" media="all" />
 <link rel="stylesheet" href="css/global.css" media="all">
 <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="icon/iconfont.css">
 <style type="text/css">
 .layui-layout-admin .layui-side {width: 216px;}
 .layui-body {left: 216px;bottom: 0; border-left: solid 2px #1AA094;border-right:solid 2px #1AA094;z-index:0;}
@@ -46,7 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 				</div>
 				<ul class="layui-nav admin-header-item">
-					<li class="layui-nav-item"><a href="javascript:;"><span class="iconfont-root"></span>管理员名称:&nbsp;${admin.name}</a></li>
+					<li class="layui-nav-item"><a href="javascript:;"><i>&#xe62d;</i>管理员名称:&nbsp;${admin.name}</a></li>
 					<li class="layui-nav-item"><a href="javascript:TuiChu()">注销</a>
 					</li>
 				</ul>

@@ -6,9 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import cn.com.moonisland.pojo.Cart;
 import cn.com.moonisland.pojo.Pic;
-import cn.com.moonisland.service.CartService;
 import cn.com.moonisland.service.PicService;
 
 public class PicTest {
