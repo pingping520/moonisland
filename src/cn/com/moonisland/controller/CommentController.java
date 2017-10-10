@@ -27,13 +27,13 @@ import net.coobird.thumbnailator.Thumbnails;
 import sun.invoke.empty.Empty;
 
 @Controller
-@RequestMapping(value="comment")
+@RequestMapping(value="/comment")
 public class CommentController {
 	
 	@Autowired
 	private CommentService commentService;
 	//根据userID查找
-	@RequestMapping(value="selectbyuseridComment")
+	@RequestMapping(value="/selectbyuseridComment")
 	public ModelAndView selectbyuseridComment(String userid,int page){
 		ModelAndView mView=new ModelAndView();
 		Map<String, Object> map=new HashMap<>();
@@ -49,8 +49,22 @@ public class CommentController {
 		mView.addObject("userid", userid);
 		return mView;
 	}
+	//根据goodsID查找
+	@RequestMapping(value="/selectbygoodsidComment")
+	@ResponseBody
+	public List<Comment> selectbygoodsidComment(String goodsid,int page){
+		Map<String, Object> map=new HashMap<>();
+		page=(page-1)*5;
+		map.put("goodsid", goodsid);
+		map.put("page", page);
+		List<Comment> ls= commentService.findbygoodsid(map);
+		for (Comment comment : ls) {
+			System.out.println(comment.getGoodsId());
+		}
+		return ls;
+	}
 	//添加评论
-	@RequestMapping(value="addComment")
+	@RequestMapping(value="/addComment")
 	public ModelAndView addComment(Comment comment){
 		ModelAndView mView=new ModelAndView();
 		int r=this.commentService.addComment(comment);
@@ -59,35 +73,33 @@ public class CommentController {
 		return mView;
 	}
 	//分页查询
-	@RequestMapping(value="findpageComment")
+	@RequestMapping(value="/findpageComment")
 	public ModelAndView findpageComment(int page){
 		ModelAndView mView=new ModelAndView();
-		page=(page-1)*5;
+		page=(page-1)*10;
 		List<Comment> ls=this.commentService.findbypage(page);
+		int count=this.commentService.findpagecount();
 		mView.setViewName("/WEB-INF/admin/comment.jsp");
 		mView.addObject("commentList", ls);
+		mView.addObject("count", count);
 		return mView;
 	}
-	//查询一共有几页
-	@RequestMapping(value="pagecountComment")
+	//通过userID查询一共有几页
+	@RequestMapping(value="/pagecountComment")
 	@ResponseBody
-	public int pagecountComment(){
-		ModelAndView mView=new ModelAndView();
-		mView.setViewName("/WEB-INF/admin/comment.jsp");
-		int count=this.commentService.pageCount();
+	public int pagecountComment(String userid){
+		int count=this.commentService.pageCount(userid);
 		return count;
 	}
-	//通过userID查询一共有几页
-	@RequestMapping(value="pagecountComment2")
+	//通过goodsID查询一共有几页
+	@RequestMapping(value="/pagebygoodsidcountComment")
 	@ResponseBody
-	public int pagecountComment2(String userid){
-		ModelAndView mView=new ModelAndView();
-		mView.setViewName("/WEB-INF/admin/comment.jsp");
-		int count=this.commentService.pageCount2(userid);
+	public int pagecountbygoodsidComment(String goodsid){
+		int count=this.commentService.pageCountbyGoodsid(goodsid);
 		return count;
 	}
 	//更新状态
-	@RequestMapping(value="statusComment")
+	@RequestMapping(value="/statusComment")
 	public ModelAndView deleteComment(Comment comment){
 		ModelAndView mView=new ModelAndView();
 		int r=this.commentService.deleteComment(comment);
@@ -96,27 +108,13 @@ public class CommentController {
 		return mView;
 	}
 	
-	//通过userID查询列表页数
-	@RequestMapping(value="pageuseridComment")
-	@ResponseBody
-	public int pageuseridComment(int userid){
-		ModelAndView mView=new ModelAndView();
-		int r=this.commentService.pageuseridCount(userid);
-		mView.setViewName("/WEB-INF/admin/comment.jsp");
-		mView.addObject("result", r);
-		return r;
-	}
-	
 	//通过id查询
-	@RequestMapping(value="selectbyidComment")
-	public ModelAndView selectbyidComment(Comment comment,HttpSession session){
-		ModelAndView mView=new ModelAndView();
+	@RequestMapping(value="/selectbyidComment")
+	public Comment selectbyidComment(Comment comment,HttpSession session){
 		Comment comment2=this.commentService.selectbyidComment(comment);
-		mView.setViewName("/WEB-INF/admin/comment.jsp");
-		mView.addObject("comment", comment2);
 		System.out.println("CommentId"+comment2.getCommentId());
 		session.setAttribute("comment", comment2);
-		return mView;
+		return comment2;
 	}
 	
 	//更新评论
@@ -171,7 +169,7 @@ public class CommentController {
 			//生成缩略图
 			String filesmallname=time+"_small_"+file.getOriginalFilename();
 			File filesmallpath=new File(path,filesmallname);//完整路径
-			System.out.println(filesmallpath);
+			System.out.println("filesmallpath"+filesmallname);
 			Thumbnails.of(filepath).scale(0.2).toFile(filesmallpath);
 			
 			return filename;
@@ -202,6 +200,7 @@ public class CommentController {
 		return message;
 	}
 	private Message ajaxUpload(MultipartFile file, HttpServletRequest request,Message message) throws IOException {
+		//ooo
 		//上传文件路径
 		String path = request.getServletContext().getRealPath("/images/");
 		String filename = file.getOriginalFilename();//获取原始文件名
@@ -221,6 +220,7 @@ public class CommentController {
 		//生成缩略图
 		String filesmallname="small_"+filename;
 		File filesamllpath=new File(path, filesmallname);//完整路径
+		System.out.println(filesamllpath);
 		Thumbnails.of(filepath).scale(0.2).toFile(filesamllpath);
 		message.setCode(1);
 		message.setInfo(filename);

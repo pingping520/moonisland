@@ -21,20 +21,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	#addpage{text-align:center;}
 	#tblpagenum{margin:0 auto;}
 	.num{width:60px;}
+	#user_footer{width:100%;height:60px;line-height:60px;text-align:center;position: relative;}
+	#page{position: absolute;bottom:-260px;left:40%;}
 </style>
 <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
 </head>
 <body>
 	<div id="brand">
-		<div id="brnd_header">MOON ISLAND&nbsp;商品退货页</div>
 		<div id="brand_body">
-			<table>
-				<tr>
-				<td>按商品id查询</td>
-				<td><input type="text" id="findbyuserid" value='${goodsid}'></td>
-				<td><input type="button" id="btnbyuserid" value="查询" onclick="findbyuserid()"></td>
-				</tr>
-			</table>
 			<table class="table table-hover">
 				<tr class="info">
 					<td>退货编号</td>
@@ -60,7 +54,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</tr>
 				</c:forEach>
 			</table>
-			<table id="tblpagenum"><tr id="pageNum" class="info"></tr></table>
+			<div id="user_footer" class="container">
+				<ul class="pagination" id="page">
+					<li><a href="#">&laquo;</a></li>
+					<c:forEach var="x" begin="1" end="${count}" step="1" varStatus="st">
+						<c:if test="${param.page==x}">
+							<li class="active"><a href="comment/findpageComment?page=${x}">${x}</a></li>
+						</c:if>
+						<c:if test="${param.page!=x}">
+							<li><a href="comment/findpageComment?page=${x}">${x}</a></li>	
+						</c:if>					
+					</c:forEach>
+					<li><a href="#">&raquo;</a></li>
+					<li><span>共&nbsp;${count}&nbsp;页.</span></li>
+				</ul>	
+			</div>
 		</div>
 	</div>
 	
@@ -76,48 +84,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			$.post('returnOrder/statusReturn',{'returnStatus':status,'returnId':bid}, function(data) {
 				alert("编辑成功！")
 			});
-		}
-		/* $(function(){
-			var userid=$('#findbyuserid').val();
-			if(userid!=null && userid!=""){
-				$.get('returnOrder/pagecountReturn2?userid='+userid, function(data, textStatus, xhr) {
-				
-					var pageNum="";
-					 for(var i=1;i<=data;i++){
-						 pageNum+="<td class='num'><a href='javascript:skip("+i+")'>"+i+"</a></td>";
-					 }
-					 $("#pageNum").append(pageNum);
-				});
-			}else{
-				$.get('returnOrder/pagecountReturn', function(data, textStatus, xhr) {
-					
-					var pageNum="";
-					 for(var i=1;i<=data;i++){
-						 pageNum+="<td class='num'><a href='javascript:skip("+i+")'>"+i+"</a></td>";
-					 }
-					 $("#pageNum").append(pageNum);
-				});
-			}
-		})  */
-		$(function(){
-			var userid=$('#findbyuserid').val();
-				$.get('returnOrder/goodspagecountReturn2?goodsid='+userid, function(data, textStatus, xhr) {
-					var pageNum="";
-					 for(var i=1;i<=data;i++){
-						 pageNum+="<td class='num'><a href='javascript:skip("+i+")'>"+i+"</a></td>";
-					 }
-					 $("#pageNum").append(pageNum);
-				});
-		}) 
-		function findbyuserid(){		
-			var userid=$('#findbyuserid').val();
-			//location.href='returnOrder/findbyuseridpageReturn?userid='+userid+'&page=1';
-			location.href='returnOrder/findbygoodsidpageReturn?goodsid='+userid+'&page=1';
-		}
-		function skip(num){
-			var userid=$('#findbyuserid').val();
-			location.href='returnOrder/findbygoodsidpageReturn?goodsid='+userid+'&page='+num;
-		}
+		} 
 	</script>
 </body>
 </html>
