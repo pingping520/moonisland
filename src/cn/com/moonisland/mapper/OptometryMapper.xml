@@ -3,7 +3,6 @@
 <mapper namespace="cn.com.moonisland.mapper.OptometryMapper">
 	<resultMap type="Optometry" id="optometryResultMap">
 		<id column="optometry_id" property="optometryId" />
-		<result column="user_id" property="userId"/>
 		<result column="R_SPH" property="rSph"/>
 		<result column="R_CYL" property="rCyl"/>
 		<result column="R_AXIS" property="rAxis"/>
@@ -12,13 +11,36 @@
 		<result column="L_AXIS" property="lAxis"/>
 		<result column="PD" property="pd"/>
 		<result column="optometry_time" property="optometryTime"/>
+		<association property="user" javaType="User">
+			<id property="userId" column="user_id"/>
+			<result property="points" column="points"/>
+			<result property="userLevel" column="user_level"/>
+			<result property="isPrivilege" column="is_privilege"/>
+			<result property="privilegeNum" column="privilege_num"/>
+			<result property="phone" column="phone"/>
+			<result property="nickName" column="nick_name"/>
+			<result property="headerPic" column="header_pic"/>
+			<result property="password" column="password"/>
+			<result property="sex" column="sex"/>
+			<result property="birthday" column="birthday"/>
+			<result property="zipcode" column="zipcode"/>
+			<result property="mobile" column="mobile"/>
+			<result property="email" column="email"/>
+			<result property="userTime" column="user_time"/>
+			<result property="userStatus" column="user_status"/>
+		</association>
 	</resultMap>
-	<select id="findall" resultMap="optometryResultMap">
+	<select id="findAll" resultMap="optometryResultMap">
 		<![CDATA[
 			select * from moon_optometry;
 		]]>
 	</select>
+	<select id="findByUserId" resultMap="optometryResultMap">
+		<![CDATA[
+			select * from moon_optometry where moon_optometry.user_id=moon_user.user_id;
+		]]>
+	</select>
 	<insert id="add" parameterType="Optometry">
-		insert into moon_optometry(user_id,R_SPH,R_CYL,R_AXIS,L_SPH,L_CYL,L_AXIS,PD,optometry_time) values(#{userId},#{rSph},#{rCyl},#{rAxis},#{lSph},#{lCyl},#{lAxis},#{pd},current_timestamp);
+		insert into moon_optometry(user_id,R_SPH,R_CYL,R_AXIS,L_SPH,L_CYL,L_AXIS,PD,optometry_time) values(#{user.userId},#{rSph},#{rCyl},#{rAxis},#{lSph},#{lCyl},#{lAxis},#{pd},current_timestamp);
 	</insert>
 </mapper>

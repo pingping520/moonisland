@@ -16,8 +16,8 @@ public class OptometryServiceImpl implements OptometryService {
 		this.dao = dao;
 	}
 	@Override
-	public List<Optometry> findall() {
-		return this.dao.findall();
+	public List<Optometry> findAll() {
+		return this.dao.findAll();
 	}
 	@Override
 	public int add(Optometry optometry) {

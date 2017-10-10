@@ -1,11 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.com.moonisland.mapper.SaveMapper">
-	<resultMap type="SaveMapper" id="saveResultMap">
+	<resultMap type="Save" id="saveResultMap">
 		<id column="save_id" property="saveId"/>
-		<result column="goods_id" property="goodsId"/>
-		<result column="user_id" property="userId"/>
 		<result column="save_time" property="saveTime"/>
+		<association property="goods" javaType="Goods">
+			<id column="goods_id" property="goodsId"/>
+			<result column="brand_id" property="brandId"/>
+			<result column="goods_name" property="goodsName"/>
+			<result column="category" property="category"/>
+			<result column="original_price" property="originalPrice"/>
+			<result column="sales_price" property="salesPrice"/>
+			<result column="goods_color" property="goodsColor"/>
+			<result column="goods_content" property="goodsContent"/>
+			<result column="browse_num" property="browseNum"/>
+			<result column="save_num" property="saveNum"/>
+			<result column="sales_num" property="salesNum"/>
+			<result column="goods_keywords" property="goodsKeywords"/>
+			<result column="is_on_sale" property="isOnsale"/>
+			<result column="stock_num" property="stockNum"/>
+			<result column="minus_price" property="minusPrice"/>
+			<result column="privilege" property="privilege"/>
+			<result column="points" property="points"/>
+			<result column="style" property="style"/>
+			<result column="style_A" property="styleA"/>
+			<result column="style_B" property="styleB"/>
+			<result column="style_C" property="styleC"/>
+			<result column="style_D" property="styleD"/>
+			<result column="style_E" property="styleE"/>
+			<result column="add_time" property="addTime"/>
+			<result column="is_sale" property="isSale"/>
+		</association>
+		<association property="user" javaType="User">
+			<id property="userId" column="user_id"/>
+			<result property="points" column="points"/>
+			<result property="userLevel" column="user_level"/>
+			<result property="isPrivilege" column="is_privilege"/>
+			<result property="privilegeNum" column="privilege_num"/>
+			<result property="phone" column="phone"/>
+			<result property="nickName" column="nick_name"/>
+			<result property="headerPic" column="header_pic"/>
+			<result property="password" column="password"/>
+			<result property="sex" column="sex"/>
+			<result property="birthday" column="birthday"/>
+			<result property="zipcode" column="zipcode"/>
+			<result property="mobile" column="mobile"/>
+			<result property="email" column="email"/>
+			<result property="userTime" column="user_time"/>
+			<result property="userStatus" column="user_status"/>
+		</association>
 	</resultMap>
-	<select id=""></select>
+	<select id="findAll" resultMap="saveResultMap">
+		select goods.goods_id,goods.goods_content,goods.goods_name,goods.original_price,save.save_id from moon_save save,moon_goods goods 
+		where save.goods_id=goods.goods_id and user_id=#{userId};
+	</select>
+	<insert id="add" parameterType="Save">
+		insert into moon_save(goods_id,user_id,save_time) values(#{goods.goodsId},#{user.userId},current_timestamp);
+	</insert>
+	<delete id="delete" parameterType="int">
+		delete from moon_save where save_id=#{saveId};
+	</delete>
 </mapper>

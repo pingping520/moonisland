@@ -12,9 +12,9 @@ public class OptometryDaoImpl extends SqlSessionDaoSupport implements OptometryD
 
 	private OptometryMapper mapper;
 	@Override
-	public List<Optometry> findall() {
+	public List<Optometry> findAll() {
 		this.mapper = this.getSqlSession().getMapper(OptometryMapper.class);
-		return this.mapper.findall();
+		return this.mapper.findAll();
 	}
 	@Override
 	public int add(Optometry optometry) {

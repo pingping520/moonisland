@@ -9,7 +9,7 @@ public interface OptometryMapper {
 	/**
 	 * 全表查询
 	 */
-	public List<Optometry> findall();
+	public List<Optometry> findAll();
 	
 	/**
 	 * 添加

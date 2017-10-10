@@ -1,0 +1,12 @@
+$("#pendingEvaluation").click(function(){
+    $(this).css("color","#df7076");
+    $(this).siblings().css("color","#232323");
+    $("#haveEvaluated-content").fadeOut(200);
+    $("#pendingEvaluation-content").fadeIn(200);
+});
+$("#haveEvaluated").click(function(){
+    $(this).css("color","#df7076");
+    $(this).siblings().css("color","#232323");
+    $("#pendingEvaluation-content").fadeOut(200);
+    $("#haveEvaluated-content").fadeIn(200);
+});
