@@ -10,7 +10,7 @@ import java.io.Serializable;
 public class Comment implements Serializable{
 	private int commentId; //评论编号
 	private String goodsId; //商品编号
-	private String userId; //用户编号
+	private User user; //用户编号
 	private String orderId; //订单编号
 	private String commentContentword; //商品评论文字
 	private String commentContentimg; //商品评论图片(存储所有图片路径，以|分割)，最多3张，单张不大于2M
@@ -24,13 +24,14 @@ public class Comment implements Serializable{
 		super();
 	}
 	
-	public Comment(int commentId, String goodsId, String userId, String orderId, String commentContentword,
+	
+	public Comment(int commentId, String goodsId, User user, String orderId, String commentContentword,
 			String commentContentimg, String guarantee, String server, String logistics, String commentStatus,
 			String commentTime) {
 		super();
 		this.commentId = commentId;
 		this.goodsId = goodsId;
-		this.userId = userId;
+		this.user = user;
 		this.orderId = orderId;
 		this.commentContentword = commentContentword;
 		this.commentContentimg = commentContentimg;
@@ -40,6 +41,7 @@ public class Comment implements Serializable{
 		this.commentStatus = commentStatus;
 		this.commentTime = commentTime;
 	}
+
 
 	public void setCommentId(int commentId){
 		this.commentId=commentId;
@@ -57,12 +59,13 @@ public class Comment implements Serializable{
 		return goodsId;
 	}
 
-	public void setUserId(String userId){
-		this.userId=userId;
+	
+	public User getUser() {
+		return user;
 	}
 
-	public String getUserId(){
-		return userId;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public void setOrderId(String orderId){

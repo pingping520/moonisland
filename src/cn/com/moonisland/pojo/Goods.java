@@ -8,6 +8,7 @@ import java.io.Serializable;
 public class Goods implements Serializable{
 	private int goodsId; //商品id
 	private String brandId; //品牌Id
+	Brand brand;//多对一，多个商品属于一种品牌
 	private String goodsName; //商品名称
 	private String category; //商品分类（1太阳镜，2 男士，3女士）
 	private String originalPrice; //原价
@@ -268,5 +269,16 @@ public class Goods implements Serializable{
 	public String getIsSale(){
 		return isSale;
 	}
+
+	public Brand getBrand() {
+		return brand;
+	}
+
+	public void setBrand(Brand brand) {
+		this.brand = brand;
+	}
+
+	
+	
 }
 

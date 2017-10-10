@@ -10,6 +10,7 @@ import java.io.Serializable;
 public class Pic implements Serializable{
 	private int picId; //图片编号
 	private String goodsId; //商品编号
+	Goods goods;
 	private String pic1; //图片1
 	private String pic2; //图片2
 	private String pic3; //图片3
@@ -23,11 +24,14 @@ public class Pic implements Serializable{
 		super();
 	}
 	
-	public Pic(int picId, String goodsId, String pic1, String pic2, String pic3, String pic4, String pic1Thumb,
-			String pic2Thumb, String pic3Thumb, String pic4Thumb) {
+	
+
+	public Pic(int picId, String goodsId, Goods goods, String pic1, String pic2, String pic3, String pic4,
+			String pic1Thumb, String pic2Thumb, String pic3Thumb, String pic4Thumb) {
 		super();
 		this.picId = picId;
 		this.goodsId = goodsId;
+		this.goods = goods;
 		this.pic1 = pic1;
 		this.pic2 = pic2;
 		this.pic3 = pic3;
@@ -36,6 +40,16 @@ public class Pic implements Serializable{
 		this.pic2Thumb = pic2Thumb;
 		this.pic3Thumb = pic3Thumb;
 		this.pic4Thumb = pic4Thumb;
+	}
+
+
+
+	public Goods getGoods() {
+		return goods;
+	}
+
+	public void setGoods(Goods goods) {
+		this.goods = goods;
 	}
 
 	public void setPicId(int picId){

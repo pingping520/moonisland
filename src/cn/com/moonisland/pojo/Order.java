@@ -11,6 +11,9 @@ public class Order implements Serializable{
 	private int orderId; //订单id
 	private String orderNumber; //订单号
 	private String goodsId; //商品id
+	private Goods goods; //商品id
+	private Glass glass;
+	private User user;
 	private String glassId; //镜片id
 	private String userId; //用户id
 	private String optometryId; //验光单id
@@ -31,19 +34,25 @@ public class Order implements Serializable{
 	private String shippingNum; //快递单号
 	private String payName; //支付方式名称
 	private String orderTime; //订单生成时间
+	private String picId;
+	private String attrId;
 	
 	public Order() {
 		super();
 	}
-	
-	public Order(int orderId, String orderNumber, String goodsId, String glassId, String userId, String optometryId,
-			String orderStatus, String shippingStatus, String payStatus, String consignee, String province, String city,
-			String district, String address, String zipcode, String phone, String payNum, String orderMoney,
-			String postscript, String shippingName, String shippingNum, String payName, String orderTime) {
+
+	public Order(int orderId, String orderNumber, String goodsId, Goods goods, Glass glass, User user, String glassId,
+			String userId, String optometryId, String orderStatus, String shippingStatus, String payStatus,
+			String consignee, String province, String city, String district, String address, String zipcode,
+			String phone, String payNum, String orderMoney, String postscript, String shippingName, String shippingNum,
+			String payName, String orderTime, String picId, String attrId) {
 		super();
 		this.orderId = orderId;
 		this.orderNumber = orderNumber;
 		this.goodsId = goodsId;
+		this.goods = goods;
+		this.glass = glass;
+		this.user = user;
 		this.glassId = glassId;
 		this.userId = userId;
 		this.optometryId = optometryId;
@@ -64,190 +73,246 @@ public class Order implements Serializable{
 		this.shippingNum = shippingNum;
 		this.payName = payName;
 		this.orderTime = orderTime;
+		this.picId = picId;
+		this.attrId = attrId;
 	}
 
-	public void setOrderId(int orderId){
-		this.orderId=orderId;
-	}
-
-	public int getOrderId(){
+	public int getOrderId() {
 		return orderId;
 	}
 
-	public void setOrderNumber(String orderNumber){
-		this.orderNumber=orderNumber;
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
 	}
 
-	public String getOrderNumber(){
+	public String getOrderNumber() {
 		return orderNumber;
 	}
 
-	public void setGoodsId(String goodsId){
-		this.goodsId=goodsId;
+	public void setOrderNumber(String orderNumber) {
+		this.orderNumber = orderNumber;
 	}
 
-	public String getGoodsId(){
+	public String getGoodsId() {
 		return goodsId;
 	}
 
-	public void setGlassId(String glassId){
-		this.glassId=glassId;
+	public void setGoodsId(String goodsId) {
+		this.goodsId = goodsId;
 	}
 
-	public String getGlassId(){
+	public Goods getGoods() {
+		return goods;
+	}
+
+	public void setGoods(Goods goods) {
+		this.goods = goods;
+	}
+
+	public Glass getGlass() {
+		return glass;
+	}
+
+	public void setGlass(Glass glass) {
+		this.glass = glass;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public String getGlassId() {
 		return glassId;
 	}
 
-	public void setUserId(String userId){
-		this.userId=userId;
+	public void setGlassId(String glassId) {
+		this.glassId = glassId;
 	}
 
-	public String getUserId(){
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setOptometryId(String optometryId){
-		this.optometryId=optometryId;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
-	public String getOptometryId(){
+	public String getOptometryId() {
 		return optometryId;
 	}
 
-	public void setOrderStatus(String orderStatus){
-		this.orderStatus=orderStatus;
+	public void setOptometryId(String optometryId) {
+		this.optometryId = optometryId;
 	}
 
-	public String getOrderStatus(){
+	public String getOrderStatus() {
 		return orderStatus;
 	}
 
-	public void setShippingStatus(String shippingStatus){
-		this.shippingStatus=shippingStatus;
+	public void setOrderStatus(String orderStatus) {
+		this.orderStatus = orderStatus;
 	}
 
-	public String getShippingStatus(){
+	public String getShippingStatus() {
 		return shippingStatus;
 	}
 
-	public void setPayStatus(String payStatus){
-		this.payStatus=payStatus;
+	public void setShippingStatus(String shippingStatus) {
+		this.shippingStatus = shippingStatus;
 	}
 
-	public String getPayStatus(){
+	public String getPayStatus() {
 		return payStatus;
 	}
 
-	public void setConsignee(String consignee){
-		this.consignee=consignee;
+	public void setPayStatus(String payStatus) {
+		this.payStatus = payStatus;
 	}
 
-	public String getConsignee(){
+	public String getConsignee() {
 		return consignee;
 	}
 
-	public void setProvince(String province){
-		this.province=province;
+	public void setConsignee(String consignee) {
+		this.consignee = consignee;
 	}
 
-	public String getProvince(){
+	public String getProvince() {
 		return province;
 	}
 
-	public void setCity(String city){
-		this.city=city;
+	public void setProvince(String province) {
+		this.province = province;
 	}
 
-	public String getCity(){
+	public String getCity() {
 		return city;
 	}
 
-	public void setDistrict(String district){
-		this.district=district;
+	public void setCity(String city) {
+		this.city = city;
 	}
 
-	public String getDistrict(){
+	public String getDistrict() {
 		return district;
 	}
 
-	public void setAddress(String address){
-		this.address=address;
+	public void setDistrict(String district) {
+		this.district = district;
 	}
 
-	public String getAddress(){
+	public String getAddress() {
 		return address;
 	}
 
-	public void setZipcode(String zipcode){
-		this.zipcode=zipcode;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
-	public String getZipcode(){
+	public String getZipcode() {
 		return zipcode;
 	}
 
-	public void setPhone(String phone){
-		this.phone=phone;
+	public void setZipcode(String zipcode) {
+		this.zipcode = zipcode;
 	}
 
-	public String getPhone(){
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPayNum(String payNum){
-		this.payNum=payNum;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
-	public String getPayNum(){
+	public String getPayNum() {
 		return payNum;
 	}
 
-	public void setOrderMoney(String orderMoney){
-		this.orderMoney=orderMoney;
+	public void setPayNum(String payNum) {
+		this.payNum = payNum;
 	}
 
-	public String getOrderMoney(){
+	public String getOrderMoney() {
 		return orderMoney;
 	}
 
-	public void setPostscript(String postscript){
-		this.postscript=postscript;
+	public void setOrderMoney(String orderMoney) {
+		this.orderMoney = orderMoney;
 	}
 
-	public String getPostscript(){
+	public String getPostscript() {
 		return postscript;
 	}
 
-	public void setShippingName(String shippingName){
-		this.shippingName=shippingName;
+	public void setPostscript(String postscript) {
+		this.postscript = postscript;
 	}
 
-	public String getShippingName(){
+	public String getShippingName() {
 		return shippingName;
 	}
 
-	public void setShippingNum(String shippingNum){
-		this.shippingNum=shippingNum;
+	public void setShippingName(String shippingName) {
+		this.shippingName = shippingName;
 	}
 
-	public String getShippingNum(){
+	public String getShippingNum() {
 		return shippingNum;
 	}
 
-	public void setPayName(String payName){
-		this.payName=payName;
+	public void setShippingNum(String shippingNum) {
+		this.shippingNum = shippingNum;
 	}
 
-	public String getPayName(){
+	public String getPayName() {
 		return payName;
 	}
 
-	public void setOrderTime(String orderTime){
-		this.orderTime=orderTime;
+	public void setPayName(String payName) {
+		this.payName = payName;
 	}
 
-	public String getOrderTime(){
+	public String getOrderTime() {
 		return orderTime;
 	}
+
+	public void setOrderTime(String orderTime) {
+		this.orderTime = orderTime;
+	}
+
+	public String getPicId() {
+		return picId;
+	}
+
+	public void setPicId(String picId) {
+		this.picId = picId;
+	}
+
+	public String getAttrId() {
+		return attrId;
+	}
+
+	public void setAttrId(String attrId) {
+		this.attrId = attrId;
+	}
+
+	@Override
+	public String toString() {
+		return "Order [orderId=" + orderId + ", orderNumber=" + orderNumber + ", goodsId=" + goodsId + ", goods="
+				+ goods + ", glass=" + glass + ", user=" + user + ", glassId=" + glassId + ", userId=" + userId
+				+ ", optometryId=" + optometryId + ", orderStatus=" + orderStatus + ", shippingStatus=" + shippingStatus
+				+ ", payStatus=" + payStatus + ", consignee=" + consignee + ", province=" + province + ", city=" + city
+				+ ", district=" + district + ", address=" + address + ", zipcode=" + zipcode + ", phone=" + phone
+				+ ", payNum=" + payNum + ", orderMoney=" + orderMoney + ", postscript=" + postscript + ", shippingName="
+				+ shippingName + ", shippingNum=" + shippingNum + ", payName=" + payName + ", orderTime=" + orderTime
+				+ ", picId=" + picId + ", attrId=" + attrId + "]";
+	}
+	
+	
 }
 

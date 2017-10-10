@@ -11,16 +11,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta charset="UTF-8">
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
-<title>品牌管理页面</title>
+<title>MOON ISLAND品牌管理页面</title>
 <link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="css/brand.css" />
+<style type="text/css">
+#brand{margin:0px auto;width:100%;text-align:center;position:relative;}
+#brand_body{widtth:100%;height:500px;}
+#brand_footer{width:100%;height:60px;line-height:60px;text-align:center;}
+#brand_body table,tr,td{vertical-align: middle!important;margin:0px;padding:0px;}
+</style>
 </head>
 <body>
 	<div id="brand">
-		<div id="brnd_header">MOON ISLAND&nbsp;品牌管理页</div>
 		<div id="brand_body">
 			<table class="table table-hover">
-				<tr class="info">
+				<tr>
 					<td>品牌编号</td>
 					<td>品牌名称</td>
 					<td>品牌图标</td>
@@ -30,15 +34,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td>更新品牌</td>
 				</tr>
 				<c:forEach items="${brandList}" var="brand">
-					<tr class="success">
+					<tr>
 					<td>${brand.brandId}</td>
 					<td>${brand.brandName}</td>
-					<td>${brand.brandLogo}</td>
+					<td><img class="img" src="images/${brand.brandLogo}" style="width:50px;height:50px;"/></td>
 					<td>${brand.brandContent}</td>
 					<td>${brand.brandAddtime}</td>
 					<td><input type="checkbox" id="${brand.brandId}" onchange="check(${brand.brandId})"  
 					${(brand.brandStatus==1)?'checked':''} >选择</td>
-					<td><a href="brand/toUpdate?brandId=${brand.brandId}">更新品牌</a></td>
+					<td><a href="brand/toUpdate?brandId=${brand.brandId}"><button class="btn btn-sm btn-primary">更新</button></a></td>
 				</tr>
 				</c:forEach>
 			</table>

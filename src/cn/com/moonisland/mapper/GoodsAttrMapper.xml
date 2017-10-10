@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+						"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.com.moonisland.mapper.GoodsAttrMapper">
+	<resultMap type="GoodsAttr" id="goodsAttrResultMap">
+		<id property="attrId" column="arrt_id"/>
+		<result property="material" column="material"/>
+		<result property="border" column="border"/>
+		<result property="size" column="size"/>
+		<result property="function" column="function"/>
+		<result property="color" column="color"/>
+		<association property="goods" javaType="Goods">
+			<id column="goods_id" property="goodsId"/>
+			<result column="brand_id" property="brandId"/>
+			<result column="goods_name" property="goodsName"/>
+			<result column="category" property="category"/>
+			<result column="original_price" property="originalPrice"/>
+			<result column="sales_price" property="salesPrice"/>
+			<result column="goods_color" property="goodsColor"/>
+			<result column="goods_content" property="goodsContent"/>
+			<result column="browse_num" property="browseNum"/>
+			<result column="save_num" property="saveNum"/>
+			<result column="sales_num" property="salesNum"/>
+			<result column="goods_keywords" property="goodsKeywords"/>
+			<result column="is_on_sale" property="isOnsale"/>
+			<result column="stock_num" property="stockNum"/>
+			<result column="minus_price" property="minusPrice"/>
+			<result column="privilege" property="privilege"/>
+			<result column="points" property="points"/>
+			<result column="style" property="style"/>
+			<result column="style_A" property="styleA"/>
+			<result column="style_B" property="styleB"/>
+			<result column="style_C" property="styleC"/>
+			<result column="style_D" property="styleD"/>
+			<result column="style_E" property="styleE"/>
+			<result column="add_time" property="addTime"/>
+			<result column="is_sale" property="isSale"/>
+		</association>
+	</resultMap>
+	
+	<insert id="addGoodsAttr" parameterType="GoodsAttr">
+		insert into moon_goods_attr(
+		<trim prefixOverrides=",">
+			<if test="goods!=null and goods.goodsId>0" >goods_id</if>
+			<if test="material!=null">,material</if>
+			<if test="border!=null">,border</if>
+			<if test="size!=null">,size</if>
+			<if test="function!=null">,function</if>
+			<if test="color!=null">,color</if>						
+		</trim>
+		) values(
+		<trim prefixOverrides=",">
+			<if test="goods!=null and goods.goodsId>0" >#{goods.goodsId}</if>
+			<if test="material!=null">,#{material}</if>
+			<if test="border!=null">,#{border}</if>
+			<if test="size!=null">,#{size}</if>
+			<if test="function!=null">,#{function}</if>
+			<if test="color!=null">,#{color}</if>			
+		</trim>
+		)
+	</insert>
+	
+	<update id="updateGoodsAttr" parameterType="GoodsAttr">
+		update moon_goods_attr
+		<set>
+			<if test="goods!=null and goods.goodsId>0" >goods_id=#{goods.goodsId},</if>
+			<if test="material!=null">material=#{material},</if>
+			<if test="border!=null">border=#{border},</if>
+			<if test="size!=null">size=#{size},</if>
+			<if test="function!=null">function=#{function},</if>
+			<if test="color!=null">color=#{color}</if>		
+		</set>
+		where attr_id=#{attrId}
+	</update>
+	
+	<select id="findAll" resultMap="goodsAttrResultMap">
+		select * from moon_goods_attr
+	</select>
+	
+	<select id="findByGoods" resultMap="goodsAttrResultMap">
+		select * from moon_goods_attr where goods_id=#{goods.goodsId}
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

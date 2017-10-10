@@ -10,8 +10,8 @@ import java.io.Serializable;
 public class ReturnOrder implements Serializable{
 	private int returnId; //退货id
 	private String orderId; //订单id
-	private String userId; //用户id
-	private String goodsId; //商品id
+	private User user; //用户id
+	private Goods goods; //商品id
 	private String reason; //退货原因
 	private String returnStatus; //退货状态(0 等待处理，1 处理完成)
 	private String returnTime; //退货时间
@@ -19,14 +19,13 @@ public class ReturnOrder implements Serializable{
 	public ReturnOrder() {
 		super();
 	}
-	
-	public ReturnOrder(int returnId, String orderId, String userId, String goodsId, String reason, String returnStatus,
+	public ReturnOrder(int returnId, String orderId, User user, Goods goods, String reason, String returnStatus,
 			String returnTime) {
 		super();
 		this.returnId = returnId;
 		this.orderId = orderId;
-		this.userId = userId;
-		this.goodsId = goodsId;
+		this.user = user;
+		this.goods = goods;
 		this.reason = reason;
 		this.returnStatus = returnStatus;
 		this.returnTime = returnTime;
@@ -47,23 +46,21 @@ public class ReturnOrder implements Serializable{
 	public String getOrderId(){
 		return orderId;
 	}
-
-	public void setUserId(String userId){
-		this.userId=userId;
+	
+	public User getUser() {
+		return user;
 	}
 
-	public String getUserId(){
-		return userId;
+	public void setUser(User user) {
+		this.user = user;
 	}
-
-	public void setGoodsId(String goodsId){
-		this.goodsId=goodsId;
+	
+	public Goods getGoods() {
+		return goods;
 	}
-
-	public String getGoodsId(){
-		return goodsId;
+	public void setGoods(Goods goods) {
+		this.goods = goods;
 	}
-
 	public void setReason(String reason){
 		this.reason=reason;
 	}
