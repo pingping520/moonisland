@@ -23,16 +23,8 @@
 
     <!--买家地址部分-->
     <div class="address container-fluid">
-        <select id="province" onchange="province()">
-        	<option>请选择省份</option>
-        </select>
-        <select id="city" onchange="city()">
-        	<option>请选择城市</option>
-        </select>
-        <select id="district">
-        	<option>请选择地区</option>
-        </select>
-        <input type="text" value="请填写详细地址" />
+    	<div id="fill-address"></div>
+        <button id="checkaddress" onclick="fun01()">选择地址</button>
     </div>
     <!--end-->
     <!--商品区域-->
@@ -83,64 +75,165 @@
         </div>
     </div>
     <!-- end-->
-    
-    <div class="navbar-fixed-bottom" id="area" style="height:200px;background:white;">
-		<div class="container-fluid">
-			<div class="col-xs-4 province" onclick="province()"></div>
-			<div class="col-xs-4 city"></div>
-			<div class="col-xs-4 district"></div>
+</div>
+
+<!-- 选择地址  -->
+<div class="" id="area" style="display:none;background:#ddd;">
+	<div id="header" class="navbar-fixed-top">
+        <div class="row">
+            <div class="col-xs-2 text-right"><i class="iconfont icon-toLeft-copy" id="rutn"></i></div>
+            <div class="col-xs-2 col-xs-push-8"></div>
+            <div class="col-xs-8 text-center col-xs-pull-2">填写地址</div>
+        </div>
+    </div>
+    <div style="height:62px;"></div>
+		<div class="container-fluid" style="background:#ddd;">
+			<div id="pcd" class="col-xs-12">
+				<ul class="province" style="list-style: none; padding-left: 0;"></ul>
+			</div>
+			<div id="pcd-address" class="col-xs-12">
+				
+			</div>
+			<div id="detailed-address" class="col-xs-12" style="display:none">
+				<input id="detailed-address-input" type="text" value="请输入详细地址"/>
+			</div>
+			<div id="name-address" class="col-xs-12" style="display:none">
+				<input id="name-address-input" type="text" value="请输入收货人姓名"/>
+			</div>
+			<div id="tell-address" class="col-xs-12" style="display:none">
+				<input id="tell-address-input" type="text" value="请输入收货人电话"/>
+			</div>
+			<div id="zip-code" class="col-xs-12" style="display:none">
+				<input id="zip-code-input" type="text" value="请输入邮政编码"/>
+			</div>
 		</div>
-	</div>
+	<div style="height:50px;"></div>
+	<div id="footer2" class="footer navbar-fixed-bottom">
+        <div class="container-fluid money2">
+            <div class="row">
+                <div class="col-xs-12" style="padding:0px;"><div id="addbtn" class="sub" style="color:white;text-align:center;">确定</div></div>
+            </div>
+        </div>
+    </div>
 </div>
 <script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="../js/bootstrap.min.js"></script>
 <script type="text/javascript">
+
+function fun01(){
 	$.get("../area/findall/0",function(data){
-		console.log(data);
-		console.log(data.length)
 		var ls = "";
 		for(var i=0;i<data.length;i++){
 			var title = data[i].title;
-			console.log(title);
 			var areaId = data[i].areaId;
-			ls += "<option value="+areaId+">"+title+"</option>";
+			ls += "<li value="+areaId+" onclick='province(this)' style='border-bottom:1px solid white'>"+title+"</li>";
 		}
-		$('#province').append(ls);
+		$('.province').find("li").remove();
+		$('.province').append(ls);
 	})
+}
 	
-	function province(){
-		var options=$('#province option:selected').val();
-		$.get("../area/findall/"+options,function(data){
-			console.log(data);
-			console.log(data.length)
-			var ls = "";
-			for(var i=0;i<data.length;i++){
-				var title = data[i].title;
-				console.log(title);
-				var areaId = data[i].areaId;
-				ls += "<option value="+areaId+">"+title+"</option>";
-			}
-			$('#city').find("option").remove(); 
-			$('#city').append(ls);
-		})
+	function province(obj){
+		var province = $(obj).text();
+		var id = $(obj).val();
+		var ctid = $('#ct').val();
+		if(id!=ctid){
+			$.get("../area/findall/"+id,function(data){
+				var ls = "";
+				ls += "<li id='pro' value="+id+" onclick='fun01()' style='background:#ccc'>"+province+"</li>";
+				for(var i=0;i<data.length;i++){
+					var title = data[i].title;
+					var areaId = data[i].areaId;
+					ls += "<li value="+areaId+" onclick='city(this)'>"+title+"</li>";
+				}
+			
+				$('.province').find("li").remove();
+				$('.province').append(ls);
+			})
+		}else{
+			var pro2id = $('#pro2').val();
+			var pro2 = $('#pro2').text();
+			$.get("../area/findall/"+pro2id,function(data){
+				var ls = "";
+				ls += "<li id='pro' value="+pro2id+" onclick='fun01()' style='background:#ccc'>"+pro2+"</li>";
+				for(var i=0;i<data.length;i++){
+					var title = data[i].title;
+					var areaId = data[i].areaId;
+					ls += "<li value="+areaId+" onclick='city(this)'>"+title+"</li>";
+				}
+			
+				$('.province').find("li").remove();
+				$('.province').append(ls);
+			})
+		}
 		
 	}
-	function city(){
-		var options=$('#city option:selected').val();
-		$.get("../area/findall/"+options,function(data){
-			console.log(data);
-			console.log(data.length)
+	function city(obj){
+		var pro = $('#pro').text();
+		var proid = $('#pro').val();
+		var city = $(obj).text();
+		var cityid = $(obj).val();
+		var id = $(obj).val(); 
+		$.get("../area/findall/"+cityid,function(data){
 			var ls = "";
+			ls += "<li id='pro2' value="+proid+" onclick='fun01()' style='background:#ccc'>"+pro+"</li>";
+			ls += "<li id='ct' value="+cityid+" onclick='province(this)' style='background:#ccc'>"+city+"</li>";
 			for(var i=0;i<data.length;i++){
 				var title = data[i].title;
-				console.log(title);
 				var areaId = data[i].areaId;
-				ls += "<option value="+areaId+">"+title+"</option>";
+				ls += "<li value="+areaId+" onclick='address(this)'>"+title+"</li>";
 			}
-			$('#district').find("option").remove();
-			$('#district').append(ls);
+			$('.province').find("li").remove();
+			$('.province').append(ls);
 		})
 	}
+	
+	function address(obj){
+		var p = $('#pro2').text();
+		var c = $('#ct').text();
+		var d = $(obj).text();
+		var pcd = "<p>"+p+c+d+"</p>";
+		$('#pcd').css('display','none');
+		$('#pcd-address').find("p").remove();
+		$('#pcd-address').append(pcd);
+		$('#pcd-address').css('display','block');
+		$('#detailed-address').css('display','block');
+		$('#name-address').css('display','block');
+		$('#tell-address').css('display','block');
+		$('#zip-code').css('display','block');
+	}
+	
+	$('#checkaddress').click(function(){
+		$('#wrap').css('display','none');
+		$('#area').css('display','block');
+		$('#pcd').css('display','block');
+		$('#pcd-address').css('display','none');
+		$('#detailed-address').css('display','none');
+		$('#name-address').css('display','none');
+		$('#tell-address').css('display','none');
+		$('#zip-code').css('display','none');
+	});
+	$('#rutn').click(function(){
+		$('#area').css('display','none');
+		$('#wrap').css('display','block');
+	})
+	$('#pcd-address').click(function(){
+		alert('等会再改')
+	})
+	$('#addbtn').click(function(){
+		var pcdAddress = $('#pcd-address').text();
+		var detailed = $('#detailed-address-input').val();
+		var name = $('#name-address-input').val();
+		var tell = $('#tell-address-input').val();
+		var zip = $('#zip-code-input').val();
+		
+		var add = "<p>"+pcdAddress+" "+detailed+" "+name+tell+" "+zip+"</p>";
+		$('#fill-address').find("p").remove();
+		$('#fill-address').append(add);
+		$('#area').css('display','none');
+		$('#wrap').css('display','block');
+	})
+	
 </script>
 </body>
 </html>
