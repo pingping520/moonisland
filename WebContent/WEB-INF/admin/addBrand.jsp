@@ -10,37 +10,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta charset="UTF-8">
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
-<title>品牌添加页</title>
+<title>MOON ISLAND品牌添加页</title>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 <style type="text/css">
 	#brand{width:100%;margin:0px auto;}
-	#brand_logo{width:100%;height:60px;line-height:60px;text-align:center;}
-	#brand_add div{width:100%;height:100px;margin:0px auto;text-align:center;}
-	#add_pic{padding-left:44%;}
+	#brand_add{margin:50px auto;height:300px;line-height:auto;font-size:16px;font-weight:bold;}	
 </style>
 </head>
 <body>
 	<div id="brand">
-		<div id="brand_logo">
-			MOON ISLAND&nbsp;&nbsp;品牌添加页
-		</div>
-		<div id="brand_add">
-			<div>
-				<p>品牌名称</p>
-				<p><input type="text" id="bname"/></p>
-			</div>
-			<div>
-				<p>品牌图片</p>
-				<p id="add_pic"><input type="file" id="file" name="file" title=""/></p>
-			</div>
-			<div>
-				<p>品牌内容</p>
-				<p><input type="text" id="bcontent"/></p>
-			</div>
-			<div>
-				<button  class="btn btn-success" id="addBrand">添加品牌</button>
-			</div>
-		</div>
+		<table id="brand_add">
+			<tr>
+				<td>品牌名称:</td>
+				<td><input type="text" id="bname"/></td>
+			</tr>
+			<tr>
+				<td>品牌图片:</td>
+				<td><input type="file" id="file" name="file" title=""/></td>
+			</tr>
+			<tr>
+				<td>品牌内容:</td>
+				<td><input type="text" id="bcontent"/></td>
+			</tr>
+			<tr>
+				<td><button id="addBrand" class="btn btn-success">添加品牌</button></td>
+
+			</tr>
+		</table>
+		
 	</div>
 </body>
 <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
