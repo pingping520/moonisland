@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>商品评价内容</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../icon/iconfont.css">
+    <link rel="stylesheet" href="../css/evaluate2.css">
+</head>
+<body>
+<div id="wrap">
+    <div id="header" class="navbar-fixed-top">
+        <div class="container">
+            <div class="text-center title"><span class="glyphicon glyphicon-menu-left"></span>评价内容</div>
+        </div>
+    <div id="evaluate"></div>
+    </div> 
+    <div style="height: 75px;width: 100%"></div>
+    <div id="adv" class="navbar-fixed-top" style="top:82px;background:#fff;"> 
+         <div class="evaluate-content" id="sample">
+         	<div class="container-fluid">
+                 <!--人物头像-->
+                 <div class="col-xs-2" style="padding: 0px;" id="headerpic">
+                     <img src="../images/person1.png" class="img-responsive" width="40px" height="40px"/>
+                  </div>
+                 <div class="col-xs-10" style="padding: 0px;">
+                     <p>
+                     <div class="left" id="username">j****z&nbsp;&nbsp;</div>
+                     <div class="left"><img src="../images/icon.png" class="img-responsive" style="height: 18px;"/></div>
+                     </p>
+                 </div>
+             </div>
+            <div class="container-fluid" id="ordernum">订单号：<span>2222222</span></div>
+            <div class="container-fluid">
+                <div class="col-xs-4" id="goodspic"><img class="img-responsive img-rounded" src="../images/shop01.png" alt=""></div>
+                <div class="col-xs-8">
+                    <div class="title" id="goodsdetails"><span>威古氏（VEGOOS）太阳镜女款墨镜偏光驾驶眼睛大框圆脸蛤蟆镜</span></div>
+                </div>
+           </div>
+        </div>
+      <div id="evaluate"></div>
+    </div>
+
+    <div class="show" id="s003" style="top:185px;">
+        <div class="container Ca">
+            <!--评价标题-->
+            <div class="allCa">
+                <div class="container allCatop clearfix">
+                    <div class="col-xs-6 text-left"><span class="cfont">全部评价<br/>&nbsp;&nbsp;8350</span></div>
+                    <div class="col-xs-6 text-right"><span class="cfont2">好评度97%</span></div>
+                </div>
+
+                <div class="container-fluid clearfix allCatop">
+                    <div class="allCabot text-center clearfix">
+                        <div class="col-xs-3">
+                            <div  class="glyphicon glyphicon-star"></div>
+                            <div  class="glyphicon glyphicon-star"></div>
+                            <div  class="glyphicon glyphicon-star"></div>
+                            <div  class="glyphicon glyphicon-star"></div>
+                            <div  class="glyphicon glyphicon-star"></div>
+                        </div>
+                        <div class="col-xs-3" >
+                            <div  class="glyphicon glyphicon-star"></div>
+                            <div  class="glyphicon glyphicon-star"></div>
+                            <div  class="glyphicon glyphicon-star"></div>
+                            <div  class="glyphicon glyphicon-star"></div>
+                        </div>
+                        <div class="col-xs-2">
+                            <div  class="glyphicon glyphicon-star"></div>
+                            <div  class="glyphicon glyphicon-star"></div>
+                            <div  class="glyphicon glyphicon-star"></div>
+                        </div>
+                        <div class="col-xs-2">
+                            <div  class="glyphicon glyphicon-star"></div>
+                            <div  class="glyphicon glyphicon-star"></div>
+                        </div>
+                        <div class="col-xs-1">
+                            <div  class="glyphicon glyphicon-star"></div>
+                        </div>
+                    </div>
+                    <div class="allCabot ">
+                        <div class="col-xs-3" >
+                            &nbsp;&nbsp;&nbsp;&nbsp; 8045
+                        </div>
+                        <div class="col-xs-3">
+                            &nbsp;&nbsp;&nbsp;676
+                        </div>
+                        <div class="col-xs-2">
+                            &nbsp;&nbsp;343
+                        </div>
+                        <div class="col-xs-2">
+                            &nbsp;23
+                        </div>
+                        <div class="col-xs-1">
+                            21
+                        </div>
+                    </div>
+                    <div id="brand">
+			        <div id="brand_body">
+			            <table class="table table-hover">
+			                <tr>
+			                    <td>商品评论文字</td>
+			                    <td>
+			                        <textarea rows="3" cols="20" id="word">
+			                            
+			                        </textarea>
+			                    </td>
+			                </tr>
+			                <tr>
+			                    <td>商品评论图片</td>
+			                    <td><input id="file" type="file" name="file" title=""/>
+			                        <input id="file2" type="file" name="file2" title=""/>
+			                        <input id="file3" type="file" name="file3" title=""/></td>
+			                </tr>
+			                <tr>
+			                    <td>商品质量星级</td>
+			                    <td><input id="guarantee" type="text" value=""/></td>
+			                </tr>
+			                <tr>
+			                    <td>服务态度星级</td>
+			                    <td><input id="server" type="text" value=""/></td>
+			                </tr>
+			                <tr>
+			                    <td>物流态度星级</td>
+			                    <td><input id="logistics" type="text" value=""/></td>
+			                </tr>
+			                <tr><td colspan="2" style="text-align:center;"><input type="button" value="添加" onclick="insert()"/></td></tr>
+			            </table>
+			        </div>
+			    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+</div>
+<script src="../js/jquery-1.11.0.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/evaluate.js"></script>
+<script type="text/javascript" src="../js/ajaxfileupload.js"></script>
+<script type="text/javascript">
+$(function(){
+	var headerpic="";
+	var username="";
+	var ordernum="";
+	var goodspic="";
+	var goodsdetails="";
+	$.get('../order/findbyorderid?orderId=1', function(data) {
+        console.log(data)
+        //用户头像
+        if(data.user.headerPic==null){
+        	headerpic='<img src="../images/person1.png" class="img-responsive" width="40px" height="40px"/>';
+        	$("#headerpic").append(headerpic);
+        }else{
+        	headerpic='<img src="../images/'+data.user.headerPic+'" class="img-responsive" width="40px" height="40px"/>';
+        	$("#headerpic").append(headerpic);
+        }
+        //用户名
+        username=data.user.nickName+"&nbsp;&nbsp;";
+        $("#username").append(username);
+        //订单号
+        ordernum='<span>'+data.orderId+'</span>';
+        $("#ordernum").append(ordernum);
+        //商品图片
+        goodspic='<img class="img-responsive img-rounded" src="../images/'+data.goods.goodsContent+'" alt="">';
+        $("#goodspic").append(goodspic);
+        //商品介绍
+        goodsdetails='<span>'+data.goods.goodsName+'</span>';
+        $("#goodsdetails").append(goodsdetails);
+	});
+})
+function insert(){
+	var word=$('#word').val();
+	var file="";
+	var file1=$('#file').attr('title');
+	var file2=$('#file2').attr('title');
+	var file3=$('#file3').attr('title');
+	if(file1!="" &&file1!=null){file+=file1;}
+	if(file2!="" &&file2!=null){file+="|"+file2;}
+	if(file3!="" &&file3!=null){file+="|"+file3;}
+	var guarantee=$('#guarantee').val();
+	var server=$('#server').val();
+	var logistics=$('#logistics').val();
+	
+	$.post('../comment/addComment',{'goodsId':goodsId,'user.userId':userId,'orderId':orderId,'commentContentword':word,'commentContentimg':file,'guarantee':guarantee,'server':server,'logistics':logistics,'commentStatus':1}, function(data) {
+		alert("编辑成功！")
+	});
+}
+ $('#file').change(function() {
+    	$.ajaxFileUpload({
+    		url :'../comment/uploadsComment',//用于文件上传的服务器端请求地址
+    		secureuri : false,//一般设置为false
+    		fileElementId : 'file',//文件上传空间的id属性  <input type="file" id="file" name="file" />
+    		dataType : 'text',//返回值类型 test
+    		success : function(data, status) //服务器成功响应处理函数
+    		{
+    			if (data != null && data != "") {
+    				$("#file").attr("title", data.info);
+    			}
+    		},
+    		error : function(data, status, e)//服务器响应失败处理函数
+    		{alert(e);}
+    	});
+    });
+    $('#file2').change(function() {
+    	$.ajaxFileUpload({
+    		url : '../comment/uploadsComment',//用于文件上传的服务器端请求地址
+    		secureuri : false,//一般设置为false
+    		fileElementId : 'file2',//文件上传空间的id属性  <input type="file" id="file" name="file" />
+    		dataType : 'text',//返回值类型 test
+    		success : function(data, status) //服务器成功响应处理函数
+    		{
+    			if (data != null && data != "") {
+    				$("#file2").attr("title", data.info);
+    			}
+    		},
+    		error : function(data, status, e)//服务器响应失败处理函数
+    		{alert(e);}
+    	});
+    });
+    $('#file3').change(function() {
+    	$.ajaxFileUpload({
+    		url : '../comment/uploadsComment',//用于文件上传的服务器端请求地址
+    		secureuri : false,//一般设置为false
+    		fileElementId : 'file3',//文件上传空间的id属性  <input type="file" id="file" name="file" />
+    		dataType : 'text',//返回值类型 test
+    		success : function(data, status) //服务器成功响应处理函数
+    		{
+    			if (data != null && data != "") {
+    				$("#file3").attr("title", data.info);
+    			}
+    		},
+    		error : function(data, status, e)//服务器响应失败处理函数
+    		{alert(e);}
+    	});
+    });
+</script>
+</body>
+</html>

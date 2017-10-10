@@ -20,20 +20,17 @@ public interface CommentDao {
 	public int deleteComment(Comment comment);
 	//更新评论
 	public int updateComment(Comment comment);
-	//根据条件查找
-	public List<Comment> findCondition();
 	//根据分页查询
 	public List<Comment> findbypageComment(int page);
 	
 	//一共有几页
-	public int pageCount();
-	public int pageCount2(String userid);
+	public int pageCount(String userid);
 	//根据userID查找
 	public List<Comment> findbyuserid(Map<String, Object> map);
 	
-	//通过userID查询出来的列表
-	public List<Comment> findbyuserid2(Map<String, Object> map);
+	//通过goodsID查询一共有几页
+	public int pageCountbyGoodsid(String goodsid);
 	
-	//通过userID查询出来的总条数
-	public int pagebyuseridCount(int userid);
+	//通过goodsID查询到的内容
+	public List<Comment> findbygoodsid(Map<String, Object> map);
 }

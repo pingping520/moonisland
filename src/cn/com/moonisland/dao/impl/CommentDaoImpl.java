@@ -46,13 +46,6 @@ public class CommentDaoImpl extends SqlSessionDaoSupport implements CommentDao {
 	}
 
 	@Override
-	public List<Comment> findCondition() {
-		this.mapper = (CommentMapper) this.getSqlSession().getMapper(CommentMapper.class);
-		List<Comment> ls=this.mapper.findCondition();
-		return ls;
-	}
-
-	@Override
 	public List<Comment> findbypageComment(int page) {
 		this.mapper = (CommentMapper) this.getSqlSession().getMapper(CommentMapper.class);
 		List<Comment> ls=this.mapper.findbypage(page);
@@ -60,16 +53,9 @@ public class CommentDaoImpl extends SqlSessionDaoSupport implements CommentDao {
 	}
 
 	@Override
-	public int pageCount() {
+	public int pageCount(String userid) {
 		this.mapper = (CommentMapper) this.getSqlSession().getMapper(CommentMapper.class);
-		int count=this.mapper.pageCount();
-		return count;
-	}
-	
-	@Override
-	public int pageCount2(String userid) {
-		this.mapper = (CommentMapper) this.getSqlSession().getMapper(CommentMapper.class);
-		int count=this.mapper.pageCount2(userid);
+		int count=this.mapper.pageCount(userid);
 		return count;
 	}
 
@@ -81,17 +67,17 @@ public class CommentDaoImpl extends SqlSessionDaoSupport implements CommentDao {
 	}
 
 	@Override
-	public List<Comment> findbyuserid2(Map<String, Object> map) {
+	public int pageCountbyGoodsid(String goodsid) {
 		this.mapper = (CommentMapper) this.getSqlSession().getMapper(CommentMapper.class);
-		List<Comment> ls=this.mapper.findbyuserid2(map);
-		return ls;
-	}
-
-	@Override
-	public int pagebyuseridCount(int userid) {
-		this.mapper = (CommentMapper) this.getSqlSession().getMapper(CommentMapper.class);
-		int count=this.mapper.pagebyuseridCount(userid);
+		int count=this.mapper.pageCountbyGoodsid(goodsid);
 		return count;
 	}
 
+	@Override
+	public List<Comment> findbygoodsid(Map<String, Object> map) {
+		System.out.println("99999999999999999999999"+map.get("goodsid"));
+		this.mapper = (CommentMapper) this.getSqlSession().getMapper(CommentMapper.class);
+		List<Comment> ls=this.mapper.findbygoodsid(map);
+		return ls;
+	}
 }

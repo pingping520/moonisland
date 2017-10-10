@@ -26,15 +26,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 <body>
 	<div id="brand">
-		<div id="brnd_header">MOON ISLAND&nbsp;商品评论页</div>
 		<div id="brand_body">
-			<table>
+			<%-- <table>
 				<tr>
 				<td>查询用户评价</td>
 				<td><input type="text" id="findbyuserid" value='${userid}'></td>
 				<td><input type="button" id="btnbyuserid" value="查询" onclick="findbyuserid()"></td>
 				</tr>
-			</table>
+			</table> --%>
 			<table class="table table-hover">
 				<tr class="info">
 					<td>评论编号</td>
@@ -96,7 +95,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			});
 		}
 		$(function(){
-			var userid=$('#findbyuserid').val();
+			/* var userid=$('#findbyuserid').val();
 			if(userid!=null && userid!=""){
 				$.get('comment/pagecountComment2?userid='+userid, function(data, textStatus, xhr)   {
 					var pageNum="";
@@ -113,7 +112,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					 }
 					 $("#pageNum").append(pageNum);
 				});
-			}
+			} */
 		}) 
 		function findbyuserid(){		
 			var userid=$('#findbyuserid').val();
