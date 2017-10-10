@@ -16,6 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MOON ISLAND商品管理页</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="icon/iconfont.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
        body{
            height:100%;
@@ -26,15 +27,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             overflow:hidden;
         }
         #main{
-        height:650px;
+        height:500px;
         overflow:hidden;
         }
         #main .con{
             position: absolute;
             left:0;
             top:30px;
-            width:100%;
-          
+            width:100%;  
         }
         .show{
             display: block;
@@ -42,15 +42,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         .hidd{
             display: none;
         }
-        #head{
-        	background:#ccc;
-        }
+        
          .hefont0{
             padding: 5px;
             font-weight: bold;
             /* background: #3c763d; */
         }
-        table,tr,td{vertical-align: middle!important;margin:0px;padding:0px;}
+        #goods_footer{width:100%;height:60px;line-height:60px;text-align:center;
+		position: relative;}
+	  .info table,tr,td{vertical-align: middle!important;margin:0px;padding:0px;}
+	  #page{position: absolute;bottom:-260px;left:40%;}
+	    .upA{width:50px;height:32px;line-height:32px;text-align:center;background:#337ab7;border-radius:3px;}
+	   .upA a{color:#ffffff;}
+		.td{width:10%;}
 </style>
 </head>
 <body>
@@ -62,6 +66,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div id="head">
        <div id="d01" class="pull-left hefont0" >
           	  在售商品
+          	 
         </div>
         <div id="d02" class="pull-left hefont0">
            	 下架商品
@@ -78,7 +83,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <td>原价</td>
                 <td>现价</td>
                 <td>商品颜色</td>
-                <td>商品内容</td>
+                <!-- <td>商品内容</td> -->
                 <td>浏览记录数量</td>
                 <td>收藏次数</td>
                 <td>销售数量</td>
@@ -108,7 +113,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <td>${good.originalPrice}</td>
                 <td>${good.salesPrice}</td>
                 <td>${good.goodsColor}</td>
-                <td>${good.goodsContent}</td>
+              <%--   <td>${good.goodsContent}</td> --%>
                 <td>${good.browseNum}</td>
                 <td>${good.saveNum}</td>
                 <td>${good.salesNum}</td>
@@ -126,7 +131,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <td>${good.styleE}</td>
                 <%-- <td>${good.addTime}</td> --%>
                 <td>${good.isSale}</td>    
-                <td><a href="goods/toupdateGood?goodsId=${good.goodsId}">更新</a></td>
+                <td><div class="upA"><a href="goods/toupdateGood?goodsId=${good.goodsId}">更新</a></div></td>
                 
             </tr>
         </c:forEach>
@@ -143,7 +148,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <td>原价</td>
                 <td>现价</td>
                 <td>商品颜色</td>
-                <td>商品内容</td>
+               <!--  <td>商品内容</td> -->
                 <td>浏览记录数量</td>
                 <td>收藏次数</td>
                 <td>销售数量</td>
@@ -173,7 +178,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <td>${good.originalPrice}</td>
                 <td>${good.salesPrice}</td>
                 <td>${good.goodsColor}</td>
-                <td>${good.goodsContent}</td>
+                <%-- <td><img src="images/${good.goodsContent}"/></td> --%>
                 <td>${good.browseNum}</td>
                 <td>${good.saveNum}</td>
                 <td>${good.salesNum}</td>

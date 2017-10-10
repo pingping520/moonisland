@@ -9,6 +9,7 @@ public class Goods implements Serializable{
 	private int goodsId; //商品id
 	private String brandId; //品牌Id
 	Brand brand;//多对一，多个商品属于一种品牌
+	Pic pic;
 	private String goodsName; //商品名称
 	private String category; //商品分类（1太阳镜，2 男士，3女士）
 	private String originalPrice; //原价
@@ -68,6 +69,14 @@ public class Goods implements Serializable{
 		this.styleE = styleE;
 		this.addTime = addTime;
 		this.isSale = isSale;
+	}
+     
+	public Pic getPic() {
+		return pic;
+	}
+
+	public void setPic(Pic pic) {
+		this.pic = pic;
 	}
 
 	public void setGoodsId(int goodsId){

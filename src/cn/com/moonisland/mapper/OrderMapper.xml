@@ -96,17 +96,29 @@
 			<result property="userTime" column="user_time"/>
 			<result property="userStatus" column="user_status"/>
 		</association>
+			<!-- 多个图片对应一个商品 -->
+		<association property="pic" javaType="Pic" >
+			<result property="goodsId" column="goods_id"/>
+			<result property="pic1" column="pic1"/>
+			<result property="pic2" column="pic2"/>
+			<result property="pic3" column="pic3"/>
+			<result property="pic4" column="pic4"/>
+			<result property="pic1Thumb" column="pic1_thumb"/>
+			<result property="pic2Thumb" column="pic2_thumb"/>
+			<result property="pic3Thumb" column="pic3_thumb"/>
+			<result property="pic4Thumb" column="pic4_thumb"/>
+		</association>
 	</resultMap>
 	<select id="selectShiStatus" parameterType="Map"  resultMap="orderResultMap">
 		<![CDATA[
-					select ord.*, go.goods_name, gla.glass_name,us.nick_name from moon_order ord,moon_goods go, moon_glass gla,moon_user us
+					select ord.*, go.goods_name,go.sales_price, gla.glass_name,us.nick_name from moon_order ord,moon_goods go, moon_glass gla,moon_user us
 			where ord.glass_id=gla.glass_id and ord.goods_id=go.goods_id and ord.user_id=us.user_id and order_status=#{status} limit #{page},8 ;
 			]]>
 	</select>
 	
 	<select id="selectStatus" parameterType="Map"  resultMap="orderResultMap">
 		<![CDATA[
-				select ord.*, go.goods_name, gla.glass_name,us.nick_name from moon_order ord,moon_goods go, moon_glass gla,moon_user us
+				select ord.*, go.goods_name,go.sales_price, gla.glass_name,us.nick_name from moon_order ord,moon_goods go, moon_glass gla,moon_user us
 			where ord.glass_id=gla.glass_id and ord.goods_id=go.goods_id and ord.user_id=us.user_id and shipping_status=#{status} limit #{page},8 ;
 			]]>
 	</select>
@@ -118,8 +130,8 @@
 	
 	<select id="order" parameterType="int" resultMap="orderResultMap">
 		<![CDATA[
-			select ord.*, go.goods_name, gla.glass_name,us.nick_name from moon_order ord,moon_goods go, moon_glass gla,moon_user us
-			where ord.glass_id=gla.glass_id and ord.goods_id=go.goods_id and ord.user_id=us.user_id limit #{page},8 ;
+			 select ord.*, go.goods_name, gla.glass_name,us.nick_name from moon_order ord,moon_goods go, moon_glass gla,moon_user us
+			where ord.glass_id=gla.glass_id and ord.goods_id=go.goods_id and ord.user_id=us.user_id  group by order_number limit #{page},8;
 		]]>
 	</select>
 	<select id="findOrder" parameterType="int" resultMap="orderResultMap">
@@ -207,7 +219,7 @@
 	</update>
 	<!-- 根据订单查订单 -->
 	  <select id="findoneorder" parameterType="Order" resultMap="orderResultMap">
-    	select ord.*, go.goods_name,go.goods_content, gla.glass_name,us.nick_name from moon_order ord,moon_goods go, moon_glass gla,moon_user us
+    	select ord.*,p.pic1,go.goods_name,go.sales_price,go.goods_content, gla.glass_name,us.nick_name from moon_order ord,moon_goods_pic p,moon_goods go, moon_glass gla,moon_user us
 			where ord.glass_id=gla.glass_id and ord.goods_id=go.goods_id and ord.user_id=us.user_id and order_number=#{orderNumber}
       </select>
 </mapper>

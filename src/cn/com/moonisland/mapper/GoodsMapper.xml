@@ -32,6 +32,18 @@
 		<association property="brand" javaType="Brand">
 			<id column="brand_id" property="brandId"/>
 		</association>
+			<!-- 多个图片对应一个商品 -->
+		<association property="pic" javaType="Pic" >
+			<result property="goodsId" column="goods_id"/>
+			<result property="pic1" column="pic1"/>
+			<result property="pic2" column="pic2"/>
+			<result property="pic3" column="pic3"/>
+			<result property="pic4" column="pic4"/>
+			<result property="pic1Thumb" column="pic1_thumb"/>
+			<result property="pic2Thumb" column="pic2_thumb"/>
+			<result property="pic3Thumb" column="pic3_thumb"/>
+			<result property="pic4Thumb" column="pic4_thumb"/>
+		</association>
 	</resultMap>
 	
 	<insert id="addGoods" parameterType="Goods">

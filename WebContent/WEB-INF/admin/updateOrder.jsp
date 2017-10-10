@@ -11,28 +11,49 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
 <title>订单更改页</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
 <style type="text/css">
     
-    #main{
-        width:1500px;
-        margin: 100px auto;
+   #main{
+        font-size:16px;
+        
     }
+    table{
+    margin:0 auto;
+    }
+table tr td{
+
+  padding:15px;
+}
+table tr td:first-child{
+ text-align:right;
+}
+table tr td input{
+ width:800px;
+ height:30px;
+ }
 </style>
 </head>
 <body>
 <div id="main">
+<input type="hidden" id="orderId" value="${order.orderId}" />
 	<table>
 		<tr>
 			
-			<td><input type="hidden" id="orderId" value="${order.orderId}" />
-			订单号</td>
+			<td>订单号</td>
+			
 			<td><input type="text" id="orderNumber"
 				value="${order.orderNumber}" /></td>
+		</tr>
+		<tr>
 			<td>商品id</td>
 			<td><input type="text" id="goodsId" value="${order.goodsId}" /></td>
-		
+		</tr>
+		<tr>
 			<td>镜片id</td>
 			<td><input type="text" id="glassId" value="${order.glassId}" /></td>
+		</tr>
+		<tr>
 			<td>用户id</td>
 			<td><input type="text" id="userId" value="${order.userId}" /></td>
 		</tr>
@@ -40,35 +61,50 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <td>验光单id</td>
 			<td><input type="text" id="optometryId"
 				value="${order.optometryId}" /></td>
-		
+		</tr>
+		<tr>
 			<td>订单状态</td>
 			<td><input type="text" id="orderStatus"
 				value="${order.orderStatus}" /></td>
+		</tr>
+		<tr>
 			<td>配送情况</td>
 			<td><input type="text" id="shippingStatus"
 				value="${order.shippingStatus}" /></td>
+		</tr>
+		<tr>
 			<td>支付状态</td>
 			<td><input type="text" id="payStatus" value="${order.payStatus}" /></td>
 		</tr>
         <tr>
 			<td>收货人姓名</td>
 			<td><input type="text" id="consignee" value="${order.consignee}" /></td>
+	    </tr>
+		<tr>
 			<td>收货人省份</td>
 			<td><input type="text" id="province" value="${order.province}" /></td>
+	    </tr>
+		<tr>
 			<td>收货人城市</td>
 			<td><input type="text" id="city" value="${order.city}" /></td>
-		
+		</tr>
+		<tr>
 			<td>收货人地区</td>
 			<td><input type="text" id="district" value="${order.district}" /></td>
 		</tr>
         <tr>	
             <td>收货人详细地址</td>
 			<td><input type="text" id="address" value="${order.address}" /></td>
+	    </tr>
+		<tr>
 			<td>邮编</td>
 			<td><input type="text" id="zipcode" value="${order.zipcode}" /></td>
-		
+		</tr>
+		<tr>
 			<td>收货人手机</td>
 			<td><input type="text" id="phone" value="${order.phone}" /></td>
+		</tr>
+		<tr>
 			<td>购买数量</td>
 			<td><input type="text" id="payNum" value="${order.payNum}" /></td>
 		</tr>
@@ -76,13 +112,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <td>订单金额</td>
 			<td><input type="text" id="orderMoney"
 				value="${order.orderMoney}" /></td>
-		
+		</tr>
+		<tr>
 			<td>留言</td>
 			<td><input type="text" id="postscript"
 				value="${order.postscript}" /></td>
+		</tr>
+		<tr>	
 			<td>配送方式名称</td>
 			<td><input type="text" id="shippingName"
 				value="${order.shippingName}" /></td>
+		</tr>
+		<tr>	
 			<td>快递单号</td>
 			<td><input type="text" id="shippingNum"
 				value="${order.shippingNum}" /></td>
@@ -91,17 +132,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<td>支付方式名称</td>
 			<td><input type="text" id="payName" value="${order.payName}" /></td>
 			<%--   <td>订单生成时间</td><td><input type="text" id="orderTime" value="${order.orderTime}" /></td> --%>
+		</tr>
+		<tr>	
 			<td>图片编号</td>
 			<td><input type="text" id="picId" value="${order.picId}" /></td>
-		
+		</tr>
+		<tr>
 			<td>属性编号</td>
 			<td><input type="text" id="attrId" value="${order.attrId}" /></td>
 		</tr>
         <tr>
+           <td></td>
 			<td>
-				<button id="updateOrder">更改商品属性</button>
+				<button class="btn btn-success" id="updateOrder">更改商品属性</button>
 			</td>
-
 		</tr>
 	</table>
     </div>

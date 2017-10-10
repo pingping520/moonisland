@@ -14,6 +14,7 @@ public class Order implements Serializable{
 	private Goods goods; //商品id
 	private Glass glass;
 	private User user;
+	private Pic pic;
 	private String glassId; //镜片id
 	private String userId; //用户id
 	private String optometryId; //验光单id
@@ -75,6 +76,14 @@ public class Order implements Serializable{
 		this.orderTime = orderTime;
 		this.picId = picId;
 		this.attrId = attrId;
+	}
+	
+	public Pic getPic() {
+		return pic;
+	}
+
+	public void setPic(Pic pic) {
+		this.pic = pic;
 	}
 
 	public int getOrderId() {

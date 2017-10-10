@@ -16,18 +16,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>Title</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <style type="text/css">
-
-
         #head{
             overflow: hidden;
             position: relative;
-            background:#cccccc;
         }
-       #main .con{
-          
+       #main .con{ 
            left:0;
            top:30px;
        }
+       #main{
+        height:500px;
+        }
         .show{
             display: block;
         }
@@ -39,9 +38,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               font-weight: bold;
         }
        #thead tr th {
-        padding:0px;
+        padding:3px;
+        width:20%;
         }
         #thead tr{
+        padding-left:5px;
         background:#393d49;
         color:#fff;
         }
@@ -50,14 +51,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         border-bottom:1px solid #000000;
         }
         .table tbody tr td {
-        padding:0px;
+          padding:0 10px 0 10px;
+           width:20%;
+           height:50px;
         }
+         #goods_footer{width:100%;height:60px;line-height:60px;text-align:center;
+		position: relative;
+	}
+	  .info table,tr,td{vertical-align: middle!important;margin:0px;padding:0px;}
+	   #page{position: absolute;bottom:-260px;left:40%;}
+	   .upA{width:50px;height:32px;line-height:32px;text-align:center;background:#337ab7;border-radius:3px;}
+	   .upA a{color:#ffffff;}
 </style>
 </head>
 <body>
 <input type="hidden" id="sta" value='1${status}'>
 	<div id="order">
-		<div id="order_heade" class="text-center"><h3>MOON ISLAND&nbsp;订单列表管理页</h3>	
+		<div id="order_heade" class="text-center">
 		</div>
 
 		
@@ -225,10 +235,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		
 		<div id="goods_footer">
-			<c:forEach var="x" begin="1" end="${count}" step="1" varStatus="st">
+			<ul class="pagination" id="page">
+                <li><a href="#">&laquo;</a></li>
+               <c:forEach var="x" begin="1" end="${count}" step="1" varStatus="st">
+                    <c:if test="${param.page==x}">
+                        <li class="active"><a href="order/findAll?page=${(x-1)*2}">${x}</a></li>
+                    </c:if>
+                    <c:if test="${param.page!=x}">
+                        <li><a href="order/findAll?page=${(x-1)*2}">${x}</a></li>  
+                    </c:if>                 
+                </c:forEach>
+                <li><a href="#">&raquo;</a></li>
+                <li><span>共&nbsp;${count}&nbsp;页.</span></li>
+            </ul> 
+			<%-- <c:forEach var="x" begin="1" end="${count}" step="1" varStatus="st">
 				<a href="order/findAll?page=${(x-1)*2}">${x}</a>&nbsp;&nbsp;&nbsp;&nbsp;
             </c:forEach>
-			共&nbsp;${count}&nbsp;页.
+			共&nbsp;${count}&nbsp;页. --%>
 		</div>
 	</div>
 </body>
@@ -261,9 +284,9 @@ var status=$('#sta').val();
 				$.get("order/oneorder?number="+ordernumber, function(data) {
 					for (var i = 0; i < data.length; i++) {
 						ht+='<tr><td>'+data[i].goods.goodsName+'</td>'
-						ht+='<td>'+data[i].goods.goodsContent+'</td>'
+						ht+='<td><img src="'+data[i].pic.pic1+'" style="width:50px;height:50px;"></td>'
 						ht+='<td>￥'+data[i].goods.salesPrice+'</td><td>数量：'+data[i].payNum+'</td>'
-						ht+='<td><a href="order/toupdateOrder?orderId='+data[i].orderId+'">更新</a></td></tr>';
+						ht+='<td><div  class="upA"><a href="order/toupdateOrder?orderId='+data[i].orderId+' ">更新</a></div></td></tr>';
 					};
 					ht+='</tbody>';
 					tab.append(ht)

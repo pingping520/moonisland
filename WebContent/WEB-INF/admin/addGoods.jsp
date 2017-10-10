@@ -11,50 +11,80 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
 <title>添加商品页</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
 <style type="text/css">
 #main{
-        width:1800px;
-        margin: 100px auto;
+        font-size:16px;
+        
     }
+    table{
+    margin:0 auto;
+    }
+table tr td{
+
+  padding:15px;
+}
+table tr td:first-child{
+ text-align:right;
+}
+table tr td input{
+ width:800px;
+ height:30px;
+ }
 </style>
 </head>
 <body>
 <div id="main">
-<h2>添加商品</h2>
+
 	<table>
 		<tr>
 			<td>品牌编号</td>
 			<td><input type="text" id="brandid" name="brandid" /></td>
+		</tr>
+		<tr>
 			<td>商品名称</td>
 			<td><input type="text" id="goodsname" name="goodsname" /></td>
+		</tr>
+		<tr>
 			<td>商品分类</td>
 			<td><select name="category" id="category">
 					<option value="1">太阳镜</option>
 					<option value="2">男士眼镜</option>
 					<option value="3">女士眼镜</option>
 			</select></td>
+		</tr>
+		<tr>
 			<td>原&nbsp;价</td>
 			<td><input type="text" id="originalprice" name="originalprice" /></td>
+		</tr>
+		<tr>
 			<td>现价</td>
 			<td><input type="text" id="salesprice" name="salesprice" /></td>
+		</tr>
+		<tr>
 			<td>商品颜色</td>
 			<td><input type="text" id="goodscolor" name="goodscolor" /></td>
 		</tr>
 		<tr>
 			<td>商品内容</td>
 			<td><input type="file" id="file" name="file" title="" /></td>
-
+		</tr>
+		<tr>
 			<td>浏览数量</td>
 			<td><input type="text" id="browsenum" name="browsenum" /></td>
-
-			<td>收藏次数 </td><td><input type="text" id="savenum" name="savenum" />
-
-			</td>
+		</tr>
+		<tr>
+			<td>收藏次数 </td><td><input type="text" id="savenum" name="savenum" /></td>
+		</tr>
+		<tr>
 			<td>销售数量</td>
 			<td><input type="text" id="salesnum" name="salesnum" /></td>
+		</tr>
+		<tr>
 			<td>商品关键字</td>
 			<td><input type="text" id="goodskeywords" name="goodskeywords" />
-
+        </tr>
+		<tr>
 			</td>
 			<td>是否在售</td>
 			<td><input type="text" id="isonsale" name="isonsale" /></td>
@@ -62,47 +92,61 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<tr>
 			<td>颜色</td>
 			<td><input type="text" id="goodsColor" name="goodsColor" /></td>
-			<td>库存数量 </td><td><input type="text" id="stocknum" name="stocknum" />
-
-			</td>
-			<td>立减价格</td><td> <input type="text" id="minusprice" name="minusprice" />
-
-			</td>
-			<td>特权改价 </td><td><input type="text" id="privilege" name="privilege" />
-
-			</td>
+		</tr>
+		<tr>
+			<td>库存数量 </td><td><input type="text" id="stocknum" name="stocknum" /></td>
+		</tr>
+		<tr>
+			<td>立减价格</td><td> <input type="text" id="minusprice" name="minusprice" /></td>
+	    </tr>
+		<tr>
+			<td>特权改价 </td><td><input type="text" id="privilege" name="privilege" /></td>
+		</tr>
+		<tr>
 			<td>是否参加积分活动</td><td> <select name="points" id="points">
 					<option value="0">参加</option>
 					<option value="1">不参加</option>
-			</select>
-
-				
-
-			</td>
+			</select></td>
+		</tr>
+		<tr>
 			<td>款式</td>
 			<td><input type="text" id="style" name="style" /></td>
+		</tr>
 		<tr>
 			<td>尺码A</td>
 			<td><input type="text" id="stylea" name="stylea" /></td>
+		</tr>
+		<tr>
 			<td>尺码B</td>
 			<td><input type="text" id="styleb" name="styleb" /></td>
+		</tr>
+		<tr>
 			<td>尺码C</td>
 			<td><input type="text" id="stylec" name="stylec" /></td>
+		</tr>
+		<tr>
 			<td>尺码D</td>
 			<td><input type="text" id="styled" name="styled" /></td>
+		</tr>
+		<tr>
 			<td>尺码E</td>
 			<td><input type="text" id="stylee" name="stylee" /></td>
-
+		</tr>
+		<tr>
 			<td>是否促销</td>
 			<td><select name="issale" id="issale">
 					<option value="0">促销</option>
 					<option value="1">未促销</option>
 			</select></td>
 		</tr>
-	</table>
-	<div>
+	
+	<tr>
+	 <td></td>
+	  <td>
 		<button class="btn btn-success" id="addGoods">添加品牌</button>
-	</div>
+		</td>
+	</tr>
+</table>
 </div>
 </body>
 <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>

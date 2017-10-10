@@ -30,7 +30,7 @@ html, body {
 
 #main {
 	width: 100%;
-	height: 80%;
+	height: 90%;
 	background-size: cover;
 	position: relative;
 }
@@ -41,7 +41,7 @@ html, body {
 	border-radius: 3%;
 	position: absolute;
 	left: 35%;
-	top: 17%;
+	top: 30%;
 	background-color: #242c3f;
 	color: #ffffff;
 	opacity: 0.9;
