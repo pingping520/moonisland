@@ -1,4 +1,4 @@
-package cn.com.moonisland.test;
+/*package cn.com.moonisland.test;
 
 import static org.junit.Assert.*;
 
@@ -28,3 +28,4 @@ public class SaveTest {
 	}
 
 }
+*/

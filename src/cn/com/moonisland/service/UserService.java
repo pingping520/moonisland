@@ -18,6 +18,10 @@ public interface UserService {
 	 */
 	public int pageCount();
 	/**
+	 * 查询白名单总页数
+	 */
+	public int whitePageCount();
+	/**
 	 * 分页查询
 	 */
 	public List<User> users(int page);
@@ -29,4 +33,8 @@ public interface UserService {
 	 * 查询单个用户
 	 */
 	public User findUser(User user);
+	/**
+	 * 查询全部白名单用户
+	 */
+	public List<User> whiteListUser(int page);
 }

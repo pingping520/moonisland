@@ -45,6 +45,16 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User findUser(User user) {
 		return this.userDao.findUser(user);
+	}
+
+	@Override
+	public List<User> whiteListUser(int page) {
+		return this.userDao.whiteListUser(page);
+	}
+
+	@Override
+	public int whitePageCount() {
+		return this.userDao.whitePageCount();
 	}	
 
 }

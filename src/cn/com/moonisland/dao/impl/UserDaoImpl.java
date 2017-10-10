@@ -1,8 +1,6 @@
 package cn.com.moonisland.dao.impl;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 
@@ -49,5 +47,16 @@ public class UserDaoImpl extends SqlSessionDaoSupport implements UserDao {
 		return this.mapper.findUser(user);
 	}
 
+	@Override
+	public List<User> whiteListUser(int page) {
+		this.mapper = this.getSqlSession().getMapper(UserMapper.class);
+		return this.mapper.whiteListUser(page);
+	}
+
+	@Override
+	public int whitePageCount() {
+		this.mapper = this.getSqlSession().getMapper(UserMapper.class);
+		return this.mapper.whitePageCount();
+	}
 
 }
