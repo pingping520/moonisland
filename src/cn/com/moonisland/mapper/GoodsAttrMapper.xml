@@ -4,7 +4,7 @@
 
 <mapper namespace="cn.com.moonisland.mapper.GoodsAttrMapper">
 	<resultMap type="GoodsAttr" id="goodsAttrResultMap">
-		<id property="attrId" column="arrt_id"/>
+		<id property="attrId" column="attr_id"/>
 		<result property="material" column="material"/>
 		<result property="border" column="border"/>
 		<result property="size" column="size"/>
@@ -75,7 +75,7 @@
 	</update>
 	
 	<select id="findAll" resultMap="goodsAttrResultMap">
-		select * from moon_goods_attr
+		select ma.*,mg.goods_name from moon_goods_attr ma,moon_goods mg 
 	</select>
 	
 	<select id="findByGoods" resultMap="goodsAttrResultMap">

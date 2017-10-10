@@ -4,11 +4,11 @@ var navs = [
 	"icon": "&#xe60d;",
 	"spread": true,
 	"children": [{
-		"title": "用户列表",
-		"href": "user/list?page=1"
+		"title": "全部用户",
+		"href": "user/list?page=0"
 	},{
-		"title": "白名单用户列表",
-		"href": "user/whiteUsers?page=1"
+		"title": "白名单用户",
+		"href": "user/whiteUsers?page=0"
 	}]
 },
 

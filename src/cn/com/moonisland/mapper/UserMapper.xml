@@ -111,7 +111,7 @@
 	
 	<select id="whiteListUser" parameterType="int" resultMap="userResultMap">
 		<![CDATA[
-			select * from moon_user where user_status=#{userStauts} limit #{page},10
+			select * from moon_user where user_status=1 limit #{page},10
 		]]>
 	</select>
 </mapper>

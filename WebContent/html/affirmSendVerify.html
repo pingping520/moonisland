@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--默认情况下、UI布局的宽度和移动设备的宽度一致，缩放大小为原始大小-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta charset="UTF-8">
+    <title>手机快速注册</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="icon/iconfont.css">
+    <link rel="stylesheet" href="css/affirmSendVerify.css">
+
+</head>
+<body>
+<!-- Button trigger modal -->
+
+<div id="wrap">
+    <!--<nav class="navbar navbar-default navbar-fixed-top">-->
+        <div class="header">
+        <span class="top" id="topleft">
+                    <a href="#"><i class="iconfont icon-toLeft-copy rleft" style="color:#000;"></i></a>
+        </span>
+            <span class="top topright">手机快速注册</span>
+        </div>
+    <!--</nav>-->
+
+    <div id="main" class="">
+        <div class="form-group has-feedback">
+            <input type="text" class="form-control" placeholder="请输入手机号" id="inp">
+            <span class="form-control-feedback" style="font-weight:600">+86</span>
+            <i class="iconfont icon-jiantou-copy form-control-feedback"></i>
+        </div>
+        <div id="pro" style="width:100%;margin-top:15px;height:20px;">
+            <span class="glyphicon glyphicon-ok-sign" id="agree"></span>
+            <span>同意</span>
+            <span style="overflow:hidden;height:40px;font-size:14px ;font-weight:600;">月亮岛用户协议、用户隐私政策</span>
+        </div>
+        <div class="form-group"style="margin-top:32px;height:50px;" >
+            <button class="btn btn-default btn-block" disabled="disabled" id="btn">下一步</button>
+        </div>
+        <div>
+            <span style="font-size: 14px;color:#bdbdbd;">遇到问题？您可以<a href="#"><u>联系客服</u></a>。</span>
+        </div>
+    </div>
+    <div id="cover" class="none"></div>
+    <div id="modal" class="none">
+        <div id="modal_top">
+            <p class="fill">我们将发送短信验证码至:</p>
+            <p id="tel">1111</p>
+        </div>
+        <div id="modal_btn" class=" btn-group btn-group-justified">
+            <div class="btn-group">
+                <button type="button" class="btn btn-default" id="cancel">取消</button>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-danger" id="confirm">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/affirmSendVerify.js"></script>
+</html>

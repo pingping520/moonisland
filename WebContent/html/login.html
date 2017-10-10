@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--默认情况，ui布局的宽度和移动设备的宽度一致，缩放大小为原始大小-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>用户登录</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="icon/iconfont.css">
+
+</head>
+<body>
+<div class="">
+    <form action=""  class="form-inline">
+
+        <!--header-->
+        <div class="header">
+
+            <span class="top iconfont icon-chuyidong" id="topleft">
+             </span>
+            <span class="top topright" id="login-index">登录</span>
+        </div>
+        <!--input-->
+        <div class="main-main">
+        <div class="input-a input-username">
+            <div class="input-group input-pass">
+                <span class="input-group-addon span1" id="span1">账号</span>
+                <input type="password" class="form-control text-b" id="text-input" aria-label="Amount (to the nearest dollar)"
+                       placeholder="用户名/手机号">
+
+            </div>
+
+
+        </div>
+
+            <div class="input-a">
+
+                <div class="input-group input-pass">
+                    <span class="input-group-addon span1" id="span2">密码</span>
+
+                        <input type="text" class="form-control text-b" aria-label="Amount (to the nearest dollar)"
+                               placeholder="请输入密码" id="text-input2">
+
+                    <span class="input-group-addon span1  show" id="img1" >
+                        <!--yan-->
+                        <span class="glyphicon glyphicon-eye-close span2" style="color:#d8d8d8">
+
+                        </span>
+                    </span>
+                    <span class="input-group-addon span1 span1 hid" id="img2" >
+                        <!--yan-->
+                        <span class="glyphicon glyphicon-eye-open span2">
+
+                        </span>
+                    </span>
+
+
+                </div>
+
+            </div>
+            <div class="btndiv1">
+            <button type="button" class="btn1 btn btn-default" id="btn">登录</button>
+            </div>
+        <div class="divreg">
+            <div class="reg pull-left " ><a href="affirmSendVerify.html" id="reg">手机快速注册</a></div>
+            <div class="forgetpwd pull-right" id="forgetpwd"><a href="forgetPwd.html" id="forget">忘记密码</a></div>
+        </div>
+            <div class="login3">
+                <div class="reg pull-left " id="vxdiv" ><a href="#" id="vx"><img src="images/lo_03.gif" class="vx_qq" alt="" id="weChat"></a>
+                </div>
+                <div class="forgetpwd pull-right" id="qqdiv" ><a href="#" id="qq"><img src="images/lo_05.gif" class="vx_qq" alt="" id="Q"></a></div>
+
+            </div>
+        </div>
+
+    </form>
+</div>
+</body>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/login.js"></script>
+</html>

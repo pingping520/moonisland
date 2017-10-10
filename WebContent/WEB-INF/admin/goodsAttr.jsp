@@ -36,7 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<c:forEach items="${attrs}" var="attr">
 					<tr>
 					<td>${attr.attrId}</td>
-					<td>${attr.goods}</td>
+					<td>${attr.goods.goodsName}</td>
 					<td>${attr.material}</td>
 					<td>${attr.border}</td>
 					<td>${attr.size}</td>
@@ -47,8 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</c:forEach>
 			</table>
 		</div>
-		<div id="brand_footer">
-		</div>
+		
 	</div>
 </body>
 <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
