@@ -22,6 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	#tblpagenum{margin:0 auto;}
 	.num{width:60px;}
 	#user_footer{width:100%;height:60px;line-height:60px;text-align:center;position: relative;}
+	#page{position: absolute;bottom:-260px;left:40%;}
 </style>
 <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
 </head>
