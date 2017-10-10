@@ -31,7 +31,7 @@ var navs = [
 		"href": "goodsAttr/findAll"
 	},{
 		"title": "添加属性",
-		"href": "goodsAttr/add"
+		"href": "goodsAttr/toAdd"
 	}]
 },
 {

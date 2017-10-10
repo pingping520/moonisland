@@ -1,4 +1,4 @@
-package cn.com.moonisland.test;
+/*package cn.com.moonisland.test;
 
 import java.util.List;
 
@@ -25,3 +25,4 @@ public class PicTest {
 		System.out.println(pic.getGoods().getGoodsName());
 	}
 }
+*/

@@ -20,6 +20,16 @@ public class GoodsAttrController {
 	private GoodsAttrService goodsAttrService;
 	
 	/**
+	 * 跳转到添加商品属性
+	 */
+	@RequestMapping(value="/toAdd")
+	public ModelAndView toAdd(){
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/WEB-INF/admin/addAttr.jsp");
+		return mv;
+	}
+	
+	/**
 	 * 添加商品属性
 	 */
 	@RequestMapping(value="/add")

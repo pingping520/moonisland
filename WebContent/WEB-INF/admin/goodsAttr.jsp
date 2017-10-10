@@ -13,7 +13,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="description" content="This is my page">
 <title>MOON ISLAND照片墙管理页面</title>
 <link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="css/brand.css" />
+<style type="text/css">
+#goodsAttr{margin:0px auto;width:100%;text-align:center;position:relative;}
+#goodsAttr_body{widtth:100%;height:500px;}
+#goodsAttr_body table,tr,td{vertical-align: middle!important;margin:0px;padding:0px;}
+</style>
 </head>
 <body>
 	<div id="goodsAttr">
