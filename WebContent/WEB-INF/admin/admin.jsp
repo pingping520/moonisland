@@ -23,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link rel="stylesheet" href="icon/iconfont.css">
 <style type="text/css">
 .layui-layout-admin .layui-side {width: 216px;}
-.layui-body {left: 216px;bottom: 0; border-left: solid 2px #1AA094;border-right:solid 2px #1AA094;z-index:0;}
+.layui-body {left: 217px;bottom: 0; border-left: solid 2px #1AA094;border-right:solid 2px #1AA094;z-index:0;}
 .layui-nav-tree {padding-left: 8px;}
 .layui-tab-content{padding:100px 50px 0px 50px;}
 #admin-footer{height:50px;line-height:50px;background: #393d49;}

@@ -44,10 +44,10 @@ var navs = [
 	"spread": false,
 	"children": [{
 		"title": "镜片清单",
-		"href": "goodsAttr/findAll"
+		"href": "glass/findAllGlass"
 	},{
 		"title": "添加镜片",
-		"href": "goodsAttr/toAdd"
+		"href": "glass/toglass"
 	}]
 },
 
