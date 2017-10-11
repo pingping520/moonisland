@@ -61,7 +61,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 				<table class="site-table table-hover" style="vertical-align: middle!important;margin:0px;padding:0px;text-align:center;">
 					<thead>
-						<tr>	
+						<tr  class="${page}" id="tbl">	
 							<td>评论编号</td>
 							<td>用户编号</td>
 							<td>用户昵称</td>
@@ -79,7 +79,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</thead>
 					<!--内容容器-->
 					<tbody id="con">
-				<c:forEach items="${commentList}" var="comment">
+				<c:forEach items="${commentList}" var="comment" begin="0" step="1" varStatus="img">
 					<tr class="success">
 					<td>${comment.commentId}</td>
 					<td>${comment.user.userId}</td>
@@ -87,7 +87,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td>${comment.goodsId}</td>
 					<td>${comment.orderId}</td>
 					<td>${comment.commentContentword}</td>
-					<td>${comment.commentContentimg}</td>
+					<td id="img${img.index}"></td>
 					<td>${comment.guarantee}</td>
 					<td>${comment.server}</td>
 					<td>${comment.logistics}</td>
@@ -104,7 +104,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<!--分页容器-->
 				<div id="paged">
 					<ul class="pagination" id="page">
-					<li><a href="#">&laquo;</a></li>
+					<li><a href="javascript:last()">&laquo;</a></li>
 					<c:forEach var="x" begin="1" end="${count}" step="1" varStatus="st">
 						<c:if test="${param.page==x}">
 							<li class="active"><a href="comment/findpageComment?page=${x}">${x}</a></li>
@@ -113,7 +113,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<li><a href="comment/findpageComment?page=${x}">${x}</a></li>	
 						</c:if>					
 					</c:forEach>
-					<li><a href="#">&raquo;</a></li>
+					<li><a href="javascript:next()">&raquo;</a></li>
 					<li><span>共&nbsp;${count}&nbsp;页.</span></li>
 				</ul>	
 				</div>
@@ -186,7 +186,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div> --%>
 	<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
 	<script type="text/javascript">
-		
+		$(function(){
+			var page=$('#tbl').attr('class');
+			console.log(page)
+			$.post('comment/findpageCommentList',{'page':page}, function(data) {
+				for(var i=0;i<data.length;i++){
+					if(data[i].commentContentimg!=null&&data[i].commentContentimg!=""){
+						if(data[i].commentContentimg.indexOf("|")){
+			                var string=data[i].commentContentimg;
+			                myCommentpic=string.split("|");
+			                for(var j=0;j<myCommentpic.length;j++){
+			                    $('#img'+i).append('<img class="img" alt="" src="images/'+myCommentpic[0]+'">')
+			                }
+			            }else{
+			            	$('#img'+i).append('<img class="img" alt="" src="images/'+data[i].commentContentimg+'">')
+			            }
+					} 
+				}
+			});
+		})
+		function last(){
+			var a=$('.active').children().text();
+			if(a>1){
+				a=a-1;
+				location.href="comment/findpageComment?page="+a;
+			}
+		} 
+		function next(){
+			var a=$('.active').children().text();
+			var pagenum=$('#page').children('li').length;
+			var b=parseInt(a);
+			//alert( typeof(b))
+			if(a<pagenum-3){
+				b=b+1;
+				location.href="comment/findpageComment?page="+b;
+			}
+		} 
 		function check(bid){
 			var status;
 			var ck = document.getElementById(bid);
