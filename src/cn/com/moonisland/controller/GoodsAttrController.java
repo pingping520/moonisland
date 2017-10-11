@@ -20,7 +20,7 @@ public class GoodsAttrController {
 	private GoodsAttrService goodsAttrService;
 	
 	/**
-	 * 跳转到添加商品属性
+	 * 跳转到添加商品属性页
 	 */
 	@RequestMapping(value="/toAdd")
 	public ModelAndView toAdd(){
@@ -37,6 +37,19 @@ public class GoodsAttrController {
 	public int addGoodsAttr(GoodsAttr goodsAttr){
 		int result = goodsAttrService.addGoodsAttr(goodsAttr);
 		return result;
+	}
+	
+	
+	/**
+	 * 跳转到更新页
+	 */
+	@RequestMapping(value="toUpdate")
+	public ModelAndView toUpdate(){
+		ModelAndView mv = new ModelAndView();
+		/*GoodsAttr goodsAttr = this.goodsAttrService.find*/
+		mv.setViewName("/WEB-INF/admin/updateAttr.jsp");
+		return mv;
+		
 	}
 	
 	/**
