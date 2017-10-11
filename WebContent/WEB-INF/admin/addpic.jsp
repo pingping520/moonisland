@@ -12,33 +12,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="description" content="This is my page">
 <title>Insert title here</title>
 <style type="text/css">
-	#brand{margin:0px auto;width:100%;text-align:center;}
-	#brnd_header{width:100%;height:60px;line-height:60px;}
-	#brand_body{widtth:100%;height:500px;}
-	#brand_footer{width:100%;height:60px;line-height:60px;text-align:center;}
+	
+	#top{width:100%;height:100%;line-height:40px; text-align:center ;}
+	
 </style>
 <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="js/ajaxfileupload.js"></script>
 </head>
 <body>
-	<p>
+<div id="top">
+	<div>
 		商品编号:<input type="text" name="goodsid" id="goodsid">
-	</p>
-	<p>
+	</div>
+	<div>
 		图片1:<input type="file" name="file" id="file" title="">
-	</p>
-	<p>
+	</div>
+	<div>
 		图片2:<input type="file" name="file1" id="file1" title="">
-	</p>
-	<p>
+	</div>
+	<div>
 		图片3:<input type="file" name="file2" id="file2" title="">
-	</p>
-	<p>
+	</div>
+	<div>
 		图片4:<input type="file" name="file3" id="file3" title="">
-	</p>
-	<p>
+	</div>
+	<div>
 		<input type="button" value="添加商品图片" id="btnAdd" />
-	</p>
+	</div>
+</div>
 </body>
 <script type="text/javascript">
     $(
