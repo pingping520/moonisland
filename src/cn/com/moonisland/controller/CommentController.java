@@ -76,6 +76,7 @@ public class CommentController {
 	@RequestMapping(value="/findpageComment")
 	public ModelAndView findpageComment(int page){
 		ModelAndView mView=new ModelAndView();
+		mView.addObject("page", page);
 		page=(page-1)*10;
 		List<Comment> ls=this.commentService.findbypage(page);
 		int count=this.commentService.findpagecount();
