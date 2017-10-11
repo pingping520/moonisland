@@ -73,7 +73,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td>${attr.size}</td>
 					<td>${attr.function}</td>
 					<td>${attr.color}</td>
+<<<<<<< HEAD
 					<td><a href="brand/toUpdate?brandId=${brand.brandId}"><button class="layui-btn layui-btn-mini">更新</button></a></td>
+=======
+					<td><a href="goodsAttr/toUpdate?attrId=${attr.attrId}"><button class="btn btn-sm btn-primary">更新</button></a></td>
+>>>>>>> 678847a907b4e6c9e66bdf8d04a83595f347326b
 				</tr>
        			</c:forEach>
 					</tbody>

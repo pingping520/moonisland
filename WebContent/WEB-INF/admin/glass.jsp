@@ -23,9 +23,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	#brand_body{widtth:100%;height:500px;}
 	#brand_footer{width:100%;height:60px;line-height:60px;text-align:center;}
 	#tblnum{width:100px; height:100px;line-height:20px; margin:0 auto;}
+	#page{position: absolute;bottom:-260px;left:40%;}
+	#user_footer{width:100%;height:60px;line-height:60px;text-align:center;position: relative;}
 </style>
 </head>
 <body>
+<<<<<<< HEAD
 	<div style="margin: 15px;">
 		<blockquote class="layui-elem-quote">
 			<h1>moonisland后台管理系统</h1>
@@ -116,6 +119,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	<%-- <div id="brand">
 		<div id="brnd_header">MOON ISLAND&nbsp;镜片管理页</div>
+=======
+	<div id="brand">
+>>>>>>> 678847a907b4e6c9e66bdf8d04a83595f347326b
 		<div id="brand_body">
 			<table class="table table-hover">
 				<tr class="info">
@@ -138,7 +144,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <td>颜色八</td>
                     <td>颜色九</td>
                     <td>是否被选中</td>
-                    <td>添加</td>
+                    
                     <td>更新</td>
 				</tr>
 				<c:forEach items="${glassList}" var="glass">
@@ -149,8 +155,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <td>${glass.glassPrice}</td>
                     <td>${glass.sphPrice}</td>
                     <td>${glass.cylPrice}</td>
-                    <td>${glass.glassImg}</td>
-                    <td>${glass.glassImgthumb}</td>
+                    <td>
+                    <img alt="" src="images/${glass.glassImg}" width="40" height="40"></td>
+                    <td><img alt="" src="images/${glass.glassImgthumb}" width="40" height="40"></td>
                     <td>${glass.glassTime}</td>
                     <td>${glass.color1}</td>
                     <td>${glass.color2}</td>
@@ -163,20 +170,58 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <td>${glass.color9}</td>
                     <td><input type="checkbox" id="${glass.glassId}" onchange="check(${glass.glassId})"  
 					${(glass.isActive==1)?'checked':''} >选择</td>
-                    <td><a href="glass/toglass?glassId=${glass.glassId}">添加</a></td>
+                    
 					<td><a href="glass/updateGlass?id=${glass.glassId}">更新</a></td>
                 </tr>
 				</c:forEach>
 			</table>
-			<table id="tblnum"><tr id="shuzi"></tr></table>
-		</div>
-		<div id="brand_footer">
-			© YLDSHOP ALL RIGHTS RESERVED. DESIGNED BY .&nbsp;&nbsp;粤ICP备16037632号		
+			
+			
+			<div id="user_footer" class="container">
+				<ul class="pagination" id="page">
+					<li><a href="javascript:last()">&laquo;</a></li>
+					<c:forEach var="x" begin="1" end="${count}" step="1" varStatus="st">
+						<c:if test="${param.num1==x}">
+							<li class="active"><a href="glass/findlimit?num1=${x}">${x}</a></li>
+						</c:if>
+						<c:if test="${param.num1!=x}">
+							<li><a href="glass/findlimit?num1=${x}">${x}</a></li>	
+						</c:if>					
+					</c:forEach>
+					<li><a href="javascript:next()">&raquo;</a></li>
+					<li><span>共&nbsp;${count}&nbsp;页.</span></li>
+				</ul>	
+			</div>
 		</div>
 	</div> --%>
 </body>
  <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
 <script type="text/javascript">
+
+
+	function last(){
+		var a=$('.active').children().text();
+		if(a>1){
+			a=a-1;
+			location.href="glass/findlimit?num1="+a;
+		}
+	} 
+	function next(){
+		var a=$('.active').children().text();
+		var pagenum=$('#page').children('li').length;
+		var b=parseInt(a);
+		if(a<pagenum-3){
+			b=b+1;
+			location.href="glass/findlimit?num1="+b;
+		}
+	} 
+
+	
+	
+	
+	function addglass(){
+		location.href="glass/toglass";
+	}
 	function check(bid){
 		var status;
 		var ck = document.getElementById(bid);
@@ -189,6 +234,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			alert("编辑成功！")
 		});
 	}
+<<<<<<< HEAD
 	$(function(){
 		$.get('addglass/pagecount', function(data) {
 			var tblhtml="";
@@ -207,6 +253,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		alert("跳到哪里");
 		location.href="";
 	})
+=======
+>>>>>>> 678847a907b4e6c9e66bdf8d04a83595f347326b
 
 </script> 
 </html>
