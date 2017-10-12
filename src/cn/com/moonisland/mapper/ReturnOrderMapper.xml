@@ -45,18 +45,18 @@
 	<!-- 查询一共有几页 -->
 	<select id="pageCount" resultType="int">
 		<![CDATA[
-			select ceil(count(*)/5) from moon_returnorder 
+			select ceil(count(*)/10) from moon_returnorder 
 		]]>
 	</select>
 	<!-- 通过userID查询一共有几页 -->
 	<select id="pageCount2" resultType="int" parameterType="string">
 		<![CDATA[
-			select ceil(count(*)/5) from moon_returnorder where user_id=#{id} 
+			select ceil(count(*)/10) from moon_returnorder where user_id=#{id} 
 		]]>
 	</select>
 	<!-- 通过goodsId查询一共有几页 -->
 	<select id="findbygoodsidCount" resultType="int" parameterType="string">
-		select ceil(count(*)/5) from moon_returnorder
+		select ceil(count(*)/10) from moon_returnorder
 	　　　　　　<if test="_parameter!= null and _parameter!= ''">
 				where
 				goods_id=#{_parameter}
@@ -69,12 +69,12 @@
 			<if test="goodsid != null and goodsid != ''">
 				and r.goods_id=#{goodsid}
 			</if>
-			 	limit #{page},5
+			 	limit #{page},10
 	</select>
 	<!-- 分页查询 -->
 	<select id="findbypage" resultMap="returnOrderResultMap" parameterType="int">
 		<![CDATA[
-			select r.*,u.nick_name from moon_returnorder r,moon_user u where r.user_id=u.user_id limit #{page},5 
+			select r.*,u.nick_name from moon_returnorder r,moon_user u where r.user_id=u.user_id limit #{page},10 
 		]]>
 	</select>
 	<!-- 根据userid查找 -->
@@ -84,6 +84,6 @@
 			<if test="userid != null and userid != ''">
 				and r.user_id=#{userid}
 			</if>
-			 	limit #{page},5
+			 	limit #{page},10
 	</select>
 </mapper>

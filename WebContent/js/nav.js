@@ -69,7 +69,7 @@ var navs = [
 	"spread": false,
 	"children": [{
 		"title": "商品评论",
-		"href": "comment/findpageComment?userid=&page=1"
+		"href": "comment/findpageComment?page=1"
 	}]
 },
 
@@ -82,7 +82,7 @@ var navs = [
 		"href": "order/findAll?page=0"
 	},{
 		"title": "退货订单",
-		"href": "returnOrder/findbygoodsidpageReturn?goodsid=&page=1"
+		"href": "returnOrder/findpageReturn?page=1"
 	}]
 }, 
 

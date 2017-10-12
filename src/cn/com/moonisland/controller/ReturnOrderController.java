@@ -42,7 +42,7 @@ public class ReturnOrderController {
 		if (goodsid==null) {
 			goodsid=null;
 		}
-		page=(page-1)*5;
+		page=(page-1)*10;
 		map.put("goodsid", goodsid);
 		map.put("page",page);
 		List<ReturnOrder> ls=this.returnorderService.findbygoodsidPage(map);
@@ -65,12 +65,15 @@ public class ReturnOrderController {
 	@RequestMapping(value="findpageReturn")
 	public ModelAndView findpageReturn(int page){
 		ModelAndView mView=new ModelAndView();
-		page=(page-1)*5;
+		page=(page-1)*10;
 		List<ReturnOrder> ls=this.returnorderService.findbypage(page);
+		int count=this.returnorderService.pageCount();
 		mView.setViewName("/WEB-INF/admin/returnorder.jsp");
 		mView.addObject("returnList", ls);
+		mView.addObject("count", count);
 		return mView;
 	}
+
 	//通过userID分页查询
 	@RequestMapping(value="findbyuseridpageReturn")
 	public ModelAndView findpageReturn2(String userid,int page){
@@ -79,7 +82,7 @@ public class ReturnOrderController {
 		if (userid==null) {
 			userid=null;
 		}
-		page=(page-1)*5;
+		page=(page-1)*10;
 		map.put("userid", userid);
 		map.put("page",page);
 		List<ReturnOrder> ls=this.returnorderService.findbyuserid(map);
