@@ -110,7 +110,7 @@ var navs = [
 	},{
 		"title": "添加图片",
 		
-		"href": "goods/toaddGood"
+		"href": "pic/topic"
 	}]
 }, 
 

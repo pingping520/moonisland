@@ -30,7 +30,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<fieldset class="layui-elem-field">
 			<legend>品牌列表</legend>
 			<div class="layui-field-box">
-
 			<div style="margin:0px; background-color: white; margin:0 10px;">
 	        	<blockquote class="layui-elem-quote">
 	            <button type="button" class="layui-btn layui-btn-small" id="addBrand"><i class="fa fa-plus" aria-hidden="true"></i> 添加</button>
