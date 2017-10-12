@@ -28,12 +28,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</blockquote>
 
 		<fieldset class="layui-elem-field">
-			<legend>vip用户列表</legend>
+			<legend>白名单用户列表</legend>
 			<div class="layui-field-box">
 
 			<div style="margin:0px; background-color: white; margin:0 10px;">
 	        	<blockquote class="layui-elem-quote">
-	            <button type="button" class="layui-btn layui-btn-small" id="getAll"><i class="fa fa-plus" aria-hidden="true"></i> 添加</button>
+	            <button type="button" class="layui-btn layui-btn-small" id="getAll"><i class="fa fa-plus" aria-hidden="true"></i></button>
 		            <form class="layui-form" style="float:right;">
 		                <div class="layui-form-item" style="margin:0;">
 		                    <label class="layui-form-label">名称</label>
@@ -67,7 +67,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<td>邮箱</td>
 							<td>注册时间</td>
 							<td>用户状态</td>
-					        <td style="width:117px;">操作</td>   
+					        <!-- <td style="width:117px;">操作</td>    -->
 						</tr>
 					</thead>
 					<!--内容容器-->
@@ -90,8 +90,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td>${user.userTime}</td>
 					<td><input type="checkbox" id="${user.userId}" onchange="check(${user.userId})"  
 					${(user.userStatus==1)?'checked':''} >选择</td>
-				    <td><p><a href="javascript:;" class="layui-btn layui-btn-mini">更新</a>
-			                <a href="javascript:;" data-id="1" data-opt="del" class="layui-btn layui-btn-danger layui-btn-mini">删除</a></p></td>
+				    <!--<td><p><a href="javascript:;" class="layui-btn layui-btn-mini">更新</a>
+			                 <a href="javascript:;" data-id="1" data-opt="del" class="layui-btn layui-btn-danger layui-btn-mini">删除</a></p></td>--> 
 			            </tr>
        				 </c:forEach>
 					</tbody>

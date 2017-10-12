@@ -17,10 +17,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link rel="stylesheet" href="css/global.css" media="all">
 <link rel="stylesheet" href="css/btable.css" />
 <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
-<style type="text/css">
-#photo_body{widtth:100%;height:500px;}
-#photo_body table,tr,td{vertical-align: middle!important;margin:0px;padding:0px;}
-</style>
 </head>
 <body>
 
@@ -75,47 +71,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td><input type="checkbox" id="${photo.photoId}" onchange="check(${photo.photoId})"  
 					${(photo.photoStatus==1)?'checked':''} >选择</td>
 					<td><a href="photoWall/toUpdate?photoId=${photo.photoId}"><button class="layui-btn layui-btn-mini">更新</button></a>
-					<a href="javascript:;" data-id="1" data-opt="del" class="layui-btn layui-btn-danger layui-btn-mini">删除</a></td>
+					<!-- <a href="javascript:;" data-id="1" data-opt="del" class="layui-btn layui-btn-danger layui-btn-mini">删除</a> --></td>
 				</tr>
-				</c:forEach>
-				    
-			                
-			            
-       			
+				</c:forEach>  			
 					</tbody>
 				</table>
 		</div>			
 	
 	</fieldset>
 	</div>
-	<%-- <div id="photo">
-		<div id="photo_body">
-			<table class="table table-hover">
-				<tr>
-					<td>图片编号</td>
-					<td>图片地址</td>
-					<td>图片描述</td>
-					<td>添加时间</td>
-					<td>图片状态</td>
-					<td>编辑图片</td>
-					<td>更新图片</td>
-				</tr>
-				<c:forEach items="${photoList}" var="photo">
-					<tr>
-					<td>${photo.photoId}</td>
-					<td><img src="images/${photo.photoUrl}" style="width:50px;height:50px;"/></td>
-					<td>${photo.photoWord}</td>
-					<td>${photo.photoTime}</td>
-					<td>${photo.photoStatus}</td>
-					<td><input type="checkbox" id="${photo.photoId}" onchange="check(${photo.photoId})"  
-					${(photo.photoStatus==1)?'checked':''} >选择</td>
-					<td><a href="photoWall/toUpdate?photoId=${photo.photoId}"><button class="btn btn-sm btn-primary">更新</button></a></td>
-				</tr>
-				</c:forEach>
-			</table>
-		</div>
-		
-	</div> --%>
 </body>
 <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
 <script type="text/javascript">

@@ -1,12 +1,12 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%  
 String path = request.getContextPath();  
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";  
-%>  
-<!DOCTYPE html>  
-<html>  
-<head> 
+%>
+<!DOCTYPE html>
+<html>
+<head>
 <base href="<%=basePath%>">
 <meta charset="UTF-8">
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
@@ -17,46 +17,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link rel="stylesheet" href="css/global.css" media="all">
 <link rel="stylesheet" href="css/btable.css" />
 <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
-<style type="text/css">
-/* #user{margin:0px auto;width:100%;text-align:center;}
-#user_body{width:100%;height:500px;}
-#user_footer{width:100%;height:60px;line-height:60px;text-align:center;position: relative;}
-.info table,tr,td{vertical-align: middle!important;margin:0px;padding:0px;}
-#page{position: absolute;bottom:-260px;left:40%;} */
-</style>
 </head>
 <body>
-
 	<div style="margin: 15px;">
 		<blockquote class="layui-elem-quote">
 			<h1>moonisland后台管理系统</h1>
 		</blockquote>
-
 		<fieldset class="layui-elem-field">
-			<legend>用户列表</legend>
+			<legend>全部用户列表</legend>
 			<div class="layui-field-box">
 
-			<div style="margin:0px; background-color: white; margin:0 10px;">
-	        	<blockquote class="layui-elem-quote">
-	            <button type="button" class="layui-btn layui-btn-small" id="getAll"><i class="fa fa-plus" aria-hidden="true"></i> 添加</button>
-		            <form class="layui-form" style="float:right;">
-		                <div class="layui-form-item" style="margin:0;">
-		                    <label class="layui-form-label">名称</label>
-		                    <div class="layui-input-inline">
-		                        <input type="text" name="name" placeholder="支持模糊查询.." autocomplete="off" class="layui-input">
-		                    </div>
-		                    <div class="layui-form-mid layui-word-aux" style="padding:0;">
-		                        <button lay-filter="search" class="layui-btn" lay-submit><i class="fa fa-search" aria-hidden="true"></i> 查询</button>
-		                    </div>
-		                </div>
-		            </form>
-	        	</blockquote>
-    		</div>
-
-			
-				<table class="site-table table-hover" style="vertical-align: middle!important;margin:0px;padding:0px;text-align:center;">
+				<div style="margin: 0px; background-color: white; margin: 0 10px;">
+					<blockquote class="layui-elem-quote">
+						<button type="button" class="layui-btn layui-btn-small"
+							id="addUser">
+							<i class="fa fa-plus" aria-hidden="true"></i>
+						</button>
+						<form class="layui-form" style="float: right;">
+							<div class="layui-form-item" style="margin: 0;">
+								<label class="layui-form-label">名称</label>
+								<div class="layui-input-inline">
+									<input type="text" name="name" placeholder="支持模糊查询.."
+										autocomplete="off" class="layui-input">
+								</div>
+								<div class="layui-form-mid layui-word-aux" style="padding: 0;">
+									<button lay-filter="search" class="layui-btn" lay-submit>
+										<i class="fa fa-search" aria-hidden="true"></i> 查询
+									</button>
+								</div>
+							</div>
+						</form>
+					</blockquote>
+				</div>
+				<table class="site-table table-hover"
+					style="vertical-align: middle !important; margin: 0px; padding: 0px; text-align: center;">
 					<thead>
-						<tr>	
+						<tr>
 							<td>用户编号</td>
 							<td>用户名</td>
 							<td>积分</td>
@@ -72,65 +68,67 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<td>邮箱</td>
 							<td>注册时间</td>
 							<td>用户状态</td>
-					        <td style="width:117px;">操作</td>   
+							<!-- <td style="width: 117px;">操作</td> -->
 						</tr>
 					</thead>
 					<!--内容容器-->
 					<tbody id="con">
-					 <c:forEach items="${users}" var="user">
-					<tr>
-					<td>${user.userId}</td>
-					<td>${user.nickName}</td>
-					<td>${user.points}</td>
-					<td>${user.userLevel}</td>
-					<td>${user.isPrivilege}</td>
-					<td>${user.privilegeNum}</td>
-					<td>${user.phone}</td>
-					<td><img src="images/${user.headerPic}" style="width:50px;height:50px;"></td>
-					<td>${user.sex}</td>
-					<td>${user.birthday}</td>
-					<td>${user.zipcode}</td>
-					<td>${user.mobile}</td>
-					<td>${user.email}</td>
-					<td>${user.userTime}</td>
-					<td><input type="checkbox" id="${user.userId}" onchange="check(${user.userId})"  
-					${(user.userStatus==1)?'checked':''} >选择</td>
-				    <td><p><a href="javascript:;" class="layui-btn layui-btn-mini">更新</a>
-			                <a href="javascript:;" data-id="1" data-opt="del" class="layui-btn layui-btn-danger layui-btn-mini">删除</a></p></td>
-			            </tr>
-       				 </c:forEach>
+						<c:forEach items="${users}" var="user">
+							<tr>
+								<td>${user.userId}</td>
+								<td>${user.nickName}</td>
+								<td>${user.points}</td>
+								<td>${user.userLevel}</td>
+								<td>${user.isPrivilege}</td>
+								<td>${user.privilegeNum}</td>
+								<td>${user.phone}</td>
+								<td><img src="images/${user.headerPic}"
+									style="width: 50px; height: 50px;"></td>
+								<td>${user.sex}</td>
+								<td>${user.birthday}</td>
+								<td>${user.zipcode}</td>
+								<td>${user.mobile}</td>
+								<td>${user.email}</td>
+								<td>${user.userTime}</td>
+								<td><input type="checkbox" id="${user.userId}"
+									onchange="check(${user.userId})"
+									${(user.userStatus==1)?'checked':''}>选择</td>
+								<!--<td><p>
+										 <a href="javascript:;" class="layui-btn layui-btn-mini">更新</a> 
+										 <a href="javascript:;" data-id="1" data-opt="del" class="layui-btn layui-btn-danger layui-btn-mini">删除</a> 
+									</p></td>-->
+							</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 
 				<!--分页容器-->
 				<div id="paged">
-					 <ul class="pagination" id="page">
-               			 <li><a href="#">&laquo;</a></li>
-              			 <c:forEach var="x" begin="1" end="${count}" step="1" varStatus="st">
-                   			 <c:if test="${param.page==x}">
-                       	 		<li class="active"><a href="user/list?page=${(x-1)*10}"> ${x}</a></li>
-                    		</c:if>
-                   			 <c:if test="${param.page!=x}">
-                        		<li><a href="user/list?page=${(x-1)*10}">${x}</a></li>  
-                    		</c:if>                 
-               			 </c:forEach>
-		                <li><a href="#">&raquo;</a></li>
-		                <li><span>共&nbsp;${count}&nbsp;页.</span></li>
-           			 </ul> 
+					<ul class="pagination" id="page">
+						<li><a href="#">&laquo;</a></li>
+						<c:forEach var="x" begin="1" end="${count}" step="1"
+							varStatus="st">
+							<c:if test="${param.page==x}">
+								<li class="active"><a href="user/list?page=${(x-1)*10}">
+										${x}</a></li>
+							</c:if>
+							<c:if test="${param.page!=x}">
+								<li><a href="user/list?page=${(x-1)*10}">${x}</a></li>
+							</c:if>
+						</c:forEach>
+						<li><a href="#">&raquo;</a></li>
+						<li><span>共&nbsp;${count}&nbsp;页.</span></li>
+					</ul>
 				</div>
-		</div>			
-	
-	</fieldset>
+			</div>
+
+		</fieldset>
 	</div>
-
-
-
 
 </body>
 <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
 <script type="text/javascript">
 function check(uid){
-	alert(uid)
 	var status;
 	var ck = document.getElementById(uid);
 	if(ck.checked==false){
@@ -138,17 +136,11 @@ function check(uid){
 	}else{
 		status = "1";
 	}
-	alert(status)
 	$.get('user/check?userId='+uid+'&userStatus='+status, function(data) {
 		if(data==1){
 			alert("编辑成功！")			
 		}
 	});
 }
-//添加
-$('#getAll').on('click',function(){
-	alert("跳到哪里");
-	location.href="";
-});
 </script>
 </html>
