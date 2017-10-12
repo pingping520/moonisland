@@ -27,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="plugins/layui/css/layui.css" media="all" />
 <link rel="stylesheet" href="css/global.css" media="all">
-<link rel="stylesheet" href="css/btable.css" />
+
 <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
 </head>
 <body>
@@ -94,8 +94,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td><input type="checkbox" id="${comment.commentId}" onchange="check(${comment.commentId})"  
 					${(comment.commentStatus==1)?'checked':''} >选择</td>
 					<td>${comment.commentTime}</td>
-					<td><input type="button" value="更新" class="layui-btn layui-btn-mini" onclick="update(${comment.commentId})"/>
-					 <a href="javascript:;" data-id="1" data-opt="del" class="layui-btn layui-btn-danger layui-btn-mini">删除</a></td>
+					<td><a href="comment/toupdComment?commentId=${comment.commentId}"><button class="layui-btn layui-btn-mini">更新</button></a>
+					<!--  <a href="javascript:;" data-id="1" data-opt="del" class="layui-btn layui-btn-danger layui-btn-mini">删除</a> --></td>
 					</tr>
 				</c:forEach>
 					</tbody>
@@ -188,7 +188,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript">
 		$(function(){
 			var page=$('#tbl').attr('class');
-			console.log(page)
 			$.post('comment/findpageCommentList',{'page':page}, function(data) {
 				for(var i=0;i<data.length;i++){
 					if(data[i].commentContentimg!=null&&data[i].commentContentimg!=""){
@@ -196,10 +195,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			                var string=data[i].commentContentimg;
 			                myCommentpic=string.split("|");
 			                for(var j=0;j<myCommentpic.length;j++){
-			                    $('#img'+i).append('<img class="img" alt="" src="images/'+myCommentpic[0]+'">')
+			                    $('#img'+i).append('<img class="img" alt="" width="40" height="40" src="images/'+myCommentpic[0]+'">')
 			                }
 			            }else{
-			            	$('#img'+i).append('<img class="img" alt="" src="images/'+data[i].commentContentimg+'">')
+			            	$('#img'+i).append('<img class="img" alt="" width="40" height="40" src="images/'+data[i].commentContentimg+'">')
 			            }
 					} 
 				}
@@ -234,14 +233,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				alert("编辑成功！")
 			});
 		}
-		function update(id){
-			$.get('comment/selectbyidComment?commentId='+id, function(data) {
-				  location.href='comment/toupdComment';
-			});
-			$.get('comment/selectbyuseridComment?userid='+userid+'&&page=1', function(data) {
-			});
-		}
-		
+		 
 		//添加
 		$('#getAll').on('click',function(){
 			alert("跳到哪里");
