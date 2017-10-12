@@ -28,7 +28,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </style>
 </head>
 <body>
-<<<<<<< HEAD
 	<div style="margin: 15px;">
 		<blockquote class="layui-elem-quote">
 			<h1>moonisland后台管理系统</h1>
@@ -111,8 +110,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</c:forEach>
 					</tbody>
 				</table>
-		</div>			
-	
+				
+			<div id="paged">
+				<ul class="pagination" id="page">
+					<li><a href="javascript:last()">&laquo;</a></li>
+					<c:forEach var="x" begin="1" end="${count}" step="1" varStatus="st">
+						<c:if test="${param.num1==x}">
+							<li class="active"><a href="glass/findlimit?num1=${x}">${x}</a></li>
+						</c:if>
+						<c:if test="${param.num1!=x}">
+							<li><a href="glass/findlimit?num1=${x}">${x}</a></li>	
+						</c:if>					
+					</c:forEach>
+					<li><a href="javascript:next()">&raquo;</a></li>
+					<li><span>共&nbsp;${count}&nbsp;页.</span></li>
+				</ul>	
+			</div>
+		</div>
+			
 	</fieldset>
 	</div>
 	
@@ -253,8 +268,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		alert("跳到哪里");
 		location.href="";
 	})
-=======
->>>>>>> 678847a907b4e6c9e66bdf8d04a83595f347326b
+
 
 </script> 
 </html>

@@ -125,7 +125,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<!--分页容器-->
 				<div id="paged">
 					 <ul class="pagination" id="page">
-               			 <li><a href="#">&laquo;</a></li>
+               			 <li><a href="javascript:last()">&laquo;</a></li>
               			 <c:forEach var="x" begin="1" end="${count}" step="1" varStatus="st">
                    			 <c:if test="${param.page==x}">
                        	 		<li class="active"><a href="goods/findAll?page=${(x-1)*10}"> ${x}</a></li>
@@ -134,7 +134,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         		<li><a href="goods/findAll?page=${(x-1)*10}">${x}</a></li>  
                     		</c:if>                 
                			 </c:forEach>
-		                <li><a href="#">&raquo;</a></li>
+		                <li><a href="javascript:next()">&raquo;</a></li>
 		                <li><span>共&nbsp;${count}&nbsp;页.</span></li>
             </ul> 
 				</div>
@@ -188,6 +188,23 @@ $('#search').on('click', function() {
 	}
 	
 });
+function last(){
+	var a=$('.active').children().text();
+	if(a>1){
+		a=a-1;
+		location.href="goods/findAll?page="+a;
+	}
+} 
+function next(){
+	var a=$('.active').children().text();
+	var pagenum=$('#page').children('li').length;
+	var b=parseInt(a);
+	//alert( typeof(b))
+	if(a<pagenum-3){
+		b=b+1;
+		location.href="goods/findAll?page="+b;
+	}
+}
 </script>
 
 </html>

@@ -106,7 +106,7 @@ var navs = [
 	"spread": false,
 	"children": [{
 		"title": "图片管理",
-		"href": "goods/findbyselect?status=1&page=0"
+		"href": "pic/findAll"
 	},{
 		"title": "添加图片",
 		
