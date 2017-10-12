@@ -74,7 +74,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</thead>
 					<!--内容容器-->
 					<tbody id="con">
-					 <c:forEach items="${returngoodsList}" var="return1">
+					 <c:forEach items="${returnList}" var="return1">
 					<tr class="success">
 					<td>${return1.returnId}</td>
 					<td>${return1.orderId}</td>
@@ -86,7 +86,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					${(return1.returnStatus==1)?'checked':''} >选择</td>
 					<td>${return1.returnTime}</td>
 					 <td><p><a href="javascript:;" class="layui-btn layui-btn-mini">更新</a>
-			                <a href="javascript:;" data-id="1" data-opt="del" class="layui-btn layui-btn-danger layui-btn-mini">删除</a></p></td>
+			                <!-- <a href="javascript:;" data-id="1" data-opt="del" class="layui-btn layui-btn-danger layui-btn-mini">删除</a> --></p></td>
 			            </tr>
 				</c:forEach>		 
 					</tbody>
