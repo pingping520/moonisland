@@ -44,7 +44,7 @@ var navs = [
 	"spread": false,
 	"children": [{
 		"title": "镜片清单",
-		"href": "glass/findAllGlass"
+		"href": "glass/findlimit?num1=1"
 	},{
 		"title": "添加镜片",
 		"href": "glass/toglass"
@@ -106,11 +106,11 @@ var navs = [
 	"spread": false,
 	"children": [{
 		"title": "图片管理",
-		"href": "goods/findbyselect?status=1&page=0"
+		"href": "pic/findAll"
 	},{
 		"title": "添加图片",
 		
-		"href": "goods/toaddGood"
+		"href": "pic/topic"
 	}]
 }, 
 

@@ -143,7 +143,7 @@ public class PicController {
 	}
 	
 	@RequestMapping(value="/findlimit")
-	public ModelAndView findlimitPic(int num1,int num2){
+	public ModelAndView findlimitPic(int num1){
 		ModelAndView mv = new ModelAndView();
 		Map<String, Integer> map=new HashMap<>();
 		num1=(num1-1)*5;
