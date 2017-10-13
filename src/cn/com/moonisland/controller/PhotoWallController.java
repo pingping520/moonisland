@@ -86,11 +86,9 @@ public class PhotoWallController {
 	 * 查询全部可用图片
 	 */
 	@RequestMapping(value="/findAllUse")
-	public ModelAndView showPhotos(){
-		ModelAndView mv = new ModelAndView();
+	@ResponseBody
+	public List<PhotoWall> showPhotos(){
 		List<PhotoWall> photos = this.photoWallService.findUsePhotos();
-		mv.setViewName("");
-		mv.addObject("photos", photos);
-		return mv;
+		return photos;
 	}
 }
