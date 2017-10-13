@@ -44,10 +44,10 @@ var navs = [
 	"spread": false,
 	"children": [{
 		"title": "镜片清单",
-		"href": "goodsAttr/findAll"
+		"href": "glass/findlimit?num1=1"
 	},{
 		"title": "添加镜片",
-		"href": "goodsAttr/toAdd"
+		"href": "glass/toglass"
 	}]
 },
 
@@ -69,7 +69,7 @@ var navs = [
 	"spread": false,
 	"children": [{
 		"title": "商品评论",
-		"href": "comment/findpageComment?userid=&page=1"
+		"href": "comment/findpageComment?page=1"
 	}]
 },
 
@@ -82,7 +82,7 @@ var navs = [
 		"href": "order/findAll?page=0"
 	},{
 		"title": "退货订单",
-		"href": "returnOrder/findbygoodsidpageReturn?goodsid=&page=1"
+		"href": "returnOrder/findpageReturn?page=1"
 	}]
 }, 
 
@@ -106,11 +106,11 @@ var navs = [
 	"spread": false,
 	"children": [{
 		"title": "图片管理",
-		"href": "goods/findbyselect?status=1&page=0"
+		"href": "pic/findlimit?num1=1"
 	},{
 		"title": "添加图片",
 		
-		"href": "goods/toaddGood"
+		"href": "pic/topic"
 	}]
 }, 
 

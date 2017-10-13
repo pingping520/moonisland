@@ -76,6 +76,7 @@ public class CommentController {
 	@RequestMapping(value="/findpageComment")
 	public ModelAndView findpageComment(int page){
 		ModelAndView mView=new ModelAndView();
+		mView.addObject("page", page);
 		page=(page-1)*10;
 		List<Comment> ls=this.commentService.findbypage(page);
 		int count=this.commentService.findpagecount();
@@ -84,6 +85,15 @@ public class CommentController {
 		mView.addObject("count", count);
 		return mView;
 	}
+	@RequestMapping(value="/findpageCommentList")
+	@ResponseBody
+	public List<Comment> findpageCommentList(int page){
+		page=(page-1)*10;
+		List<Comment> ls=this.commentService.findbypage(page);
+		int count=this.commentService.findpagecount();
+		return ls;
+	}
+
 	//通过userID查询一共有几页
 	@RequestMapping(value="/pagecountComment")
 	@ResponseBody
@@ -110,11 +120,15 @@ public class CommentController {
 	
 	//通过id查询
 	@RequestMapping(value="/selectbyidComment")
-	public Comment selectbyidComment(Comment comment,HttpSession session){
+	public ModelAndView selectbyidComment(int commentId){
+		ModelAndView mView=new ModelAndView();
+		Comment comment=new Comment();
+		comment.setCommentId(commentId);
 		Comment comment2=this.commentService.selectbyidComment(comment);
-		System.out.println("CommentId"+comment2.getCommentId());
-		session.setAttribute("comment", comment2);
-		return comment2;
+		System.out.println("CommentId"+comment2);
+		mView.addObject("comment", comment2);
+		mView.setViewName("/WEB-INF/admin/updateComment.jsp");
+		return mView;
 	}
 	
 	//更新评论
@@ -131,11 +145,14 @@ public class CommentController {
 	
 	//跳到更新页
 	@RequestMapping(value="toupdComment")
-	public ModelAndView update(){
+	public ModelAndView update(Comment comment){
 		ModelAndView mView=new ModelAndView();
+		Comment comment2=this.commentService.selectbyidComment(comment);
 		mView.setViewName("/WEB-INF/admin/updateComment.jsp");
+		mView.addObject("comment", comment2);
 		return mView;
 	}
+	
 	//跳到添加页
 	@RequestMapping(value="toinsertComment")
 	public ModelAndView insert(){

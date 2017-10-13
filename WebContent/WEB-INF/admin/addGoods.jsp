@@ -13,30 +13,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>添加商品页</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <style type="text/css">
-#main{
-        font-size:16px;
-        
-    }
-    table{
-    margin:0 auto;
-    }
-table tr td{
-
-  padding:15px;
-}
-table tr td:first-child{
- text-align:right;
-}
-table tr td input{
- width:800px;
- height:30px;
- }
+#main{font-size:16px;}
+table{margin:0 auto;}
+table tr td{padding:15px;}
+table tr td:first-child{text-align:right;}
+table tr td input{width:800px;height:30px;}
 </style>
 </head>
 <body>
 <div id="main">
-
-	<table>
+  <table>
 		<tr>
 			<td>品牌编号</td>
 			<td><input type="text" id="brandid" name="brandid" /></td>
@@ -82,10 +68,9 @@ table tr td input{
 		</tr>
 		<tr>
 			<td>商品关键字</td>
-			<td><input type="text" id="goodskeywords" name="goodskeywords" />
+			<td><input type="text" id="goodskeywords" name="goodskeywords" /></td>
         </tr>
 		<tr>
-			</td>
 			<td>是否在售</td>
 			<td><input type="text" id="isonsale" name="isonsale" /></td>
 		</tr>

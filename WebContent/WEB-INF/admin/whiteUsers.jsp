@@ -12,36 +12,67 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
 <title>MOON ISLAND白名单用户页面</title>
-<link rel="stylesheet" href="css/bootstrap.min.css">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="plugins/layui/css/layui.css" media="all" />
+<link rel="stylesheet" href="css/global.css" media="all">
+<link rel="stylesheet" href="css/btable.css" />
+<link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
 <style type="text/css">
-#user{margin:0px auto;width:100%;text-align:center;}
-#user_body{width:100%;height:500px;}
-#user_footer{width:100%;height:60px;line-height:60px;text-align:center;position: relative;}
-.info table,tr,td{vertical-align: middle!important;margin:0px;padding:0px;}
-#page{position: absolute;bottom:-260px;left:40%;}
+
 </style>
 </head>
 <body>
-	<div id="user">
-		<div id="user_body">
-			<table class="table table-hover">
-				<tr>
-					<td>用户编号</td>
-					<td>用户名</td>
-					<td>积分</td>
-					<td>会员等级</td>
-					<td>是否特权</td>
-					<td>特权改价</td>
-					<td>注册手机号</td>
-					<td>头像</td>
-					<td>性别</td>
-					<td>出生年月</td>
-					<td>邮编</td>
-					<td>联系电话</td>
-					<td>邮箱</td>
-					<td>注册时间</td>
-				</tr>
-				<c:forEach items="${users}" var="user">
+	<div style="margin: 15px;">
+		<blockquote class="layui-elem-quote">
+			<h1>moonisland后台管理系统</h1>
+		</blockquote>
+
+		<fieldset class="layui-elem-field">
+			<legend>白名单用户列表</legend>
+			<div class="layui-field-box">
+
+			<div style="margin:0px; background-color: white; margin:0 10px;">
+	        	<blockquote class="layui-elem-quote">
+	            <button type="button" class="layui-btn layui-btn-small" id="getAll"><i class="fa fa-plus" aria-hidden="true"></i></button>
+		            <form class="layui-form" style="float:right;">
+		                <div class="layui-form-item" style="margin:0;">
+		                    <label class="layui-form-label">名称</label>
+		                    <div class="layui-input-inline">
+		                        <input type="text" name="name" placeholder="支持模糊查询.." autocomplete="off" class="layui-input">
+		                    </div>
+		                    <div class="layui-form-mid layui-word-aux" style="padding:0;">
+		                        <button lay-filter="search" class="layui-btn" lay-submit><i class="fa fa-search" aria-hidden="true"></i> 查询</button>
+		                    </div>
+		                </div>
+		            </form>
+	        	</blockquote>
+    		</div>
+
+			
+				<table class="site-table table-hover" style="vertical-align: middle!important;margin:0px;padding:0px;text-align:center;">
+					<thead>
+						<tr>	
+							<td>用户编号</td>
+							<td>用户名</td>
+							<td>积分</td>
+							<td>会员等级</td>
+							<td>是否特权</td>
+							<td>特权改价</td>
+							<td>注册手机号</td>
+							<td>头像</td>
+							<td>性别</td>
+							<td>出生年月</td>
+							<td>邮编</td>
+							<td>联系电话</td>
+							<td>邮箱</td>
+							<td>注册时间</td>
+							<td>用户状态</td>
+					        <!-- <td style="width:117px;">操作</td>    -->
+						</tr>
+					</thead>
+					<!--内容容器-->
+					<tbody id="con">
+					 <c:forEach items="${users}" var="user">
 					<tr>
 					<td>${user.userId}</td>
 					<td>${user.nickName}</td>
@@ -57,26 +88,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td>${user.mobile}</td>
 					<td>${user.email}</td>
 					<td>${user.userTime}</td>
-				</tr>
-				</c:forEach>
-			</table>
-		</div>
-		<div id="user_footer" class="container">
-			<ul class="pagination" id="page">
-				<li><a href="#">&laquo;</a></li>
-				<c:forEach var="x" begin="1" end="${count}" step="1" varStatus="st">
-					<c:if test="${param.page==(x-1)*10}">
-						<li class="active"><a href="user/whiteUsers?page=${(x-1)*10}">${x}</a></li>
-					</c:if>
-					<c:if test="${param.page!=(x-1)*10}">
-						<li><a href="user/whiteUsers?page=${(x-1)*10}">${x}</a></li>	
-					</c:if>					
-				</c:forEach>
-				<li><a href="#">&raquo;</a></li>
-				<li><span>共&nbsp;${count}&nbsp;页.</span></li>
-			</ul>	
-		</div>
+					<td><input type="checkbox" id="${user.userId}" onchange="check(${user.userId})"  
+					${(user.userStatus==1)?'checked':''} >选择</td>
+				    <!--<td><p><a href="javascript:;" class="layui-btn layui-btn-mini">更新</a>
+			                 <a href="javascript:;" data-id="1" data-opt="del" class="layui-btn layui-btn-danger layui-btn-mini">删除</a></p></td>--> 
+			            </tr>
+       				 </c:forEach>
+					</tbody>
+				</table>
+
+				<!--分页容器-->
+				<div id="paged">
+					 <ul class="pagination" id="page">
+						<li><a href="#">&laquo;</a></li>
+						<c:forEach var="x" begin="1" end="${count}" step="1" varStatus="st">
+							<c:if test="${param.page==(x-1)*10}">
+								<li class="active"><a href="user/whiteUsers?page=${(x-1)*10}">${x}</a></li>
+							</c:if>
+							<c:if test="${param.page!=(x-1)*10}">
+								<li><a href="user/whiteUsers?page=${(x-1)*10}">${x}</a></li>	
+							</c:if>					
+						</c:forEach>
+						<li><a href="#">&raquo;</a></li>
+						<li><span>共&nbsp;${count}&nbsp;页.</span></li>
+					</ul>	
+				</div>
+		</div>			
+	
+	</fieldset>
 	</div>
+	
 </body>
 <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
 <script type="text/javascript">
@@ -96,5 +137,11 @@ function check(uid){
 		}
 	});
 }
+
+//添加
+$('#getAll').on('click',function(){
+	alert("跳到哪里");
+	location.href="";
+});
 </script>
 </html>

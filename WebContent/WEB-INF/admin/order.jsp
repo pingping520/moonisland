@@ -15,6 +15,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Title</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="plugins/layui/css/layui.css" media="all" />
+<link rel="stylesheet" href="css/global.css" media="all">
+<link rel="stylesheet" href="css/btable.css" />
+<link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
 <style type="text/css">
         #head{
             overflow: hidden;
@@ -38,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               font-weight: bold;
         }
        #thead tr th {
-        padding:3px;
+        padding:10px 5px 10px 5px;
         width:20%;
         }
         #thead tr{
@@ -62,16 +66,154 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   #page{position: absolute;bottom:-260px;left:40%;}
 	   .upA{width:50px;height:32px;line-height:32px;text-align:center;background:#337ab7;border-radius:3px;}
 	   .upA a{color:#ffffff;}
+	   #wrap{overflow:hidden;}
+	
 </style>
 </head>
 <body>
 <input type="hidden" id="sta" value='1${status}'>
-	<div id="order">
+<div style="margin: 15px;">
+		<blockquote class="layui-elem-quote">
+			<h1>moonisland后台管理系统</h1>
+		</blockquote>
+
+		<fieldset class="layui-elem-field">
+			<legend>订单列表</legend>
+			<div class="layui-field-box">
+			
+<div id="order">
 		<div id="order_heade" class="text-center">
 		</div>
 
 		
 <div id="main">
+ <div id="wrap">
+    <div id="head">
+   
+        <div id="d00" class="pull-left f1">全部订单 </div>
+        <div id="d01" class="pull-left f1">未发货</div>
+        <div id="d02" class="pull-left f1">已发货</div>
+        <div id="d03" class="pull-left f1">已收货</div>
+        <div id="d04" class="pull-left f1">退货 </div>
+    </div>
+    
+    <div class="con clearfix show" id="con00">
+       <c:forEach items="${orderlist}" var="order">
+      <table id="${order.orderNumber}" class="table table-striped table-hover">
+        <thead  id="thead"> 
+        <tr>
+           <th><h6>订单编号：${order.orderNumber}</h6></th>
+           <th><h6>收货人姓名:${order.consignee}</h6></th>
+           <th><h6>收货人手机:${order.phone}</h6></th>
+           <th><h6><span onClick=detail(${order.orderNumber},this)>查看详情</span></h6></th>
+           <th></th>
+        </tr>
+       </thead>
+    </table>    
+    </c:forEach>   
+    </div>
+    
+    <div class="con clearfix hidd" id="con01" > 			
+    <c:forEach items="${orderlist}" var="order">
+    
+     <table id="${order.orderNumber}" class="table table-striped table-hover" style="vertical-align: middle!important;margin:0px;padding:0px;text-align:center;">
+        <thead> 
+        <tr>
+           <th><h6>订单编号：${order.orderNumber}</h6></th>
+           <th><h6>收货人姓名:${order.consignee}</h6></th>
+           <th><h6>收货人手机:${order.phone}</h6></th>
+           <th><h6><span  onClick=detail(${order.orderNumber},this)>查看详情</span></h6></th>
+           <th></th>
+          </tr>
+       </thead>
+      
+     
+     </table>    
+   
+    </c:forEach>   
+   
+     
+    </div>
+    
+    <div class="con clearfix hidd" id="con02">
+       <c:forEach items="${orderlist}" var="order">
+      <table id="${order.orderNumber}" class="table table-striped table-hover" style="vertical-align: middle!important;margin:0px;padding:0px;text-align:center;">
+        <thead> 
+           <th>
+           <h4>订单编号：${order.orderNumber}</h4></th>
+           <th>收货人姓名:${order.consignee}</th>
+           <th>收货人手机:${order.phone}</th>
+           <th><span  onClick=detail(${order.orderNumber},this)>查看详情</span></th>
+           <th></th>
+       </thead>
+    </table>    
+    </c:forEach>   
+    </div>
+    
+    <div class="con clearfix hidd" id="con03">
+       <c:forEach items="${orderlist}" var="order">
+      <table id="${order.orderNumber}" class="table table-striped table-hover" style="vertical-align: middle!important;margin:0px;padding:0px;text-align:center;">
+        <thead> 
+           <th><h4>订单编号：${order.orderNumber}</h4></th>
+           <th>收货人姓名:${order.consignee}</th>
+           <th>收货人手机:${order.phone}</th>
+           <th><span  onClick=detail(${order.orderNumber},this)>查看详情</span></th>
+           <th></th>
+       </thead>
+     </table>    
+      </c:forEach>   
+    </div>
+    
+    <div class="con clearfix hidd" id="con04">
+       <c:forEach items="${orderlist}" var="order">
+    
+     <table id="${order.orderNumber}" class="table table-striped table-hover" style="vertical-align: middle!important;margin:0px;padding:0px;text-align:center;">
+        <thead> 
+           <th><h4>订单编号：${order.orderNumber}</h4></th>
+           <th>收货人姓名:${order.consignee}</th>
+           <th>收货人手机:${order.phone}</th>
+           <th><span  onClick=detail("${order.orderNumber}",this)>查看详情</span></th>
+           <th></th>
+       </thead>       
+     </table>    
+   
+    </c:forEach>   
+    </div>
+</div>
+</div>
+		
+		
+		<div id="paged">
+			<ul class="pagination" id="page">
+                <li><a href="#">&laquo;</a></li>
+               <c:forEach var="x" begin="1" end="${count}" step="1" varStatus="st">
+                    <c:if test="${param.page==x}">
+                        <li class="active"><a href="order/findAll?page=${(x-1)*2}">${x}</a></li>
+                    </c:if>
+                    <c:if test="${param.page!=x}">
+                        <li><a href="order/findAll?page=${(x-1)*2}">${x}</a></li>  
+                    </c:if>                 
+                </c:forEach>
+                <li><a href="#">&raquo;</a></li>
+                <li><span>共&nbsp;${count}&nbsp;页.</span></li>
+            </ul> 
+			<c:forEach var="x" begin="1" end="${count}" step="1" varStatus="st">
+				<a href="order/findAll?page=${(x-1)*2}">${x}</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            </c:forEach>
+			共&nbsp;${count}&nbsp;页.
+		</div>
+	</div>
+	</div>		
+				
+	</fieldset>
+	</div>
+<%-- 	<div id="order">
+		<div id="order_heade" class="text-center">
+		</div>
+
+		
+<div id="main">
+ <div id="wrap">
     <div id="head">
    
         <div id="d00" class="pull-left f1">全部订单 </div>
@@ -116,75 +258,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    
     </c:forEach>   
    
-     <%-- <table class="table table-striped table-hover">
-				<tr class="thead">
-					<td>订单编号</td>
-					<td>订单号</td>
-					<td>商品id</td>
-					<td>商品名称</td>
-					<td>镜片id</td>
-					<td>镜片名称</td>
-					<td>用户id</td>
-					<td>用户昵称</td>
-					<td>验光单id</td>
-					<td>订单状态</td>
-					<td>配送情况</td>
-					<td>支付状态</td>
-					<!--  //订单状态（0 未确认，1 确认，2 已取消，3 退款中,4 已退款） -->
-					<td>收货人姓名</td>
-					<td>收货人省份</td>
-					<td>收货人城市</td>
-					<td>收货人地区</td>
-					<td>收货人详细地址</td>
-					<td>邮编</td>
-					<td>收货人手机</td>
-					<td>购买数量</td>
-					<td>订单金额</td>
-					<td>留言</td>
-					<td>配送方式名称</td>
-					<td>快递单号</td>
-					<td>支付方式名称</td>
-					<td>订单生成时间</td>
-					<td>图片编号</td>
-					<td>属性编号</td>
-					<td>更改</td>
-				</tr>
-				<c:forEach items="${orderlist}" var="order">
-					<tr>
-
-						<td>${order.orderId}</td>
-						<td>${order.orderNumber}</td>
-						<td>${order.goodsId}</td>
-						<td>${order.goods.goodsName}</td>
-						<td>${order.glassId}</td>
-						<td>${order.glass.glassName}</td>
-						<td>${order.userId}</td>
-						<td>${order.user.nickName}</td>
-						<td>${order.optometryId}</td>
-						<td>${order.orderStatus}</td>
-						<td>${order.shippingStatus}</td>
-						<td>${order.payStatus}</td>
-						<td>${order.consignee}</td>
-						<td>${order.province}</td>
-						<td>${order.city}</td>
-						<td>${order.district}</td>
-						<td>${order.address}</td>
-						<td>${order.zipcode}</td>
-						<td>${order.phone}</td>
-						<td>${order.payNum}</td>
-						<td>${order.orderMoney}</td>
-						<td>${order.postscript}</td>
-						<td>${order.shippingName}</td>
-						<td>${order.shippingNum}</td>
-						<td>${order.payName}</td>
-						<td>${order.orderTime}</td>
-						<td>${order.picId}</td>
-						<td>${order.attrId}</td>
-						<td><a href="order/toupdateOrder?orderId=${order.orderId}">更新</a></td>
-					</tr>
-				</c:forEach>
-
-			</table> --%>
+     
     </div>
     
     <div class="con clearfix hidd" id="con02">
@@ -230,7 +304,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    
     </c:forEach>   
     </div>
-
+</div>
 </div>
 		
 		
@@ -248,13 +322,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <li><a href="#">&raquo;</a></li>
                 <li><span>共&nbsp;${count}&nbsp;页.</span></li>
             </ul> 
-			<%-- <c:forEach var="x" begin="1" end="${count}" step="1" varStatus="st">
+			<c:forEach var="x" begin="1" end="${count}" step="1" varStatus="st">
 				<a href="order/findAll?page=${(x-1)*2}">${x}</a>&nbsp;&nbsp;&nbsp;&nbsp;
             </c:forEach>
-			共&nbsp;${count}&nbsp;页. --%>
+			共&nbsp;${count}&nbsp;页.
 		</div>
-	</div>
-</body>
+	</div>--%>
+</body> 
 <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
 <script type="text/javascript">
 //选中值的背景颜色

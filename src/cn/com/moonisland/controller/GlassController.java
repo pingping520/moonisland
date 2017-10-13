@@ -21,6 +21,7 @@ import cn.com.moonisland.pojo.Glass;
 import cn.com.moonisland.pojo.Message;
 
 import cn.com.moonisland.service.GlassService;
+import net.coobird.thumbnailator.Thumbnails;
 
 @Controller
 @RequestMapping("/glass")
@@ -92,6 +93,10 @@ public class GlassController {
 			}
 			//上传图片
 			file.transferTo(filePath);
+			//生成缩略图
+			String filesmallname=timeStemp+"_small_"+file.getOriginalFilename();
+			File filesamllpath=new File(path, filesmallname);//完整路径
+			Thumbnails.of(filePath).scale(0.2).toFile(filesamllpath);
 			message.setCode(1);
 			message.setInfo(fileName);
 			return message;
@@ -103,15 +108,17 @@ public class GlassController {
 		}		
 	}
 	@RequestMapping(value="/findlimit")
-	public ModelAndView findlimitPic(int num1,int num2){
+	public ModelAndView findlimitPic(int num1){
 		ModelAndView mv = new ModelAndView();
 		Map<String, Integer> map=new HashMap<>();
 		num1=(num1-1)*5;
 		map.put("num1",num1);
 		map.put("num2",5);
 		List<Glass> ls=this.glassService.findlimit(map);
+		int count=this.glassService.pagecount();
 		mv.setViewName("/WEB-INF/admin/glass.jsp");
 		mv.addObject("glassList", ls);
+		mv.addObject("count", count);
 		return mv;		
 	}
 	
