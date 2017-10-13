@@ -1,0 +1,24 @@
+/*公有*/
+*{
+	margin: 0;
+	padding: 0;
+}
+ol,ul,li{
+	list-style: none;
+	margin-bottom: 0;
+}
+html{
+	font-size: 100px;
+}
+body{
+	background: #f4f5f7;
+	font-weight: bolder;
+	font-family: "微软雅黑 Light";
+}
+a:hover{
+	text-decoration: none;
+}
+
+.d_b{
+	display: block;
+}

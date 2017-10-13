@@ -22,6 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
 <style>
 	#d02,#d01{font-size:16px;padding:5px;}
+	#ab{background:red;}
 </style>
 <body>
 <input type="hidden" id="sta" value='1${status}'>
@@ -128,7 +129,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                			 <li><a href="javascript:last()">&laquo;</a></li>
               			 <c:forEach var="x" begin="1" end="${count}" step="1" varStatus="st">
                    			 <c:if test="${param.page==x}">
-                       	 		<li class="active"><a href="goods/findAll?page=${(x-1)*10}"> ${x}</a></li>
+                       	 		<li class="active" id="ab"><a href="goods/findAll?page=${(x-1)*10}">${x}</a></li>
                     		</c:if>
                    			 <c:if test="${param.page!=x}">
                         		<li><a href="goods/findAll?page=${(x-1)*10}">${x}</a></li>  
@@ -175,7 +176,7 @@ $('#d02').click(function(){
 <script>
 //添加
 $('#getAll').on('click',function(){
-	alert(1233);
+	
 	location.href="goods/toaddGood";
 });
 //搜索
@@ -189,7 +190,10 @@ $('#search').on('click', function() {
 	
 });
 function last(){
+	alert(123);
 	var a=$('.active').children().text();
+	
+	alert(a);
 	if(a>1){
 		a=a-1;
 		location.href="goods/findAll?page="+a;
