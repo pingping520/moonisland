@@ -57,7 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     if(data==1){				
             			alert("添加成功！点击确定跳到品牌详情页！")
             			var timer = setTimeout(function(){
-            				location.href = "pic/findAll";
+            				location.href = "pic/findlimit?num1=1";
             			}, 1000)
             		}
                 });

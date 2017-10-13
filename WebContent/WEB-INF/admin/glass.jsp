@@ -109,10 +109,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</c:forEach>
 					</tbody>
 				</table>
-<<<<<<< HEAD
-				<div id="user_footer" class="container">
-=======
-				
+
+		<div id="user_footer" class="container">
 			<div id="paged">
 				<ul class="pagination" id="page">
 					<li><a href="javascript:last()">&laquo;</a></li>
@@ -133,91 +131,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</fieldset>
 	</div>
 	
-
-	<%-- <div id="brand">
-		<div id="brnd_header">MOON ISLAND&nbsp;镜片管理页</div>
-=======
-	<div id="brand">
->>>>>>> 678847a907b4e6c9e66bdf8d04a83595f347326b
-		<div id="brand_body">
-			<table class="table table-hover">
-				<tr class="info">
-					<td>镜片编号</td>
-					<td>镜片类型</td>
-                    <td>镜片名称</td>
-                    <td>球镜超出范围价格增幅</td>
-                    <td>柱镜超出范围价格增幅</td>
-                    <td>镜片价格</td>
-                    <td>镜片图片路径</td>
-                    <td>镜片缩略图</td>
-                    <td>添加时间</td>
-                    <td>颜色一</td>
-                    <td>颜色二</td>
-                    <td>颜色三</td>
-                    <td>颜色四</td>
-                    <td>颜色五</td>
-                    <td>颜色六</td>
-                    <td>颜色七</td>
-                    <td>颜色八</td>
-                    <td>颜色九</td>
-                    <td>是否被选中</td>
-                    
-                    <td>更新</td>
-				</tr>
-				<c:forEach items="${glassList}" var="glass">
-					 <tr class="success">
-					<td>${glass.glassId}</td>
-                    <td>${glass.glassStyle}</td>
-                    <td>${glass.glassName}</td>
-                    <td>${glass.glassPrice}</td>
-                    <td>${glass.sphPrice}</td>
-                    <td>${glass.cylPrice}</td>
-                    <td>
-                    <img alt="" src="images/${glass.glassImg}" width="40" height="40"></td>
-                    <td><img alt="" src="images/${glass.glassImgthumb}" width="40" height="40"></td>
-                    <td>${glass.glassTime}</td>
-                    <td>${glass.color1}</td>
-                    <td>${glass.color2}</td>
-                    <td>${glass.color3}</td>
-                    <td>${glass.color4}</td>
-                    <td>${glass.color5}</td>
-                    <td>${glass.color6}</td>
-                    <td>${glass.color7}</td>
-                    <td>${glass.color8}</td>
-                    <td>${glass.color9}</td>
-                    <td><input type="checkbox" id="${glass.glassId}" onchange="check(${glass.glassId})"  
-					${(glass.isActive==1)?'checked':''} >选择</td>
-                    
-					<td><a href="glass/updateGlass?id=${glass.glassId}">更新</a></td>
-                </tr>
-				</c:forEach>
-			</table>
-			
-			
-			<div id="user_footer" class="container">
->>>>>>> 16beba472a21e82e1e4a6ecd9916f671c561a65b
-				<ul class="pagination" id="page">
-					<li><a href="javascript:last()">&laquo;</a></li>
-					<c:forEach var="x" begin="1" end="${count}" step="1" varStatus="st">
-						<c:if test="${param.num1==x}">
-							<li class="active"><a href="glass/findlimit?num1=${x}">${x}</a></li>
-						</c:if>
-						<c:if test="${param.num1!=x}">
-							<li><a href="glass/findlimit?num1=${x}">${x}</a></li>	
-						</c:if>					
-					</c:forEach>
-					<li><a href="javascript:next()">&raquo;</a></li>
-					<li><span>共&nbsp;${count}&nbsp;页.</span></li>
-				</ul>	
-			</div>
-		</div>			
-	</fieldset>
-	</div>
-	
-
-	
 </body>
- <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
 <script type="text/javascript">
 
 
@@ -258,18 +173,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	}
 
 	
-	/* $(function(){
-		$.get('addglass/pagecount', function(data) {
-			var tblhtml="";
-			 for(var i=1;i<=data;i++){
-				 tblhtml+="<td><a href='javascript:tonext("+i+")'>"+i+"</a></td>"
-			 }
-			 $('#shuzi').append(tblhtml);
-		});
-	})
-	function tonext(id){
-		location.href="addglass/findlimit?num1="+id+"&num2=5";
-	}  */
+	
 	
 	//添加
 	$('#getAll').on('click',function(){
@@ -277,10 +181,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		location.href="";
 	})
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 16beba472a21e82e1e4a6ecd9916f671c561a65b
 
 </script> 
 </html>
