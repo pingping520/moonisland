@@ -22,9 +22,12 @@
     <!--end-->
 
     <!--买家地址部分-->
-    <div class="address container-fluid">
-    	<div id="fill-address"></div>
-        <button id="checkaddress" onclick="fun01()">选择地址</button>
+    <div class="address container-fluid" id="checkaddress" onclick="fun01()">
+    	<div class="row">
+	        <div class="col-xs-1 text-center"><i class="iconfont icon-map"></i></div>
+	        <div class="col-xs-10" id="fill-address"><span>请填写收货地址</span></div>
+	        <div class="col-xs-1"><i class="iconfont icon-qianjin"></i></div>
+        </div>
     </div>
     <!--end-->
     <!--商品区域-->
@@ -78,7 +81,7 @@
 </div>
 
 <!-- 选择地址  -->
-<div class="" id="area" style="display:none;background:#ddd;">
+<div class="" id="area" style="display:none;">
 	<div id="header" class="navbar-fixed-top">
         <div class="row">
             <div class="col-xs-2 text-right"><i class="iconfont icon-toLeft-copy" id="rutn"></i></div>
@@ -87,24 +90,24 @@
         </div>
     </div>
     <div style="height:62px;"></div>
-		<div class="container-fluid" style="background:#ddd;">
+		<div class="container-fluid">
 			<div id="pcd" class="col-xs-12">
 				<ul class="province" style="list-style: none; padding-left: 0;"></ul>
 			</div>
-			<div id="pcd-address" class="col-xs-12">
-				
-			</div>
-			<div id="detailed-address" class="col-xs-12" style="display:none">
-				<input id="detailed-address-input" type="text" value="请输入详细地址"/>
-			</div>
-			<div id="name-address" class="col-xs-12" style="display:none">
-				<input id="name-address-input" type="text" value="请输入收货人姓名"/>
-			</div>
-			<div id="tell-address" class="col-xs-12" style="display:none">
-				<input id="tell-address-input" type="text" value="请输入收货人电话"/>
-			</div>
-			<div id="zip-code" class="col-xs-12" style="display:none">
-				<input id="zip-code-input" type="text" value="请输入邮政编码"/>
+			<div id="detailed-info" style="display:none;">
+				<div id="pcd-address" class="col-xs-12" style="padding-top:10px;"></div>
+				<div id="detailed-address" class="col-xs-12" style="padding-bottom:20px;">
+					<input id="detailed-address-input" type="text" class="form-control" placeholder="请输入详细地址">
+				</div>
+				<div id="name-address" class="col-xs-12" style="padding-bottom:20px;">
+					<input id="name-address-input" type="text" class="form-control" placeholder="请输入收货人姓名">
+				</div>
+				<div id="tell-address" class="col-xs-12" style="padding-bottom:20px;">
+					<input id="tell-address-input" type="text" class="form-control" placeholder="请输入收货人电话">
+				</div>
+				<div id="zip-code" class="col-xs-12" style="padding-bottom:20px;">
+					<input id="zip-code-input" type="text" class="form-control" placeholder="请输入邮政编码">
+				</div>	
 			</div>
 		</div>
 	<div style="height:50px;"></div>
@@ -126,7 +129,7 @@ function fun01(){
 		for(var i=0;i<data.length;i++){
 			var title = data[i].title;
 			var areaId = data[i].areaId;
-			ls += "<li value="+areaId+" onclick='province(this)' style='border-bottom:1px solid white'>"+title+"</li>";
+			ls += "<li value="+areaId+" onclick='province(this)' style='padding:5px 0;'>"+title+"</li>";
 		}
 		$('.province').find("li").remove();
 		$('.province').append(ls);
@@ -140,11 +143,11 @@ function fun01(){
 		if(id!=ctid){
 			$.get("../area/findall/"+id,function(data){
 				var ls = "";
-				ls += "<li id='pro' value="+id+" onclick='fun01()' style='background:#ccc'>"+province+"</li>";
+				ls += "<li id='pro' value="+id+" onclick='fun01()' style='background:#ccc;padding:5px 0;'>"+province+"</li>";
 				for(var i=0;i<data.length;i++){
 					var title = data[i].title;
 					var areaId = data[i].areaId;
-					ls += "<li value="+areaId+" onclick='city(this)'>"+title+"</li>";
+					ls += "<li value="+areaId+" onclick='city(this)' style='padding:5px 0;'>"+title+"</li>";
 				}
 			
 				$('.province').find("li").remove();
@@ -155,11 +158,11 @@ function fun01(){
 			var pro2 = $('#pro2').text();
 			$.get("../area/findall/"+pro2id,function(data){
 				var ls = "";
-				ls += "<li id='pro' value="+pro2id+" onclick='fun01()' style='background:#ccc'>"+pro2+"</li>";
+				ls += "<li id='pro' value="+pro2id+" onclick='fun01()' style='background:#ccc;padding:5px 0;'>"+pro2+"</li>";
 				for(var i=0;i<data.length;i++){
 					var title = data[i].title;
 					var areaId = data[i].areaId;
-					ls += "<li value="+areaId+" onclick='city(this)'>"+title+"</li>";
+					ls += "<li value="+areaId+" onclick='city(this)' style='padding:5px 0;'>"+title+"</li>";
 				}
 			
 				$('.province').find("li").remove();
@@ -176,12 +179,12 @@ function fun01(){
 		var id = $(obj).val(); 
 		$.get("../area/findall/"+cityid,function(data){
 			var ls = "";
-			ls += "<li id='pro2' value="+proid+" onclick='fun01()' style='background:#ccc'>"+pro+"</li>";
-			ls += "<li id='ct' value="+cityid+" onclick='province(this)' style='background:#ccc'>"+city+"</li>";
+			ls += "<li id='pro2' value="+proid+" onclick='fun01()' style='background:#ccc;padding:5px 0;'>"+pro+"</li>";
+			ls += "<li id='ct' value="+cityid+" onclick='province(this)' style='background:#ddd;padding:5px 0;'>"+city+"</li>";
 			for(var i=0;i<data.length;i++){
 				var title = data[i].title;
 				var areaId = data[i].areaId;
-				ls += "<li value="+areaId+" onclick='address(this)'>"+title+"</li>";
+				ls += "<li value="+areaId+" onclick='address(this)' style='padding:5px 0;'>"+title+"</li>";
 			}
 			$('.province').find("li").remove();
 			$('.province').append(ls);
@@ -192,33 +195,27 @@ function fun01(){
 		var p = $('#pro2').text();
 		var c = $('#ct').text();
 		var d = $(obj).text();
-		var pcd = "<p>"+p+c+d+"</p>";
+		var pcd = "<p>"+p+" "+c+" "+d+"</p>";
 		$('#pcd').css('display','none');
 		$('#pcd-address').find("p").remove();
 		$('#pcd-address').append(pcd);
-		$('#pcd-address').css('display','block');
-		$('#detailed-address').css('display','block');
-		$('#name-address').css('display','block');
-		$('#tell-address').css('display','block');
-		$('#zip-code').css('display','block');
+		$('#detailed-info').css('display','block');
 	}
 	
 	$('#checkaddress').click(function(){
 		$('#wrap').css('display','none');
 		$('#area').css('display','block');
 		$('#pcd').css('display','block');
-		$('#pcd-address').css('display','none');
-		$('#detailed-address').css('display','none');
-		$('#name-address').css('display','none');
-		$('#tell-address').css('display','none');
-		$('#zip-code').css('display','none');
+		$('#detailed-info').css('display','none');
 	});
 	$('#rutn').click(function(){
 		$('#area').css('display','none');
 		$('#wrap').css('display','block');
 	})
 	$('#pcd-address').click(function(){
-		alert('等会再改')
+		$('#area').css('display','block');
+		$('#pcd').css('display','block');
+		$('#detailed-info').css('display','none');
 	})
 	$('#addbtn').click(function(){
 		var pcdAddress = $('#pcd-address').text();
@@ -227,8 +224,8 @@ function fun01(){
 		var tell = $('#tell-address-input').val();
 		var zip = $('#zip-code-input').val();
 		
-		var add = "<p>"+pcdAddress+" "+detailed+" "+name+tell+" "+zip+"</p>";
-		$('#fill-address').find("p").remove();
+		var add = "<span>"+pcdAddress+" "+detailed+" "+name+tell+" "+zip+"</span>";
+		$('#fill-address').find("span").remove();
 		$('#fill-address').append(add);
 		$('#area').css('display','none');
 		$('#wrap').css('display','block');
