@@ -50,6 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	line-height: 20px;
 	margin: 0 auto;
 }
+ #user_footer{width:100%;height:60px; position: relative; } 
 </style>
 </head>
 <body>
@@ -119,68 +120,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</c:forEach>
 		</tbody>
 	</table>
+	<div id="user_footer" class="container">
+			<div id="paged">
+				<ul class="pagination" id="page">
+					<li><a href="javascript:last()">&laquo;</a></li>
+					<c:forEach var="x" begin="1" end="${count}" step="1" varStatus="st">
+						<c:if test="${param.num1==x}">
+							<li class="active"><a href="pic/findlimit?num1=${x}">${x}</a></li>
+						</c:if>
+						<c:if test="${param.num1!=x}">
+							<li><a href="pic/findlimit?num1=${x}">${x}</a></li>	
+						</c:if>					
+					</c:forEach>
+					<li><a href="javascript:next()">&raquo;</a></li>
+					<li><span>共&nbsp;${count}&nbsp;页.</span></li>
+				</ul>	
+			</div>
+		</div>
+	<!-- <table id="tblnum">
+				<tr id="shuzi"></tr>
+			</table>
 	</div>			
-</div>
+</div> -->
 		</fieldset>
 	</div>
 
 
-<%-- 	<div id="brand">
-		<div id="brand_body">
-			<table class="table table-hover">
-				<tr class="info">
-					<td>图片编号</td>
-					<td>商品编号</td>
-					<td>图片一</td>
-					<td>图片二</td>
-					<td>图片三</td>
-					<td>图片四</td>
-					<td>缩略图一</td>
-					<td>缩略图二</td>
-					<td>缩略图三</td>
-					<td>缩略图四</td>
-
-					<td>更新</td>
-				</tr>
-				<c:forEach items="${picList}" var="pic">
-					<tr class="success">
-						<td>${pic.picId}</td>
-						<td>${pic.goodsId}</td>
-						<td><img alt="" src="images/${pic.pic1}" width="40"
-							height="40"></td>
-						<td><img alt="" src="images/${pic.pic2}" width="40"
-							height="40"></td>
-						<td><img alt="" src="images/${pic.pic3}" width="40"
-							height="40"></td>
-						<td><img alt="" src="images/${pic.pic4}" width="40"
-							height="40"></td>
-						<td><img alt="" src="images/${pic.pic1Thumb}" width="40"
-							height="40"></td>
-						<td><img alt="" src="images/${pic.pic2Thumb}" width="40"
-							height="40"></td>
-						<td><img alt="" src="images/${pic.pic3Thumb}" width="40"
-							height="40"></td>
-						<td><img alt="" src="images/${pic.pic4Thumb}" width="40"
-							height="40"></td>
-
-						<td><a href="pic/toupdatepic?id=${pic.picId}">更新</a></td>
-					</tr>
-				</c:forEach>
-
-			</table>
-			<button>
-				<a href="pic/topic?picId=${pic.picId}">添加</a>
-			</button>
-			<table id="tblnum">
-				<tr id="shuzi"></tr>
-			</table>
-		</div>
-
-	</div> --%>
 </body>
 <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
 <script type="text/javascript">
-	$(function(){
+	/* $(function(){
 		$.get('pic/pagecount', function(data) {
 			var tblhtml="";
 			 for(var i=1;i<=data;i++){
@@ -192,6 +161,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	function tonext(id){
 		location.href="pic/findlimit?num1="+id+"&num2=5";
 	}
+	 */
+	 function last(){
+			var a=$('.active').children().text();
+			if(a>1){
+				a=a-1;
+				location.href="pic/findlimit?num1="+a;
+			}
+		} 
+		function next(){
+			var a=$('.active').children().text();
+			var pagenum=$('#page').children('li').length;
+			var b=parseInt(a);
+			if(a<pagenum-3){
+				b=b+1;
+				location.href="pic/findlimit?num1="+b;
+			}
+		} 
 	//添加
 	$('#getAll').on('click',function(){
 		alert("tiaozhuan")

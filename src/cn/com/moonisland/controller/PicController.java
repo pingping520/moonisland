@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import cn.com.moonisland.pojo.Glass;
 import cn.com.moonisland.pojo.Message;
 import cn.com.moonisland.pojo.Pic;
 import cn.com.moonisland.service.PicService;
@@ -141,17 +142,34 @@ public class PicController {
 		int result = this.picService.checkPic(p);
 		return result;
 	}
-	
+	/*
+	 * @RequestMapping(value="/findlimit")
+	public ModelAndView findlimitPic(int num1){
+		ModelAndView mv = new ModelAndView();
+		Map<String, Integer> map=new HashMap<>();
+		num1=(num1-1)*5;
+		map.put("num1",num1);
+		map.put("num2",5);
+		List<Glass> ls=this.glassService.findlimit(map);
+		int count=this.glassService.pagecount();
+		mv.setViewName("/WEB-INF/admin/glass.jsp");
+		mv.addObject("glassList", ls);
+		mv.addObject("count", count);
+		return mv;		
+	}
+	 * */
 	@RequestMapping(value="/findlimit")
-	public ModelAndView findlimitPic(int num1,int num2){
+	public ModelAndView findlimitPic(int num1){
 		ModelAndView mv = new ModelAndView();
 		Map<String, Integer> map=new HashMap<>();
 		num1=(num1-1)*5;
 		map.put("num1",num1);
 		map.put("num2",5);
 		List<Pic> ls=this.picService.findlimit(map);
+		int count=this.picService.pagecount();
 		mv.setViewName("/WEB-INF/admin/pic.jsp");
 		mv.addObject("picList", ls);
+		mv.addObject("count", count);
 		return mv;		
 	}
 	
