@@ -1,48 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>忘记密码</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/forgetPwd.css">
-    <link rel="stylesheet" href="icon/iconfont.css">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>忘记密码</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/forgetPwd.css">
+<link rel="stylesheet" href="../icon/iconfont.css">
 </head>
 <body>
-    <div id="header" class="container-fluid text-center">
-        <span class="iconfont icon-toLeft-copy"></span>
-        <span class="wj">忘记密码</span>
-    </div>
-    <br>
-    <form class="form-horizontal container-fluid">
-        <div style="width: 100%">
-            <!--//账户信息-->
-            <div class="form-group container-fluid fooo" >
-                <label class="sr-only" for="forgetPwd">请输入ID/手机号/邮箱</label>
-                <div class="input-group" id="div">
-                    <div class="input-group-addon btn-lg">账号</div>
-                    <input type="text" class="form-control btn-lg" id="forgetPwd" value="15633033195">
-                </div>
-            </div>
+	<div id="header" class="container-fluid text-center">
+		<span class="iconfont icon-toLeft-copy"></span> <span class="wj">忘记密码</span>
+	</div>
+	<br>
+	<form class="form-horizontal container-fluid">
+		<div style="width: 100%">
+			<!--//账户信息-->
+			<div class="form-group container-fluid fooo">
+				<label class="sr-only" for="forgetPwd">请输入ID/手机号/邮箱</label>
+				<div class="input-group" id="div">
+					<div class="input-group-addon btn-lg">账号</div>
+					<input type="text" class="form-control btn-lg" id="forgetPwd"
+						value="15633033195">
+				</div>
+			</div>
 
-            <!--验证码-->
-            <div class="input-group div" id="div2">
-                <input type="text" class="form-control" value="FVKN" />
-                <span class="input-group-addon" id="basic-addon2">
-                    <!--<canvas class="J_codeimg " id="myCanvas" onclick="createCode()"></canvas>-->
-                    <img src='images/0002.jpg'>
-                </span>
-                <div class="span">| </div>
-            </div>
-        </div>
-    </form>
-    <div class="form-group container-fluid">
-        <button  class="btn btn-danger btn-lg">下一步</button>
-    </div>
-<script src="js/jquery-3.2.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/forgetPwd.js"></script>
+			<!--验证码-->
+			<div class="input-group div" id="div2">
+				<input type="text" class="form-control" value="FVKN" /> <span
+					class="input-group-addon" id="basic-addon2"> <!--<canvas class="J_codeimg " id="myCanvas" onclick="createCode()"></canvas>-->
+					<img src='../images/0002.jpg'>
+				</span>
+				<div class="span">|</div>
+			</div>
+		</div>
+	</form>
+	<div class="form-group container-fluid">
+		<button id ="next" class="btn btn-danger btn-lg">下一步</button>
+	</div>
+	<script src="../js/jquery-3.2.1.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/forgetPwd.js"></script>
 </body>
 </html>

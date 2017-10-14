@@ -1,8 +1,16 @@
 $(function(){
 
+    /*用户登录*/
     $('#btn').click(function(){
-        location.href="index.html";
+        var uname = $('#text-input').val();
+        alert(uname);
+        var upwd = $('#text-input2').val();
+        alert(upwd);
+        $.post('..//user/login', {"nickName":uname,"password":upwd}, function(data, textStatus, xhr) {
+            
+        });
     });
+
     $('#text-input2').bind('input propertychange', function() {
         var con=$('#text-input2').val();
         if(con==""){

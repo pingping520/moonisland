@@ -19,6 +19,10 @@ public class UserController {
 	private UserService userService;
 	
 	/**
+	 * 注册跳转
+	 */
+
+	/**
 	 * 用户注册
 	 */
 	@RequestMapping(value="/reg")
@@ -58,7 +62,6 @@ public class UserController {
 	 */
 	@RequestMapping(value="/login")
 	public ModelAndView login(User user,HttpSession session){
-		System.out.println("=================");
 		ModelAndView mv = new ModelAndView();
 		user.setPassword(MD5Utils.str2MD5(user.getPassword()));
 		User u = this.userService.login(user);

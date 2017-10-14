@@ -1,64 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!--默认情况，ui布局的宽度和移动设备的宽度一致，缩放大小为原始大小-->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>手机快速注册</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/fastregister.css">
-    <link rel="stylesheet" href="icon/iconfont.css">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!--默认情况，ui布局的宽度和移动设备的宽度一致，缩放大小为原始大小-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>手机快速注册</title>
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/fastregister.css">
+<link rel="stylesheet" href="../icon/iconfont.css">
 </head>
 <body>
-<div class="wrap">
-    <form action="" class="">
-      <div class="header navbar-fixed-top">
-        <span class="top" id="topleft">
-                    <a href="#"><span alt="" id="returnleft" class="rleft iconfont icon-toLeft-copy"></span></a>
-        </span>
-        <span class="top topright">手机快速注册</span>
-      </div>
-        <div class="main">
-        <ul class="ul1">
-            <li id="serpass">设置登录密码</li>
-            <li class="lipass">
-            <div class="div1" id="pass1" >
-                 <input type="text" class="setpwd show" id="setpwd">
-
-            </div>
-            <!-- <div class="div1" id="pass2">
-                    <input type="password" class="setpwd hid" id="setpwd2">
-             </div>-->
-            </li>
-            <li id="kejian"><span class=" span1  show" id="img1" >
-                        <!--yan-->
-                        <span class="iconfont icon-xuanzhong" id="point2">
-
-                        </span>密码可见
-                    </span>
-                <span class="span1 span1 hid" id="img2" >
-                        <!--yan-->
-                        <span class="iconfont icon-weixuan span2" id="point">
-
-                        </span>密码可见
-                    </span></li>
-            <li id="wenzi">密码由6-20位字母、数字或半角符号组成，不能是10位以下
-            纯数字/字母/半角符号，字母需要区分大小写</li>
-            <li><div width="90%" height="45px" style="padding-top:17px;"><button type="button" class="btn1 btn <!--btn-default-->" >完成</button></div></li>
-            <li id="wenti">遇到问题？您可以 <a href="#" class="con" id="costom">联系客服</a></li>
-        </ul>
-    </div>
-
-
-
-    </form>
-
-</div>
+	<div class="wrap">
+		<form action="" class="">
+			<div class="header navbar-fixed-top">
+				<span class="top" id="topleft"> <a href="#"><span alt=""
+						id="returnleft" class="rleft iconfont icon-toLeft-copy"></span></a>
+				</span> <span class="top topright">手机快速注册</span>
+			</div>
+			<div class="main">
+				<ul class="ul1">
+					<li id="serpass">设置登录密码</li>
+					<li class="lipass">
+						<div class="div1" id="pass1">
+							<input type="text" class="setpwd show" id="setpwd">
+						</div>
+					</li>
+					<li id="kejian"><span class=" span1  show" id="img1">
+						 <span class="iconfont icon-xuanzhong" id="point2">
+						 </span>密码可见
+					</span> <span class="span1 span1 hid" id="img2"> <!--yan--> <span
+							class="iconfont icon-weixuan span2" id="point"> </span>密码可见
+					</span></li>
+					<li id="wenzi">密码由6-20位字母、数字或半角符号组成，不能是10位以下
+						纯数字/字母/半角符号，字母需要区分大小写</li>
+					<li><div width="90%" height="45px" style="padding-top: 17px;">
+							<button type="button" class="btn1 btn <!--btn-default-->">完成</button>
+						</div></li>
+					<li id="wenti">遇到问题？您可以 <a href="#" class="con" id="costom">联系客服</a></li>
+				</ul>
+			</div>
+		</form>
+	</div>
 </body>
-<script src="js/jquery-3.2.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<script src="../js/jquery-3.2.1.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
 <script>
     var img1=document.getElementById('img1');
     var img2=document.getElementById('img2');
