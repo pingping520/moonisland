@@ -1,0 +1,179 @@
+body,html{
+    background-color: #ffffff;
+    color:#000000;
+    font-family: '微软雅黑';
+    font-size:16px;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+#biaoqian ul{
+    text-align:center;
+    padding-left: 5%;
+}
+ul,li{
+    list-style: none;
+    margin-bottom: 0;
+}
+a:hover{
+    text-decoration: none;
+}
+iframe{
+    display: none;
+}
+.block{
+    display: block;
+}
+/*最上标题部分*/
+.femlieliebiao{
+
+    height: 100%;
+}
+.toubu nav{
+    margin: 0;
+    background: #ffffff;
+}
+#header{
+    padding: 7% 0 0;
+}
+#header .icon{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    background: url(../images/iconBg.png) 0 -57px no-repeat;
+    background-size: 100% auto;
+    margin-top: 2px;
+}
+
+/*顶部*/
+#shurukuang{
+    position: relative;
+    margin-bottom: 2%;
+    padding-left: 28px;
+    height: 3%;
+    border: 0;
+    border-radius: 35px;
+    background-color: #EEF2F3;
+}
+#sousuo {
+    position: absolute;
+    line-height: 0;
+    top: 8px;
+    left: 23px;
+    margin-top: 8px;
+    
+}
+#sousuo span{
+    font-size: 20px;
+}
+.footer{
+    margin: 0;
+    height: 23%;
+}
+#biaoqian{
+    margin: 0;
+    padding: 10px;
+    border: 0;
+    min-height: 30%;
+    background: #ffffff;
+    border-bottom: 1px solid #eeeeee;
+}
+#biaoqian ul{
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+}
+#biaoqian a{
+    color: #000000;
+}
+#biaoqian a:hover{
+    color:red;
+}
+.nav li a{
+    padding: 10% 10%;
+}
+#xialabiao{
+    position: absolute;
+    filter:alpha(opacity=50);
+    -moz-opacity:0.5;
+    -khtml-opacity: 0.5;
+    opacity: 1;
+}
+.guanggao{
+    height: 30%;
+}
+/*夹层广告*/
+.jiaceng{
+    width: 100%;
+}
+/*商品部分*/
+.fenlei{
+    position: relative;
+    padding: 0;
+    padding-top: 40%;
+    height: auto;
+}
+.row{
+    margin: 0;
+}
+.row img{
+    width: 100%;
+}
+.col-xs-4{
+    padding: 0;
+}
+.row a{
+    height: 40%;
+}
+.col-xs-8{
+    padding: 5% 5% 0 5%;
+}
+.lb2 a:active{
+    color:blue
+}
+.lb2 a{
+    color:#222224;
+    font-size: 16px;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    display: -webkit-box; /** 将对象作为伸缩盒子模型显示 **/
+    -webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+    -webkit-line-clamp: 2; /** 显示的行数 **/
+    overflow: hidden;  /** 隐藏超出的内容 **/
+}
+#header div .sp01{
+    margin-top: 5px;
+}
+.lb3 {
+    padding-top: 10%;
+}
+.lb3 em{
+    font-style:normal;
+    color: red;
+}
+.lb3 i{
+    color: red;
+    font-style:normal;
+    font-size: 12px;
+
+}
+.lb4 a{
+    padding-right: 5%;
+    color: #838486;
+}
+#hp1{
+    font-size: 14px;
+}
+#hp2{
+    font-size: 12px;
+}
+.lb3 div{
+    margin-right: 40%;
+    font-size: 12px;
+    padding-left: 1%;
+    padding-right: 1%;
+    color: #7cd3c0;
+    border: 1px solid #7cd3c0;
+    border-radius: 15%;
+}

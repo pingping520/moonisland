@@ -1,0 +1,28 @@
+.fill{padding-left:0;margin-left:0;padding-right: 0;margin-right:0;margin-bottom: 0px;margin-top: 0px;}
+        head,body{height:100%;width:100%;}
+        #wrap{height:100%;width:100%;}
+        .navbar-default{border:0;background:#fff;}
+.header{  width:100%;  height:66px;  margin:-2px auto;  background-color: white;  }
+.top{  float: left;  font-size:20px ;  margin-top: 7%;  margin-left:5%;  }
+.topright{  width: 80%;  height:22px;  text-align:center;  margin-top: 7%;  margin-left:-3%;  }
+.rleft{  width:25px;  heihgt:25px;  margin-top:4%;  margin-left:5%;  }
+  #main{width:100%;height:100%;background:#f5f5f5;position:absolute;padding-left:21px;padding-right:21px;}
+        #content{margin-top:30px;}
+        #content label{font-size:16px;margin-left:2%;font-family: Microsoft YaHei UI;}
+        #content div{padding-left:2px;}
+        #input_btn input{  height:45px;border:0;  box-shadow:0 0 0;font-size:16px;  padding-left:21px;  }
+        #input_btn button{  height:45px;border:0;  box-shadow:0 0 0;font-size:16px;  background:#eee; color:#bdbdbd; padding-left:5px;}
+        #btn{  background:#eee;  height:45px;  font-size:20px;  color:#cdcdcd;  border:0;  }
+        #main>div:nth-child(3) span,a{font-size: 16px;color:#bdbdbd;}
+        #main>div:nth-child(3){margin-top:18px;}
+        #main>div:nth-child(2){margin-top:80px;margin-bottom:0px;height:50px;}
+         @media all and (max-width:320px) {
+            #input_btn button{ font-size:14px; }
+            #input_btn input{  font-size:14px;}
+            #content label{font-size:14px;}
+            #main>div:nth-child(3) span,a{font-size: 14px;}
+            #head .col-xs-11{ font:16px/100% 微软雅黑;margin-top:11%;}
+        }
+
+
+

@@ -31,7 +31,7 @@
 		
 	<select id="findUsePhotos" resultMap="photoWallResultMap">
 		<![CDATA[
-			select * from moon_photo_wall where photo_status=#{photoStatus}
+			select * from moon_photo_wall where photo_status=1
 		]]>
 	</select>
 	

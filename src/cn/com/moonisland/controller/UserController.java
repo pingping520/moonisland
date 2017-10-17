@@ -19,6 +19,10 @@ public class UserController {
 	private UserService userService;
 	
 	/**
+	 * 注册跳转
+	 */
+
+	/**
 	 * 用户注册
 	 */
 	@RequestMapping(value="/reg")
@@ -63,10 +67,10 @@ public class UserController {
 		User u = this.userService.login(user);
 		if(u!=null){
 			session.setAttribute("user", u);
-			mv.setViewName("/html/index.html");
+			mv.setViewName("../html/myHome.html");
 			mv.addObject("usetInfo", u);
 		}else{
-			mv.setViewName("/html/login.html");
+			mv.setViewName("../html/login.html");
 		}
 		return mv;		
 	}

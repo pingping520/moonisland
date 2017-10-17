@@ -1,0 +1,146 @@
+ body,html{
+    background-color: #FAFAFA;
+    font-family: 微软雅黑;
+    font-size:12px;
+}
+*{
+    margin: 0;
+    padding: 0;
+    font-family:微软雅黑;
+    font-size: 16px;
+}
+
+
+#nav{
+    height:45px;
+
+}
+#nav .row{
+    height:100%;
+    padding-left: 12%;
+    padding-top: 2%;
+
+}
+#nav .row p{
+    font-size: 15px;
+    color: #9C9C9C;
+
+}
+ol,ul,li{
+    list-style: none;
+    margin-bottom: 0;
+}
+a:hover{
+    text-decoration: none;
+}
+iframe{
+    display: none;
+}
+.block{
+    display: block;
+}
+
+.pay nav{
+    margin: 0;
+    height:63px;
+    padding: 0;
+    background: #ffffff;
+}
+#header .icon{
+    width: 19px;
+    height: 19px;
+    position: absolute;
+    background: url(../images/iconBg.png) 0 -53px no-repeat;
+    background-size: 100% auto;
+    margin-left: 10%;
+}
+#header{
+    margin-top: 7%;
+    margin-bottom: 3%;
+}
+#header .col-xs-2{
+    font-size: 16px;
+}
+#header .col-xs-4 a{
+    font-size: 15px;
+    font-family: '微软雅黑 Light';
+    color: #9C9C9C;
+}
+#header .col-xs-6{
+    padding-left: 1%;
+}
+#header .col-xs-6 span{
+    font-size: 18px;
+    font-family: '微软雅黑 Light';
+    font-weight: bold;
+    color: #222224;
+}
+#neirong{
+    padding: 0;
+    margin:0;
+    margin-left: 5%;
+}
+.row{
+    margin: 0;
+}
+.w_1{
+    padding-top: 4%;
+}
+.w_1 .iconfont{
+    color:#5ac53b;
+    font-size:25px;
+}
+.w_2 .p1{
+    font-size: 14px;
+    margin-bottom: 0px;
+    font-weight: bold;
+}
+.w_2 .p2{
+    font-size: 10px;
+    color: #9C9C9C;
+}
+.w_3{
+    padding-top:5%;
+}
+.w_3 .iconfont{
+    color:#ccc;
+}
+.z_1{
+    padding:0px;
+}
+.z_1 .iconfont{
+    font-size:40px;
+}
+.z_2{
+    padding-top: 3%;
+    font-weight: bold;
+}
+.z_2 .p1{
+    font-size: 16px;
+}
+.z_3{
+    padding-top:5%;
+}
+.z_3 .iconfont{
+    color:#ccc;
+}
+.n_5{
+    padding: 0;
+}
+.btn1{
+    border-radius:0;
+    border: 0;
+    padding: 0;
+    width: 100%;
+    height:50px;
+    background-color: #DD453A;
+}
+.navbar{
+    padding: 0;
+
+    height: 50px;
+}
+.navbar p{
+    font-size: 14px;
+    margin-top: 2%;
+}

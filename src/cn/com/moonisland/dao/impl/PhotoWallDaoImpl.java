@@ -19,8 +19,6 @@ public class PhotoWallDaoImpl extends SqlSessionDaoSupport implements PhotoWallD
 	@Override
 	public int checkPhotoWall(PhotoWall photoWall) {
 		this.mapper = this.getSqlSession().getMapper(PhotoWallMapper.class);
-		System.out.println(photoWall.getPhotoId()+"-----------------");
-		System.out.println(photoWall.getPhotoStatus());
 		return this.mapper.checkPhotoWall(photoWall);
 	}
 
@@ -45,6 +43,7 @@ public class PhotoWallDaoImpl extends SqlSessionDaoSupport implements PhotoWallD
 	@Override
 	public List<PhotoWall> findUsePhotos() {
 		this.mapper = this.getSqlSession().getMapper(PhotoWallMapper.class);
+		System.out.println("=============================");
 		return this.mapper.findUsePhotos();
 	}
 

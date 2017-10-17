@@ -1,14 +1,13 @@
 #header{
     background: white;
-    padding-top: 15px;
+    padding-top: 10px;
 }
 #header .title{
-    font: 20px/50px 微软雅黑;
-    color: #232325;
+    font: bold 16px/40px 微软雅黑;
 }
 #header .title span{
     float: left;
-    line-height: 50px;
+    line-height: 40px;
     display: block;
     cursor: pointer;
 }
@@ -19,10 +18,9 @@
     margin-bottom: 0px;
 }
 #evaluate{
-    font: 12px/18px 微软雅黑;
-    color: #232325;
+    font-size: 12px;
     padding: 5px 0;
-    border-bottom: 2px solid #efefef;
+    border-bottom: 1px solid #cccccc;
     margin-bottom: 5px;
 }
 #pendingEvaluation{
@@ -38,13 +36,9 @@
     -webkit-line-clamp: 2;
     -webkit-box-orient:vertical;
 }
-#haveEvaluated-content .evaluate-content .title span{
-    font:14px 微软雅黑;
-    color: #232325;
-}
 #haveEvaluated-content .evaluate-content{
     padding: 10px 0;
-    border-bottom: 1px solid #efefef;
+    border-bottom: 1px solid #cccccc;
     position: relative;
 }
 .btn-see{

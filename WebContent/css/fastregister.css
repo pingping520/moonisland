@@ -1,0 +1,131 @@
+.wrap{
+    width:100%;
+    height:100%;
+
+}
+
+.header{
+    width:100%;
+    height:10%;
+    margin:-2px auto;
+    background-color: white;
+
+}
+.top{
+    float: left;
+    font-size:20px ;
+    margin-top: 7%;
+    margin-left:5%;
+
+}
+.topright{
+    width: 80%;
+    height:22px;
+    text-align:center;
+    margin-top: 7%;
+    margin-left:-3%;
+}
+.rleft{
+    width:25px;
+    heihgt:25px;
+    margin-top:4%;
+    margin-left:5%;
+}
+.main{
+    width:100%;
+    height:900px;
+    overflow: hidden;
+    background:#f4f4f4;
+
+}
+#setpwd,#setpwd2{
+    outline: none;
+    border: none;
+    border-style: none;
+    text-shadow: none;
+    -webkit-appearance: none;
+    -webkit-user-select: text;
+    /*   outline-color: transparent;*/
+    box-shadow: none;
+    font-size: 16px;
+    background-color: white;
+    margin-left:10%;
+    margin-top: 10px;
+    width:80%;
+    padding-top: 4%;
+}
+p{
+    width:90%;
+    height:55px;
+    line-height:55px;
+}
+ul{
+    width:100% ;
+    padding-left:6%;
+    margin-top:18%;
+
+}
+
+.div1{
+    width:100%;
+    height:43px;
+
+    background-color:white;
+}
+li{
+    list-style: none;
+    padding-top:10px;
+    padding-right:6%;
+}
+.lipass{
+    height:63px;
+}
+#serpass{
+    font-weight:600;
+font-size:16px;
+padding-top:7%;}
+.btn1{
+    width:100%;
+    height:44px;
+    background-color:#dd443a;
+    font-size: 20px ;
+    color:white;
+    border-color:#dd443a;
+}
+li:nth-child(5){
+    color: #b4b4b4;
+}
+li:nth-child(6){
+    font-size: 16px;
+    color: #b4b4b4;
+}
+a:link{
+    text-decoration:underline;
+    color:#0f0f0f;
+}
+.icon-xuanzhong{
+    color: red;
+}
+.iconfont{
+    font-size:18px;
+}
+.show{
+    display: block;
+}
+.hid{
+    display: none;
+}
+#img2,#img1{
+    font-size:14px;
+    font-family: 微软雅黑;
+    font-weight:600;
+}
+#point,#point2 {
+    font-size: 16px;
+    font-weight: 200;
+
+}
+#pass1{  margin-top:-6px;
+}
+
+

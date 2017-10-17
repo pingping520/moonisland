@@ -1,0 +1,78 @@
+html{
+    font-size: 100px;
+}
+body{
+    font-size: .14rem;
+    font-weight: bolder;
+    line-height: 1.42857143;
+}
+#header{
+    padding: .15rem 0 .03rem 0;
+    line-height: .45rem;
+    font-size: .18rem;
+    border-radius:0;
+    border-bottom: 1px solid #bbb;
+}
+#header .icon{
+    display:block;
+    width: .22rem;
+    height: .22rem;
+    overflow: hidden;
+    position: absolute;
+    background: url(images/iconBg.png) 0 -.63rem no-repeat;
+    background-size: 100% auto;
+    top: .27rem;
+    left: .12rem;
+}
+.sr-only{
+    border-radius:0;
+}
+.input-group{
+    height: 48px;
+    border-radius:0;
+}
+.input-group-addon{
+    background-color: #ffffff;
+}
+.form-control{
+    height: 48px;
+    border-radius:0;
+}
+.div span{
+    padding: 0;
+}
+form{
+    margin-bottom: 20px;
+}
+#div input{
+    border-left: 0;
+}
+#div div{
+    border-radius:0;
+    background: white;
+}
+#div2{
+    position: relative;
+}
+#div2 input{
+    border-right: 0;
+}
+#div2 #basic-addon2{
+    border-left: 0;
+}
+#div2 #basic-addon2 img{
+    width: 75px;
+}
+.btn{
+    width:100%;
+    border-radius:0;
+    background-color:#DD453A;
+}
+.span{
+    font-size: 25px;
+    color: #ccc;
+    position: absolute;
+    right: 63px;
+    top: 6px;
+    background-color: #ffffff;
+}

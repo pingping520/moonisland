@@ -1,0 +1,8 @@
+/*=============本站只兼容手机端============*/
+@charset "UTF-8";
+*{font-family:微软雅黑;}
+/*兼容iphone5*/
+@media screen and (max-width: 320px) {html{font-size:0.8em;}}
+/*兼容iphone6 Plus*/
+@media screen and (min-width: 414px) {html{font-size:1.2em;}}
+/*================end=====================*/
