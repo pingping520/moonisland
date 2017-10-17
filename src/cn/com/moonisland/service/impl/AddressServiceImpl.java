@@ -42,4 +42,14 @@ public class AddressServiceImpl implements AddressService{
 		return this.addressDao.deleteAddress(address);
 	}
 
+	@Override
+	public List<Address> findAllAddress2(int uid) {
+		return this.addressDao.findAllAddress2(uid);
+	}
+
+	@Override
+	public int deleteAddress2(Address address) {
+		return this.addressDao.deleteAddress2(address);
+	}
+
 }

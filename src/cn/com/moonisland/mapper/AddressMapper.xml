@@ -89,11 +89,27 @@
 		]]>
 	</select>
 	
+	<select id="findAllAddress2" resultMap="addressResultMap">
+		<![CDATA[
+			select a.province,a.city,a.district,a.address,a.zipcode,a.phone,a.receiver_name 
+			from moon_address a,moon_user u 
+			where a.user_id = u.user_id and a.address_status=1 and a.user_id=#{userId}
+		]]>
+	</select>
+	
 	<delete id="deleteAddress" parameterType="Address">
 		<![CDATA[
 			delete from moon_address where address_id=#{addressId}
 		]]>
 	</delete>
+	
+	<update id="deleteAddress2" parameterType="Address">
+		update moon_address 
+			<set>
+				<if test="addressStatus!=null" >addressStatus=#{addressStatus}</if>
+			</set>
+			where address_id=#{addressId}
+	</update>
 	
 </mapper>
 

@@ -35,14 +35,16 @@
 			select * from moon_optometry;
 		]]>
 	</select>
-	<select id="findByUserId" resultMap="optometryResultMap">
+	<select id="findById" resultMap="optometryResultMap">
 		<![CDATA[
-			select * from moon_optometry where moon_optometry.user_id=moon_user.user_id;
+			select * from moon_optometry where optometry_id=#{optometryId}
 		]]>
 	</select>
+	
 	<insert id="add2" parameterType="Optometry">
 		insert into moon_optometry(user_id,R_SPH,R_CYL,R_AXIS,L_SPH,L_CYL,L_AXIS,PD,optometry_time) values(#{user.userId},#{rSph},#{rCyl},#{rAxis},#{lSph},#{lCyl},#{lAxis},#{pd},current_timestamp);
 	</insert>
+	
 	<insert id="add" parameterType="Optometry">
   	insert into moon_optometry(
   	<trim prefixOverrides=",">

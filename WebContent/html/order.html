@@ -22,7 +22,7 @@
     <!--end-->
 
     <!--买家地址部分-->
-    <div class="address container-fluid" id="checkaddress" onclick="fun01()">
+    <div class="address container-fluid" id="checkaddress">
     	<div class="row">
 	        <div class="col-xs-1 text-center"><i class="iconfont icon-map"></i></div>
 	        <div class="col-xs-10" id="fill-address"><span>请填写收货地址</span></div>
@@ -81,10 +81,50 @@
 </div>
 
 <!-- 选择地址  -->
+<div class="" id="selectAddress" style="display:none;">
+	<div id="header" class="navbar-fixed-top">
+        <div class="row">
+            <div class="col-xs-2 text-right"><i class="iconfont icon-toLeft-copy rutn"></i></div>
+            <div class="col-xs-2 col-xs-push-8"></div>
+            <div class="col-xs-8 text-center col-xs-pull-2">选择地址</div>
+        </div>
+    </div>
+    
+    <div style="height:62px;"></div>
+    
+    <!-- 选择地址内容 -->
+    <div id="addressContent"></div>
+    
+    <!-- <div id="" style="padding:8px 0px;border-bottom:1px solid #ccc;">
+    	<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-7" style="font-size:14px;" id="receiver">收货人：<span>二狗子二</span></div>
+				<div class="col-xs-1"></div>
+				<div class="col-xs-4" style="font-size:14px;" id="telephone">18332368683</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12"><div style="font-size:14px;" id="deliveryAddress">收货地址：<span>河北省石家庄市裕华区  建设南大街河北师大西门，科技楼b座5楼博看文思</span></div></div>
+			</div>
+		</div>
+    </div> -->
+	
+	
+	<div style="height:50px;"></div>
+	
+	<div id="footer2" class="footer navbar-fixed-bottom">
+        <div class="container-fluid money2">
+            <div class="row">
+                <div class="col-xs-12" style="padding:0px;"><div id="addAddress" class="sub" style="color:white;text-align:center;">新增收货地址</div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 新增地址 -->
 <div class="" id="area" style="display:none;">
 	<div id="header" class="navbar-fixed-top">
         <div class="row">
-            <div class="col-xs-2 text-right"><i class="iconfont icon-toLeft-copy" id="rutn"></i></div>
+            <div class="col-xs-2 text-right"><i class="iconfont icon-toLeft-copy rutn"></i></div>
             <div class="col-xs-2 col-xs-push-8"></div>
             <div class="col-xs-8 text-center col-xs-pull-2">填写地址</div>
         </div>
@@ -195,7 +235,7 @@ function fun01(){
 		var p = $('#pro2').text();
 		var c = $('#ct').text();
 		var d = $(obj).text();
-		var pcd = "<p>"+p+" "+c+" "+d+"</p>";
+		var pcd = "<p><span class='p'>"+p+" </span><span class='c'>"+c+" </span><span class='d'>"+d+"</p>";
 		$('#pcd').css('display','none');
 		$('#pcd-address').find("p").remove();
 		$('#pcd-address').append(pcd);
@@ -204,11 +244,12 @@ function fun01(){
 	
 	$('#checkaddress').click(function(){
 		$('#wrap').css('display','none');
-		$('#area').css('display','block');
+		$('#selectAddress').css('display','block');
 		$('#pcd').css('display','block');
 		$('#detailed-info').css('display','none');
 	});
-	$('#rutn').click(function(){
+	$('.rutn').click(function(){
+		$('#selectAddress').css('display','none');
 		$('#area').css('display','none');
 		$('#wrap').css('display','block');
 	})
@@ -217,20 +258,66 @@ function fun01(){
 		$('#pcd').css('display','block');
 		$('#detailed-info').css('display','none');
 	})
+	
+	/*点击添加地址*/
 	$('#addbtn').click(function(){
-		var pcdAddress = $('#pcd-address').text();
+		/*获取用户添加的地址信息*/
+		var p = $('.p').text();
+		var c = $('.c').text();
+		var d = $('.d').text();
 		var detailed = $('#detailed-address-input').val();
 		var name = $('#name-address-input').val();
 		var tell = $('#tell-address-input').val();
 		var zip = $('#zip-code-input').val();
 		
-		var add = "<span>"+pcdAddress+" "+detailed+" "+name+tell+" "+zip+"</span>";
-		$('#fill-address').find("span").remove();
-		$('#fill-address').append(add);
-		$('#area').css('display','none');
-		$('#wrap').css('display','block');
+		/*用户ID需要从session中取出*/
+		var a = {'province':p,'city':c,'district':d,'address':detailed,'zipcode':zip,'phone':tell,'user.userId':75,'receiverName':name};
+		$.post("../address/add",a,function(data){
+			var ls = "";
+			ls += '<div style="padding:8px 0px;border-bottom:1px solid #ccc;" onclick="useAddress(this)"><div class="container-fluid"><div class="row">';
+			ls += '<div class="col-xs-7" style="font-size:14px;">收货人：<span class="receiver">'+name+'</span></div>';
+			ls += '<div class="col-xs-1"></div><div class="col-xs-4" style="font-size:14px;"><span class="telephone">'+tell+'</span></div></div>';
+			ls += '<div class="row"><div class="col-xs-12"><div style="font-size:14px;">收货地址：<span class="deliveryAddress">'+p+c+d+" "+detailed+'</span></div></div></div></div></div>';
+			$('#addressContent').append(ls);
+			$('#area').css('display','none');
+			$('#wrap').css('display','none');
+			$('#selectAddress').css('display','block');
+		})
 	})
 	
+	/*显示用户可用地址*/
+	$.get("../address/findAll/"+75,function(data){
+		var ls = "";
+		for(var i=0;i<data.length;i++){
+			var addr = data[i];
+			ls += '<div style="padding:8px 0px;border-bottom:1px solid #ccc;" onclick="useAddress(this)"><div class="container-fluid"><div class="row">';
+			ls += '<div class="col-xs-7" style="font-size:14px;">收货人：<span class="receiver">'+addr.receiverName+'</span></div>';
+			ls += '<div class="col-xs-1"></div><div class="col-xs-4" style="font-size:14px;"><span class="telephone">'+addr.phone+'</span></div></div>';
+			ls += '<div class="row"><div class="col-xs-12"><div style="font-size:14px;">收货地址：<span class="deliveryAddress">'+addr.province+addr.city+addr.district+" "+addr.address+'</span></div></div></div></div></div>';
+		}
+	    $('#addressContent').append(ls);
+	})
+	
+	/*点击使用地址*/
+	function useAddress(obj){
+		$(obj).css('background','#ddd');
+		$(obj).siblings('div').css('background','#fff');
+		var receiver = $(obj).find('.receiver').text();
+		var telephone = $(obj).find('.telephone').text();
+		var deliveryAddress = $(obj).find('.deliveryAddress').text();
+		var rtd = "<span>收货人："+receiver+"  电话："+telephone+"  收货地址："+deliveryAddress+"</span>";
+		$('#fill-address').find("span").remove();
+		$('#fill-address').append(rtd);
+		$('#selectAddress').css('display','none');
+		$('#wrap').css('display','block');
+	}
+	
+	/*新增地址*/
+	$('#addAddress').click(function(){
+		fun01();
+		$('#area').css('display','block');
+		$('#selectAddress').css('display','none');
+	})
 </script>
 </body>
 </html>

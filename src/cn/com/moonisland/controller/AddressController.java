@@ -1,7 +1,10 @@
 package cn.com.moonisland.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -46,10 +49,22 @@ public class AddressController {
 	}
 	
 	/**
-	 * 查询单个地址
+	 * 查询全部可用地址
 	 */
+	@RequestMapping(value="/findAll/{uid}")
+	@ResponseBody
+	public List<Address> findAll(@PathVariable int uid){
+		List<Address> ls = this.addressService.findAllAddress2(uid);
+		return ls;
+	}
 	
 	/**
-	 * 查询全部地址
+	 * 更新删除地址
 	 */
+	@RequestMapping(value="/delete2")
+	@ResponseBody
+	public int deleteAddress2(Address address){
+		int del = this.addressService.deleteAddress2(address);
+		return del;
+	}
 }

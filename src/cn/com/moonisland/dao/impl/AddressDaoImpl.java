@@ -42,4 +42,16 @@ public class AddressDaoImpl extends SqlSessionDaoSupport implements AddressDao{
 		return this.mapper.deleteAddress(address);
 	}
 
+	@Override
+	public List<Address> findAllAddress2(int uid) {
+		this.mapper = this.getSqlSession().getMapper(AddressMapper.class);
+		return this.mapper.findAllAddress2(uid);
+	}
+
+	@Override
+	public int deleteAddress2(Address address) {
+		this.mapper = this.getSqlSession().getMapper(AddressMapper.class);
+		return this.mapper.deleteAddress2(address);
+	}
+
 }

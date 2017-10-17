@@ -27,4 +27,14 @@ public interface AddressDao {
 	 * 删除地址
 	 */
 	public int deleteAddress(Address address);
+	
+	/**
+	 * 查询用户全部可用地址
+	 */
+	public List<Address> findAllAddress2(int uid);
+	
+	/**
+	 * 更新删除地址
+	 */
+	public int deleteAddress2(Address address);
 }
