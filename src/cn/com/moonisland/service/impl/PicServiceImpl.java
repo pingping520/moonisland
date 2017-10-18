@@ -57,4 +57,11 @@ public class PicServiceImpl implements PicService{
 		return this.dao.pagecount();
 	}
 
+	@Override
+	public Pic findbygoodsid(Pic pic) {
+		return this.dao.findbygoodsid(pic);
+	}
+
+	
+
 }

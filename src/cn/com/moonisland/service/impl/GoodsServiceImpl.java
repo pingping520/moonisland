@@ -59,6 +59,12 @@ public class GoodsServiceImpl implements GoodsService {
 		return this.goodsDao.selectStatus(map);
 	}
 
+	@Override
+	public List<Goods> findallGoods() {
+		
+		return this.goodsDao.findallGoods();
+	}
+
 	
 
 }

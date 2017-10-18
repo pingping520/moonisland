@@ -304,6 +304,12 @@
 		]]>
 	</select>
 	
+	<select id="findallGoods" resultMap="goodsResultMap">
+		<![CDATA[
+			select * from moon_goods;
+		]]>
+	</select>
+	
 	<delete id="deleteGoods" parameterType="Goods">
 		<![CDATA[
 				delete from moon_goods where goods_id=#{goodsId};

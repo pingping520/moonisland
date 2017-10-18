@@ -119,5 +119,19 @@ public class OrderController {
 		List<Order> ls=this.orderService.findoneorder(order);
 		return ls;
 	}
+	//查询一个订单
+	@RequestMapping(value="/findorder")
+	@ResponseBody
+	public Order findorder(Order order){
+		Order order2=this.orderService.findOrder(order);
+		return order2;
+	}
 	
+	
+	@RequestMapping(value="/findonegood")
+	@ResponseBody
+	public Order findonegood(Order order){
+		Order order2=this.orderService.findOrder(order);
+		return order2;
+	}
 }

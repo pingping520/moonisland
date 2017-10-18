@@ -33,7 +33,7 @@ public class GoodsDaoImpl extends SqlSessionDaoSupport implements GoodsDao {
 	@Override
 	public List<Goods> goods(int page) {
 		this.mapper=this.getSqlSession().getMapper(GoodsMapper.class);
-		// TODO Auto-generated method stub
+		
 		return this.mapper.goods(page);
 	}
 
@@ -53,6 +53,12 @@ public class GoodsDaoImpl extends SqlSessionDaoSupport implements GoodsDao {
 	public List<Goods> selectStatus(Map<String, Object> map) {
 		this.mapper=this.getSqlSession().getMapper(GoodsMapper.class);
 		return this.mapper.selectStatus(map);
+	}
+
+	@Override
+	public List<Goods> findallGoods() {
+		this.mapper=this.getSqlSession().getMapper(GoodsMapper.class);
+		return this.mapper.findallGoods();
 	}
 
 }

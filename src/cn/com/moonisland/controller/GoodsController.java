@@ -57,12 +57,12 @@ public class GoodsController {
 	 * */
 	@RequestMapping(value="/findAll")
 	public ModelAndView findAll(int page){
-			
 		ModelAndView mv = new ModelAndView();
 		int count=this.goodsService.goodsCount();
 		List<Goods> list = this.goodsService.goods(page);
-		System.out.println("----------------------------------------------"+count);
+		//System.out.println("----------------------------------------------"+count);
 		mv.setViewName("/WEB-INF/admin/goods.jsp");
+		mv.addObject("page",page);	
 		mv.addObject("goodslist",list);	
 		mv.addObject("count",count);
 		return mv;
@@ -73,14 +73,14 @@ public class GoodsController {
 	 * */
 	@RequestMapping(value="/findbyselect")
 	public ModelAndView selectStatus(String status,int page){
-		System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"+status);	
+		//System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"+status);	
 		ModelAndView mv = new ModelAndView();
 		int count=this.goodsService.goodsCount();
 		Map<String, Object> map=new HashMap<>();
 		map.put("status", status);
 		map.put("page",page);
 		List<Goods> list = this.goodsService.selectStatus(map);
-		System.out.println("----------------------------------------------"+count);
+		//System.out.println("----------------------------------------------"+count);
 		mv.setViewName("/WEB-INF/admin/goods.jsp");
 		mv.addObject("goodslist",list);	
 		mv.addObject("count",count);
@@ -110,7 +110,7 @@ public class GoodsController {
 	@RequestMapping("/update")
 	@ResponseBody
 	public int update(Goods goods){
-		System.out.println(goods);
+		System.out.println("====================================="+goods);
 		int result = this.goodsService.updateGoods(goods);
 		System.out.println(result);
 		return result;
@@ -176,7 +176,49 @@ public class GoodsController {
 		}		
 	}
 	/**
-	 * 选择是否在售商品
+	 * 查询所有商品 不分页
 	 * */
+	@RequestMapping(value="/findAllGoods")
+	@ResponseBody
+	public List<Goods> findAllGoods(){
+		List<Goods> gg=this.goodsService.findallGoods();
+		return gg;
+		
+	}
+	 
+	/**
+	 * 跳转到detail商品页面
+	 * */
+	@RequestMapping(value = "/toDetail")
+	public ModelAndView toFind(Goods goods) {
+		ModelAndView mv = new ModelAndView();
+		Goods g=this.goodsService.findGood(goods);
+		mv.setViewName("/html/detailPage.HTML");
+		mv.addObject("good",g);
+		System.out.println("++++++++++++++++");
+		return mv;
+		
+	}
+	/**
+	 * 查询一条数据
+	 * */
+	@RequestMapping(value="/findonegood")
+	@ResponseBody
+	public Goods findOneGood(@RequestParam("id") int id){
+		Goods g=new Goods();
+		g.setGoodsId(id);
+		Goods gg=this.goodsService.findGood(g);
+		return gg;	
+	}
+	
+	@RequestMapping(value="/findbygoodsid")
+	@ResponseBody
+	public Goods findbygoodsid(Goods goods){
+		Goods goods2=this.goodsService.findGood(goods);
+		return goods2;
+	}
+
+	
+	
 	
 }

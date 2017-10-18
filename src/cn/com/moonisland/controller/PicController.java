@@ -18,7 +18,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sun.org.apache.regexp.internal.recompile;
+
 import cn.com.moonisland.pojo.Glass;
+import cn.com.moonisland.pojo.Goods;
 import cn.com.moonisland.pojo.Message;
 import cn.com.moonisland.pojo.Pic;
 import cn.com.moonisland.service.PicService;
@@ -178,5 +181,14 @@ public class PicController {
 	public int pagecount(){
 		int result = this.picService.pagecount();
 		return result;
+	}
+	//zbl
+	@RequestMapping(value="/findpicbygoodsid")
+	@ResponseBody
+	public Pic findonePic(@RequestParam("id") String id){
+		Pic pic=new Pic();
+		pic.setGoodsId(id);
+		Pic pic2=this.picService.findbygoodsid(pic);
+	    return pic2;
 	}
 }

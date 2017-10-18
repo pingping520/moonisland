@@ -20,6 +20,8 @@ public interface PicService {
 	public List<Pic> findlimit(Map<String, Integer> map);
 	//总页数
 	public int pagecount();
+	//zbl--查询 通过goodid
+	public Pic findbygoodsid(Pic pic);
 }
 
 

@@ -57,4 +57,12 @@ public class PicDaoImpl extends SqlSessionDaoSupport implements PicDao{
 		return mapper.pagecount();
 	}
 
+	@Override
+	public Pic findbygoodsid(Pic pic) {
+		PicMapper mapper=(PicMapper) this.getSqlSession().getMapper(PicMapper.class);
+		return mapper.findbygoodsid(pic);
+	}
+
+	
+
 }

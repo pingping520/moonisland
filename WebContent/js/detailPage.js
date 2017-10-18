@@ -51,7 +51,42 @@ $body.css("height", windowHeight);
 }*/
 
 
-
+$(document).ready(function() {
+	//获取商品信息
+	var goodsid=UrlParm.parm("goodsId");
+	var conXiang=$('#conXiang');
+	
+	 $.get("../goods/findonegood?id="+goodsid, function(data) { 
+	     
+	     var fontRec=$('#fontRec');
+	     var pp="";
+	     var conXchi="";
+	     pp+='<p class="p01" href="#">'+data.goodsName+'</p>';
+	     pp+=' <p class="p02" href="#">新镜时髦范，怎能少得了这些？</p>';
+	     pp+='<p class="p03" >￥'+data.salesPrice+'</p><br/>';
+	     conXchi='<img class="img-responsive" src="../images/'+data.goodsContent+'"/>'
+	     fontRec.append(pp);
+	     conXiang.append(conXchi);
+	  });
+	//获取商品的图片信息
+	 $.get('../pic/findpicbygoodsid?id='+goodsid,function(data){
+		 console.log(data);
+		 var img1=$('#img1');
+         var img2=$('#img2');
+         var img3=$('#img3');
+         var img4=$('#img4');
+         var img5=$('#img5');
+         var im1='<img src="../images/'+data.pic1Thumb+'" class="img-responsive"/>';
+         var im2='<img src="../images/'+data.pic2Thumb+'" class="img-responsive"/>';
+         var im3='<img src="../images/'+data.pic3Thumb+'" class="img-responsive"/>';
+         var im4='<img src="../images/'+data.pic4Thumb+'" class="img-responsive"/>';
+         img1.append(im1);
+         img2.append(im2);
+         img3.append(im3);
+         img4.append(im4);
+	 })
+	
+});
 
 
 

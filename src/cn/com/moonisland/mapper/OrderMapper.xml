@@ -135,7 +135,7 @@
 		]]>
 	</select>
 	<select id="findOrder" parameterType="int" resultMap="orderResultMap">
-		select * from moon_order  where order_id=#{orderId};
+		select o.*,u.header_pic,u.nick_name,g.goods_content,g.goods_name from moon_order o,moon_user u,moon_goods g where order_id=#{orderId};
 	</select>
 
 	 <update id="updateOrder" parameterType="Order">

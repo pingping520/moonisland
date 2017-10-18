@@ -10,7 +10,7 @@ import java.io.Serializable;
 public class Pic implements Serializable{
 	private int picId; //图片编号
 	private String goodsId; //商品编号
-	Goods goods;
+	private Goods goods;
 	private String pic1; //图片1
 	private String pic2; //图片2
 	private String pic3; //图片3

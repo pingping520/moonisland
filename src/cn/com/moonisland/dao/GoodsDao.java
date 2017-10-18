@@ -23,6 +23,10 @@ public interface GoodsDao {
 	 * */
 	public List<Goods> goods(int page);
 	/**
+	 * 查询所有商品信息
+	 * */
+	public List<Goods> findallGoods();
+	/**
 	 * 删除商品
 	 * */
 	public int deleteGoods(Goods goods);
