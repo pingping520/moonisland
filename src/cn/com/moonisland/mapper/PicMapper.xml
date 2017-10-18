@@ -158,9 +158,6 @@
 		]]>
  	</update>
  	<!-- zbl -->
- 	<select id="findbygoodsid" resultMap="pic" parameterType="string">
- 		select * from moon_goods_pic  where  goods_id=#{goodsId}
- 	</select>
 </mapper>
 
 

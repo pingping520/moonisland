@@ -182,13 +182,5 @@ public class PicController {
 		int result = this.picService.pagecount();
 		return result;
 	}
-	//zbl
-	@RequestMapping(value="/findpicbygoodsid")
-	@ResponseBody
-	public Pic findonePic(@RequestParam("id") String id){
-		Pic pic=new Pic();
-		pic.setGoodsId(id);
-		Pic pic2=this.picService.findbygoodsid(pic);
-	    return pic2;
-	}
+	
 }

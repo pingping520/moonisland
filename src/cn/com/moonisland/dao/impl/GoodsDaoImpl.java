@@ -61,4 +61,10 @@ public class GoodsDaoImpl extends SqlSessionDaoSupport implements GoodsDao {
 		return this.mapper.findallGoods();
 	}
 
+	@Override
+	public List<Goods> salesGoods() {
+		this.mapper=this.getSqlSession().getMapper(GoodsMapper.class);
+		return this.mapper.salesGoods();
+	}
+
 }

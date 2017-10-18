@@ -8,6 +8,7 @@ import org.mybatis.spring.support.SqlSessionDaoSupport;
 
 import cn.com.moonisland.dao.PicDao;
 import cn.com.moonisland.mapper.PicMapper;
+import cn.com.moonisland.pojo.Goods;
 import cn.com.moonisland.pojo.Pic;
 
 public class PicDaoImpl extends SqlSessionDaoSupport implements PicDao{
@@ -56,13 +57,6 @@ public class PicDaoImpl extends SqlSessionDaoSupport implements PicDao{
 		PicMapper mapper=(PicMapper) this.getSqlSession().getMapper(PicMapper.class);
 		return mapper.pagecount();
 	}
-
-	@Override
-	public Pic findbygoodsid(Pic pic) {
-		PicMapper mapper=(PicMapper) this.getSqlSession().getMapper(PicMapper.class);
-		return mapper.findbygoodsid(pic);
-	}
-
 	
 
 }

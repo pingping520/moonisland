@@ -111,15 +111,15 @@
 	height: 20%;
 	overflow: hidden;
 	margin: 0px auto;
-	margin-top: 8%;
 }
 
 .imgdiv {
-	width: 48.5%;
+	width: 48%;
 	height: 100%;
 	border: 1px solid #d1d1d1;
 	padding: 2% auto;
 	overflow: hidden;
+	margin: 3px;
 }
 
 .img5 {

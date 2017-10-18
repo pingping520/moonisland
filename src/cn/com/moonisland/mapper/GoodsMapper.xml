@@ -315,10 +315,16 @@
 				delete from moon_goods where goods_id=#{goodsId};
 			]]>
 	</delete> 
+	
 	<select id="findGood" parameterType="int" resultMap="goodsResultMap">
 		select * from moon_goods where goods_id=#{goodsId};
 	</select>
+	
 	<select id="selectStatus" parameterType="Map" resultMap="goodsResultMap" >
 		select * from moon_goods where is_on_sale=#{status} limit #{page},10;
+	</select>
+	
+	<select id="salesGoods" resultMap="goodsResultMap">
+		select * from moon_goods where is_sale=1
 	</select>
 </mapper>

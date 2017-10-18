@@ -26,7 +26,7 @@ import cn.com.moonisland.service.GoodsService;
 public class GoodsController {
 	@Autowired
 	private GoodsService goodsService;
-	
+
 	
 	/**
 	 * 跳转到添加页面
@@ -60,7 +60,6 @@ public class GoodsController {
 		ModelAndView mv = new ModelAndView();
 		int count=this.goodsService.goodsCount();
 		List<Goods> list = this.goodsService.goods(page);
-		//System.out.println("----------------------------------------------"+count);
 		mv.setViewName("/WEB-INF/admin/goods.jsp");
 		mv.addObject("page",page);	
 		mv.addObject("goodslist",list);	
@@ -73,14 +72,12 @@ public class GoodsController {
 	 * */
 	@RequestMapping(value="/findbyselect")
 	public ModelAndView selectStatus(String status,int page){
-		//System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"+status);	
 		ModelAndView mv = new ModelAndView();
 		int count=this.goodsService.goodsCount();
 		Map<String, Object> map=new HashMap<>();
 		map.put("status", status);
 		map.put("page",page);
 		List<Goods> list = this.goodsService.selectStatus(map);
-		//System.out.println("----------------------------------------------"+count);
 		mv.setViewName("/WEB-INF/admin/goods.jsp");
 		mv.addObject("goodslist",list);	
 		mv.addObject("count",count);
@@ -110,7 +107,6 @@ public class GoodsController {
 	@RequestMapping("/update")
 	@ResponseBody
 	public int update(Goods goods){
-		System.out.println("====================================="+goods);
 		int result = this.goodsService.updateGoods(goods);
 		System.out.println(result);
 		return result;
@@ -122,7 +118,6 @@ public class GoodsController {
 	@RequestMapping(value="/insert")
 	@ResponseBody
 	public int addGoods(Goods goods){
-		System.out.println("==============================================");
 		int result = this.goodsService.addGoods(goods);
 		System.out.println(result);
 		return result;
@@ -134,7 +129,6 @@ public class GoodsController {
 	public ModelAndView count(){
 		ModelAndView mv=new ModelAndView();
 		int a=this.goodsService.goodsCount();
-		System.out.println("============"+a);
 		return mv;
 	}
 	
@@ -144,11 +138,9 @@ public class GoodsController {
 	@RequestMapping(value="/upload")
 	@ResponseBody
 	public Message uploadImg(HttpServletRequest request,@RequestParam("file") MultipartFile file) throws Exception{
-		System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 		Message message = new Message();
 		if(!file.isEmpty()){//判断文件非空、写入上传路劲
 			//获取上传路径
-			System.out.println("=============================================="+file);
 			String path = request.getServletContext().getRealPath("/images/");
 			System.out.println(path);
 			//获取上传原始文件名
@@ -195,7 +187,6 @@ public class GoodsController {
 		Goods g=this.goodsService.findGood(goods);
 		mv.setViewName("/html/detailPage.HTML");
 		mv.addObject("good",g);
-		System.out.println("++++++++++++++++");
 		return mv;
 		
 	}
@@ -211,6 +202,12 @@ public class GoodsController {
 		return gg;	
 	}
 	
+	
+	/**
+	 * 查询单条商品
+	 * @param goods
+	 * @return
+	 */
 	@RequestMapping(value="/findbygoodsid")
 	@ResponseBody
 	public Goods findbygoodsid(Goods goods){
@@ -219,6 +216,14 @@ public class GoodsController {
 	}
 
 	
-	
+	/**
+	 * 查询全部促销商品
+	 */
+	@RequestMapping(value="/findSalesGoods")
+	@ResponseBody
+	public List<Goods> findSalesGoods(){
+		List<Goods> goods = this.goodsService.salesGoods();
+		return goods;		
+	}
 	
 }

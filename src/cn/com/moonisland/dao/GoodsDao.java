@@ -38,4 +38,8 @@ public interface GoodsDao {
 	 * 查询是否在售
 	 * */
 	public List<Goods> selectStatus(Map<String, Object> map);
+	/**
+	 * 查询全部促销商品
+	 */
+	public List<Goods> salesGoods();
 }

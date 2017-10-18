@@ -3,6 +3,7 @@ package cn.com.moonisland.mapper;
 import java.util.List;
 import java.util.Map;
 
+import cn.com.moonisland.pojo.Goods;
 import cn.com.moonisland.pojo.Pic;
 
 public interface PicMapper {
@@ -20,6 +21,5 @@ public interface PicMapper {
 	public List<Pic> findlimit(Map<String, Integer> map);
 	//总页数
 	public int pagecount();
-	//zbl--查询 通过goodid
-	public Pic findbygoodsid(Pic pic);
+	
 }
