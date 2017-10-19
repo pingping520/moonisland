@@ -61,7 +61,6 @@ public class UserController {
 	 * 用户登录
 	 */
 	@RequestMapping(value="/login")
-	@ResponseBody
 	public ModelAndView login(User user,HttpSession session){
 		ModelAndView mv = new ModelAndView();
 		user.setPassword(MD5Utils.str2MD5(user.getPassword()));
@@ -71,7 +70,8 @@ public class UserController {
 			session.setAttribute("user", u);
 			mv.setViewName("/html/myHome.html");
 		}else{
-			mv.setViewName("../html/login.html");
+			System.out.println("==================else===================");
+			mv.setViewName("/html/index.html");
 		}
 		return mv;		
 	}
