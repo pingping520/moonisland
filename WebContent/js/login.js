@@ -4,9 +4,12 @@ $(function(){
     $('#btn').click(function(){
         var uphone = $('#text-input').val();
         var upwd = $('#text-input2').val();
-        alert(1)
         $.post('../user/login', {"phone":uphone,"password":upwd}, function(data) {
-            
+            if(data.code=="登陆成功！"){
+            	location.href="../html/myHome.html";
+            }else{
+            	location.href="../html/login.html";
+            }
         });
     });
 

@@ -1,6 +1,9 @@
 package cn.com.moonisland.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -61,20 +64,20 @@ public class UserController {
 	 * 用户登录
 	 */
 	@RequestMapping(value="/login")
-	public ModelAndView login(User user,HttpSession session){
-		ModelAndView mv = new ModelAndView();
+	@ResponseBody
+	public Map<String, String> login(User user,HttpSession session){
 		user.setPassword(MD5Utils.str2MD5(user.getPassword()));
 		User u = this.userService.login(user);
+		Map<String, String> message = new HashMap<>();
 		if(u!=null){
-			System.out.println("====================if==================");
 			session.setAttribute("user", u);
-			mv.setViewName("/html/myHome.html");
+			message.put("code", "登陆成功！");
 		}else{
-			System.out.println("==================else===================");
-			mv.setViewName("/html/index.html");
+			message.put("code", "用户名或密码错误！");		
 		}
-		return mv;		
+		return message;		
 	}
+	
 	
 	/**
 	 * 查询全部用户(分页查询、查询总页数)
