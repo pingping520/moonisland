@@ -61,14 +61,15 @@ public class UserController {
 	 * 用户登录
 	 */
 	@RequestMapping(value="/login")
+	@ResponseBody
 	public ModelAndView login(User user,HttpSession session){
 		ModelAndView mv = new ModelAndView();
 		user.setPassword(MD5Utils.str2MD5(user.getPassword()));
 		User u = this.userService.login(user);
 		if(u!=null){
+			System.out.println("====================if==================");
 			session.setAttribute("user", u);
-			mv.setViewName("../html/myHome.html");
-			mv.addObject("usetInfo", u);
+			mv.setViewName("/html/myHome.html");
 		}else{
 			mv.setViewName("../html/login.html");
 		}

@@ -2,11 +2,10 @@ $(function(){
 
     /*用户登录*/
     $('#btn').click(function(){
-        var uname = $('#text-input').val();
-        alert(uname);
+        var uphone = $('#text-input').val();
         var upwd = $('#text-input2').val();
-        alert(upwd);
-        $.post('..//user/login', {"nickName":uname,"password":upwd}, function(data, textStatus, xhr) {
+        alert(1)
+        $.post('../user/login', {"phone":uphone,"password":upwd}, function(data) {
             
         });
     });
